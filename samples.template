@@ -1,0 +1,58 @@
+Today is {date:EEEE}, {date:MMMM} {date:d}, {date:yyyy}
+
+The day is '{date:EEEE:TR}' in Turkish, '{date:EEEE:DE}' in German and '{date:EEEE:FR}' in French.
+
+Is it a {draw:true:false} information that your are awesome?
+
+Sheldon Cooper says: {draw:Rock:Paper:Scissors:Lizard:Spock}
+
+Price of an average house in London is {format:FormatCurrency:en:gb}398476{/format:FormatCurrency}
+
+{format:FormatDoubleNumber:tr:tr}1234567.89{/format:FormatDoubleNumber} and {format:FormatDoubleNumber:en:us}1234567.89{/format:FormatDoubleNumber} are same numbers in different countries.
+
+Company name is {get:company}
+
+The famous Times Square coordinates : latitude={get:TimesSqCoordinates.x}, longitude={get:TimesSqCoordinates.y}
+
+Our third favorite programming language is {get:languages[3]}
+
+There are {get:languages.-length} favorite programming languages
+
+{set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
+
+{repeat:student:10:20}{set:mark}{random-number:50:100}{/set:mark}Math grade of the student {get:student} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
+{/repeat:student}
+
+Each represents a programming language in the list :{loop:languages} X{/loop:languages}
+
+List of our favorite programming languages :{loop:languages} {get:languages}{/loop:languages}
+
+Reversed list of our favorite programming languages :{loop:languages:-1} {get:languages}{/loop:languages}
+
+Here is placeholder text: {lorem-ipsum:2:5}
+
+The operating system is {property:os.name}
+
+Your lucky number is {random-number:1:100}
+
+It is really funny {repeat:laugh:5}Ha{/repeat:laugh}
+
+Random 6 lottery numbers : {repeat:lottery:6} {random-number:1:49}{/repeat:lottery}
+
+Threw 3 dice : {repeat:dice:3}
+Die {get:dice.-offset} is {random-number:1:6}{/repeat:dice}
+
+Threw bunch of random dice : {repeat:dice:3:9}
+Die {get:dice.-offset} of {get:dice.-length} is {random-number:1:6}{/repeat:dice}
+
+{set:hero}Superman{/set:hero}My childhood hero is {get:hero}
+
+{set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} is my childhood hero. {get:hero} always fight against bad people.
+
+Welcome... {show-randomly:winner}Congratulations, You are the winner!{/show-randomly:winner}
+
+The time is {time:h}:{time:m} {time:a}
+
+Time in military notation is {time:kk}{time:mm}
+
+Current timezone is {time:zzzz}
