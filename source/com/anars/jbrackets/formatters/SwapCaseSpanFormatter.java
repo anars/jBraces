@@ -27,16 +27,23 @@ import java.util.Locale;
 public class SwapCaseSpanFormatter
   extends SpanFormatter
 {
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
     StringBuffer stringBuffer = new StringBuffer();
     for (int index = 0; index < string.length(); index++)
       {
         char character = string.charAt(index);
-        if (Character.isUpperCase(character))
-          stringBuffer.append(Character.toLowerCase(character));
-        else
-          stringBuffer.append(Character.toUpperCase(character));
+        if (Character.isLetter(character))
+          if (Character.isUpperCase(character))
+            character = Character.toLowerCase(character);
+          else
+            character = Character.toUpperCase(character);
+        stringBuffer.append(character);
       }
     return (stringBuffer.toString());
   }

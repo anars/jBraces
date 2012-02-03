@@ -27,8 +27,13 @@ import java.util.Locale;
 public class OnlyDigitsSpanFormatter
   extends SpanFormatter
 {
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
-    return (string.replaceAll("^\\D+", ""));
+    return (string.replaceAll("\\D+", ""));
   }
 }

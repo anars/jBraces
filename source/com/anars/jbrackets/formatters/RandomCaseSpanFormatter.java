@@ -24,7 +24,7 @@ import com.anars.jbrackets.SpanFormatter;
 
 import java.util.Locale;
 
-public class TrailingTrimSpanFormatter
+public class RandomCaseSpanFormatter
   extends SpanFormatter
 {
   /**
@@ -34,6 +34,14 @@ public class TrailingTrimSpanFormatter
    */
   public String format(String string, Locale locale)
   {
-    return (string.replaceAll("\\s+$", ""));
+    StringBuffer stringBuffer = new StringBuffer();
+    for (int index = 0; index < string.length(); index++)
+      {
+        char character = string.charAt(index);
+        if (Character.isLetter(character))
+          character = (int) (Math.random() * 2.0) == 1 ? Character.toLowerCase(character) : Character.toUpperCase(character);
+        stringBuffer.append(character);
+      }
+    return (stringBuffer.toString());
   }
 }

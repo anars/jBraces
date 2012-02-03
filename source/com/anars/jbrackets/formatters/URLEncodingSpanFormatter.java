@@ -32,6 +32,11 @@ import java.util.logging.Level;
 public class URLEncodingSpanFormatter
   extends SpanFormatter
 {
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
     try
@@ -41,7 +46,7 @@ public class URLEncodingSpanFormatter
     catch (UnsupportedEncodingException unsupportedEncodingException)
       {
         _logger.log(Level.SEVERE, "Unsupported Encoding", unsupportedEncodingException);
-        return (string);
       }
+    return (string);
   }
 }

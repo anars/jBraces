@@ -27,8 +27,13 @@ import java.util.Locale;
 public class OnlyWordCharacterSpanFormatter
   extends SpanFormatter
 {
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
-    return (string.replaceAll("^\\W+", ""));
+    return (string.replaceAll("\\W+", ""));
   }
 }

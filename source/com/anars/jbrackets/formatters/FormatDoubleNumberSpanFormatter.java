@@ -30,6 +30,12 @@ import java.util.logging.Level;
 public class FormatDoubleNumberSpanFormatter
   extends SpanFormatter
 {
+
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
     string = string.replaceAll("[^0-9\\-\\.]", "");

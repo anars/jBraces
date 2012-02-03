@@ -27,6 +27,11 @@ import java.util.Locale;
 public class TrimSpanFormatter
   extends SpanFormatter
 {
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   public String format(String string, Locale locale)
   {
     return (string.trim());
