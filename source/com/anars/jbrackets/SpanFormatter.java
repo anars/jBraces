@@ -25,12 +25,23 @@ import java.util.logging.Logger;
 
 public abstract class SpanFormatter
 {
+  /**
+   */
   protected Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
+  /**
+   * @param string
+   * @return
+   */
   public String format(String string)
   {
     return (format(string, Locale.getDefault()));
   }
 
+  /**
+   * @param string
+   * @param locale
+   * @return
+   */
   abstract public String format(String string, Locale locale);
 }

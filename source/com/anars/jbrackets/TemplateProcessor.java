@@ -52,9 +52,16 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ */
 public class TemplateProcessor
 {
+  /**
+   */
   public static final double VERSION = 0.1;
+
+  /**
+   */
   public static final double BUILD = 20120202;
   private static final String[] LATIN_WORDS =
   {
@@ -130,6 +137,8 @@ public class TemplateProcessor
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
   private Hashtable<String, SpanFormatter> _spanFormatters = new Hashtable<String, SpanFormatter>();
 
+  /**
+   */
   public TemplateProcessor()
   {
     super();
@@ -144,126 +153,214 @@ public class TemplateProcessor
     _valueObjects = valueObjects;
   }
 
+  /**
+   * @param valueObjects
+   */
   public synchronized void setValueObjects(Hashtable<String, Object> valueObjects)
   {
     _valueObjects = valueObjects;
   }
 
+  /**
+   * @return
+   */
   public synchronized Hashtable<String, Object> getValueObjects()
   {
     return (_valueObjects);
   }
 
+  /**
+   */
   public synchronized void clearValueObjects()
   {
     _valueObjects.clear();
   }
 
+  /**
+   * @param name
+   * @param valueObject
+   * @return
+   */
   public synchronized Object putValueObject(String name, Object valueObject)
   {
     return (valueObject != null ? _valueObjects.put(name.toLowerCase(), valueObject) : null);
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized Object getValueObject(String name)
   {
     return (_valueObjects.get(name.toLowerCase()));
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized Object removeValueObject(String name)
   {
     return (_valueObjects.remove(name.toLowerCase()));
   }
 
+  /**
+   * @return
+   */
   public synchronized boolean hasAnyValueObjects()
   {
     return (!_valueObjects.isEmpty());
   }
 
+  /**
+   * @return
+   */
   public synchronized int valueObjectCount()
   {
     return (_valueObjects.size());
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized boolean containsValueObjectName(String name)
   {
     return (_valueObjects.containsKey(name.toLowerCase()));
   }
 
+  /**
+   * @param valueObject
+   * @return
+   */
   public synchronized boolean containsValueObject(Object valueObject)
   {
     return (_valueObjects.containsValue(valueObject));
   }
 
+  /**
+   * @return
+   */
   public synchronized Enumeration<String> valueObjectNames()
   {
     return (_valueObjects.keys());
   }
 
+  /**
+   * @return
+   */
   public synchronized Collection<Object> valueObjects()
   {
     return (_valueObjects.values());
   }
 
+  /**
+   */
   public synchronized void clearSpanFormatters()
   {
     _spanFormatters.clear();
   }
 
+  /**
+   * @param name
+   * @param spanFormatter
+   * @return
+   */
   public synchronized SpanFormatter putSpanFormatter(String name, SpanFormatter spanFormatter)
   {
     return (_spanFormatters.put(name, spanFormatter));
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized SpanFormatter getSpanFormatter(String name)
   {
     return (_spanFormatters.get(name));
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized SpanFormatter removeSpanFormatter(String name)
   {
     return (_spanFormatters.remove(name));
   }
 
+  /**
+   * @return
+   */
   public synchronized boolean hasAnySpanFormatters()
   {
     return (!_spanFormatters.isEmpty());
   }
 
+  /**
+   * @return
+   */
   public synchronized int spanFormatterCount()
   {
     return (_spanFormatters.size());
   }
 
+  /**
+   * @param name
+   * @return
+   */
   public synchronized boolean containsSpanFormatterName(String name)
   {
     return (_spanFormatters.containsKey(name));
   }
 
+  /**
+   * @param spanFormatter
+   * @return
+   */
   public synchronized boolean containsSpanFormatter(SpanFormatter spanFormatter)
   {
     return (_spanFormatters.containsValue(spanFormatter));
   }
 
+  /**
+   * @return
+   */
   public synchronized Enumeration<String> spanFormatterNames()
   {
     return (_spanFormatters.keys());
   }
 
+  /**
+   * @return
+   */
   public synchronized Collection<SpanFormatter> spanFormatters()
   {
     return (_spanFormatters.values());
   }
 
+  /**
+   * @param locale
+   */
   public void setLocale(Locale locale)
   {
     _locale = locale;
   }
 
+  /**
+   * @return
+   */
   public Locale getLocale()
   {
     return (_locale);
   }
 
+  /**
+   * @param templateFile
+   * @return
+   * @throws IOException
+   * @throws FileNotFoundException
+   */
   public String apply(File templateFile)
     throws IOException, FileNotFoundException
   {
@@ -287,6 +384,10 @@ public class TemplateProcessor
     return (apply(stringBuffer.toString()));
   }
 
+  /**
+   * @param templateString
+   * @return
+   */
   public String apply(String templateString)
   {
     Matcher matcher = _pattern.matcher(templateString);
@@ -791,11 +892,16 @@ public class TemplateProcessor
     return (object);
   }
 
+  /**
+   */
   public void loadAllSpanFormatters()
   {
     loadAllSpanFormatters(null);
   }
 
+  /**
+   * @param rootPackageName
+   */
   public void loadAllSpanFormatters(String rootPackageName)
   {
     try

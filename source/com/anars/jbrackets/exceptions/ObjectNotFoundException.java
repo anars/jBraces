@@ -23,6 +23,9 @@ package com.anars.jbrackets.exceptions;
 public class ObjectNotFoundException
   extends Exception
 {
+  /**
+   * @param string
+   */
   public ObjectNotFoundException(String string)
   {
     super(string);

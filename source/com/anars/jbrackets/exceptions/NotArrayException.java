@@ -23,6 +23,9 @@ package com.anars.jbrackets.exceptions;
 public class NotArrayException
   extends Exception
 {
+  /**
+   * @param string
+   */
   public NotArrayException(String string)
   {
     super(string);

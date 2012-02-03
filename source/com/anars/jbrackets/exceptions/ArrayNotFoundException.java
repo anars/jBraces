@@ -23,6 +23,9 @@ package com.anars.jbrackets.exceptions;
 public class ArrayNotFoundException
   extends Exception
 {
+  /**
+   * @param string
+   */
   public ArrayNotFoundException(String string)
   {
     super(string);

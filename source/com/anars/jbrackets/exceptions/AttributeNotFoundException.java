@@ -23,6 +23,9 @@ package com.anars.jbrackets.exceptions;
 public class AttributeNotFoundException
   extends Exception
 {
+  /**
+   * @param string
+   */
   public AttributeNotFoundException(String string)
   {
     super(string);
