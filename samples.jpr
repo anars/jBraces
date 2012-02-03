@@ -30,7 +30,7 @@
       <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
-   <value n="defaultPackage" v="com.anars.jbraces.samples"/>
+   <value n="defaultPackage" v="com.anars.jbrackets.samples"/>
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>
@@ -49,8 +49,12 @@
          <string v="XML"/>
       </list>
    </hash>
+   <hash n="oracle.jdeveloper.compiler.ant.AntConfiguration">
+      <value n="makeTarget" v="build"/>
+      <url n="projectBuildfile" path="build.xml"/>
+   </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
-      <value n="internalEncoding" v="MacRoman"/>
+      <value n="internalEncoding" v="UTF-8"/>
       <list n="Javac.commandline.optionlist">
          <string v="-g"/>
          <string v="-Xlint:all"/>
@@ -62,7 +66,12 @@
          <string v="-Xlint:-serial"/>
          <string v="-Xlint:-unchecked"/>
       </list>
+      <value n="target" v="1.5"/>
       <value n="webIANAEncoding" v="ISO-8859-1"/>
+   </hash>
+   <hash n="oracle.jdeveloper.javadoc.JProjectJavadoc">
+      <value n="generateAuthor" v="true"/>
+      <value n="generateVersion" v="true"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
