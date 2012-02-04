@@ -62,7 +62,7 @@ public class TemplateProcessor
 
   /**
    */
-  public static final double BUILD = 20120202;
+  public static final long BUILD = 20120204;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -103,6 +103,15 @@ public class TemplateProcessor
     "vocis", "voco", "volo", "voluntas", "vomica", "vox"
     //
     } ;
+  private static final String VO_NAME_CLASS_VERSION = "jb_class_version";
+  private static final String VO_NAME_CLASS_BUILD = "jb_class_build";
+  private static final String VO_NAME_LOCALE_CODE = "jb_locale_code";
+  private static final String VO_NAME_LOCALE_NAME = "jb_locale_name";
+  private static final String VO_NAME_COUNTRY_CODE = "jb_country_code";
+  private static final String VO_NAME_COUNTRY_NAME = "jb_country_name";
+  private static final String VO_NAME_LANGUAGE_CODE = "jb_language_code";
+  private static final String VO_NAME_LANGUAGE_NAME = "jb_language_name";
+  //
   private static final String LOOP = "loop";
   private static final String SHOW_RANDOMLY = "show-randomly";
   private static final String REPEAT = "repeat";
@@ -116,7 +125,9 @@ public class TemplateProcessor
   private static final String LOREM_IPSUM = "lorem-ipsum";
   private static final String FORMAT = "format";
   private static final String IF = "if";
+  //
   private Logger _logger = Logger.getLogger(getClass().getCanonicalName());
+  //
   private Pattern _pattern = Pattern.compile(
       //
       "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\1\\}|" + //
@@ -124,16 +135,19 @@ public class TemplateProcessor
       "\\{" + REPEAT + ":(\\w+):\\d+(:\\d+)?\\}.*?\\{/" + REPEAT + ":\\4\\}|" + //
       "\\{" + RANDOM_NUMBER + ":\\-?\\d+:\\-?\\d+\\}|" + //
       "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
-      "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2})?\\}|" + //
-      "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2})?\\}|" + //
+      "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
+      "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
       "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?\\}|" + //
       "\\{" + PROPERTY + ":[^}]*\\}|" + //
       "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
       "\\{" + SET + ":(\\w+)\\}.*?\\{/" + SET + ":\\13\\}|" + //
-      "\\{" + FORMAT + ":(\\w+)(:\\w{2}:\\w{2})?\\}.*?\\{/" + FORMAT + ":\\14\\}|" + //
-      "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])):(equals|not-equals|greater-than|greater-than-or-equals|less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\16\\}", //
+      "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\14\\}|" + //
+      "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
+      "([\'][^\']*[\'])):(equals|not-equals|greater-than|greater-than-or-equals|less-than|less-than-or-equals|empty|" + //
+      "not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|" + //
+      "\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\16\\}", //
       Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-  private Locale _locale = Locale.getDefault();
+  private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
   private Hashtable<String, SpanFormatter> _spanFormatters = new Hashtable<String, SpanFormatter>();
 
@@ -142,15 +156,38 @@ public class TemplateProcessor
   public TemplateProcessor()
   {
     super();
-    putValueObject("jbrackets_version", VERSION);
-    putValueObject("jbrackets_build", BUILD);
+    putValueObject(VO_NAME_CLASS_VERSION, VERSION);
+    putValueObject(VO_NAME_CLASS_BUILD, BUILD);
+    setLocale(Locale.getDefault());
   }
 
-  private TemplateProcessor(Locale locale, Hashtable<String, Object> valueObjects)
+  /**
+   * @param locale
+   * @param valueObjects
+   */
+  public TemplateProcessor(Locale locale, Hashtable<String, Object> valueObjects)
   {
     this();
-    _locale = locale;
-    _valueObjects = valueObjects;
+    setLocale(locale);
+    setValueObjects(valueObjects);
+  }
+
+  /**
+   * @param locale
+   */
+  public TemplateProcessor(Locale locale)
+  {
+    this();
+    setLocale(locale);
+  }
+
+  /**
+   * @param valueObjects
+   */
+  public TemplateProcessor(Hashtable<String, Object> valueObjects)
+  {
+    this();
+    setValueObjects(valueObjects);
   }
 
   /**
@@ -345,6 +382,12 @@ public class TemplateProcessor
   public void setLocale(Locale locale)
   {
     _locale = locale;
+    putValueObject(VO_NAME_LOCALE_CODE, locale.toString());
+    putValueObject(VO_NAME_LOCALE_NAME, locale.getDisplayName(locale));
+    putValueObject(VO_NAME_COUNTRY_CODE, locale.getCountry());
+    putValueObject(VO_NAME_COUNTRY_NAME, locale.getDisplayCountry(locale));
+    putValueObject(VO_NAME_LANGUAGE_CODE, locale.getLanguage());
+    putValueObject(VO_NAME_LANGUAGE_NAME, locale.getDisplayLanguage(locale));
   }
 
   /**
@@ -463,6 +506,8 @@ public class TemplateProcessor
             Locale locale = _locale;
             if (pieces.length == 3)
               locale = new Locale(pieces[2]);
+            else if (pieces.length == 4)
+              locale = new Locale(pieces[2], pieces[3]);
             try
               {
                 replacement = (new SimpleDateFormat(pieces[1], locale)).format(new Date());
@@ -755,7 +800,9 @@ public class TemplateProcessor
             try
               {
                 Locale locale = _locale;
-                if (pieces.length == 4)
+                if (pieces.length == 3)
+                  locale = new Locale(pieces[2]);
+                else if (pieces.length == 4)
                   locale = new Locale(pieces[2], pieces[3]);
                 SpanFormatter spanFormatter = _spanFormatters.get(pieces[1]);
                 if (spanFormatter != null)
@@ -779,7 +826,23 @@ public class TemplateProcessor
           }
         else if (pieces[0].equals(SET))
           {
-            putValueObject(pieces[1], apply(substring(matcher.group(), "}", "{/")));
+            if (!pieces[1].equalsIgnoreCase(VO_NAME_CLASS_VERSION) && !pieces[1].equalsIgnoreCase(VO_NAME_CLASS_BUILD) && //
+              !pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_NAME) && //
+              !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_NAME) && //
+              !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_NAME))
+              {
+                putValueObject(pieces[1], apply(substring(matcher.group(), "}", "{/")));
+              }
+            else if (pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_CODE))
+              {
+                String localeString = substring(matcher.group(), "}", "{/").trim();
+                if (localeString.length() == 0)
+                  setLocale(Locale.getDefault());
+                else if (localeString.length() == 2)
+                  setLocale(new Locale(localeString));
+                else if (localeString.length() == 5 && localeString.charAt(2) == '_')
+                  setLocale(new Locale(localeString.substring(0, 2), localeString.substring(3)));
+              }
           }
         matcher.appendReplacement(stringBuffer, replacement == null ? "" : replacement);
         replacement = null;

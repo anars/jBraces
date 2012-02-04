@@ -18,6 +18,8 @@ Our third favorite programming language is {get:languages[3]}
 
 There are {get:languages.-length} favorite programming languages
 
+jBrackets version is {get:jb_class_version}, build is {get:jb_class_build} and current locale is {get:jb_locale_name}.
+
 {set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
 
 {repeat:student:10:20}{set:mark}{random-number:50:100}{/set:mark}Math grade of the student {get:student} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
@@ -48,6 +50,8 @@ Die {get:dice.-offset} of {get:dice.-length} is {random-number:1:6}{/repeat:dice
 {set:hero}Superman{/set:hero}My childhood hero is {get:hero}
 
 {set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} is my childhood hero. {get:hero} always fight against bad people.
+
+{set:jb_locale_code}tr_TR{/set:jb_locale_code}The day is '{date:EEEE}' in Turkish ({get:jb_language_name}), {set:jb_locale_code}de_DE{/set:jb_locale_code}'{date:EEEE}' in German ({get:jb_language_name}) and {set:jb_locale_code}{/set:jb_locale_code}'{date:EEEE}' in default language ({get:jb_language_name}).
 
 Welcome... {show-randomly:winner}Congratulations, You are the winner!{/show-randomly:winner}
 
