@@ -22,14 +22,14 @@ jBrackets version is {get:jb_class_version}, build is {get:jb_class_build} and c
 
 {set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
 
-{repeat:student:10:20}{set:mark}{random-number:50:100}{/set:mark}Math grade of the student {get:student} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
+{repeat:student:10:20}{set:mark}{random-number:50:100}{/set:mark}Math grade of the student {get:student.-value} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
 {/repeat:student}
 
 Each represents a programming language in the list :{loop:languages} X{/loop:languages}
 
-List of our favorite programming languages :{loop:languages} {get:languages}{/loop:languages}
+List of our favorite programming languages :{loop:languages} {get:languages.-value}{/loop:languages}
 
-Reversed list of our favorite programming languages :{loop:languages:-1} {get:languages}{/loop:languages}
+Reversed list of our favorite programming languages :{loop:languages:-1} {get:languages.-value}{/loop:languages}
 
 Here is placeholder text: {lorem-ipsum:2:5}
 

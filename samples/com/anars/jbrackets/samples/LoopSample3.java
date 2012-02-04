@@ -30,7 +30,7 @@ public class LoopSample3
     String[] favoriteLanguages = { "C", "C++", "Java", "Scala", "Python", "PHP" };
     templateProcessor.putValueObject("languages", favoriteLanguages);
     String template = "Reversed list of our favorite programming languages :" +
-                      "{loop:languages:-1} {get:languages}{/loop:languages}";
+                      "{loop:languages:-1} {get:languages.-value}{/loop:languages}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

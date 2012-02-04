@@ -137,7 +137,7 @@ public class TemplateProcessor
       "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
       "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
       "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
-      "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?\\}|" + //
+      "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?\\}|" + //
       "\\{" + PROPERTY + ":[^}]*\\}|" + //
       "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
       "\\{" + SET + ":(\\w+)\\}.*?\\{/" + SET + ":\\13\\}|" + //
@@ -568,28 +568,29 @@ public class TemplateProcessor
                 if (object != null)
                   {
                     String loopTemplate = substring(matcher.group(), "}", "{/");
-                    Hashtable<String, Object> foreachValues = (Hashtable<String, Object>) _valueObjects.clone();
                     replacement = "";
                     if (increment > 0)
                       for (int index = 0; index < object.length; index += increment)
                         {
-                          TemplateProcessor processor = new TemplateProcessor(_locale, foreachValues);
-                          processor.putValueObject(pieces[1] + "-offset", index + 1);
-                          processor.putValueObject(pieces[1] + "-first", (index == 0));
-                          processor.putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
-                          processor.putValueObject(pieces[1], object[index]);
-                          replacement += processor.apply(loopTemplate);
+                          putValueObject(pieces[1] + "-offset", index + 1);
+                          putValueObject(pieces[1] + "-first", (index == 0));
+                          putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
+                          putValueObject(pieces[1] + "-value", object[index]);
+                          replacement += apply(loopTemplate);
                         }
                     else if (increment < 0)
                       for (int index = object.length - 1; index >= 0; index += increment)
                         {
-                          TemplateProcessor processor = new TemplateProcessor(_locale, foreachValues);
-                          processor.putValueObject(pieces[1] + "-offset", index + 1);
-                          processor.putValueObject(pieces[1] + "-first", (index == object.length - 1));
-                          processor.putValueObject(pieces[1] + "-last", (index == 0));
-                          processor.putValueObject(pieces[1], object[index]);
-                          replacement += processor.apply(loopTemplate);
+                          putValueObject(pieces[1] + "-offset", index + 1);
+                          putValueObject(pieces[1] + "-first", (index == object.length - 1));
+                          putValueObject(pieces[1] + "-last", (index == 0));
+                          putValueObject(pieces[1] + "-value", object[index]);
+                          replacement += apply(loopTemplate);
                         }
+                    removeValueObject(pieces[1] + "-offset");
+                    removeValueObject(pieces[1] + "-first");
+                    removeValueObject(pieces[1] + "-last");
+                    removeValueObject(pieces[1] + "-value");
                   }
                 else
                   {
@@ -778,18 +779,23 @@ public class TemplateProcessor
                 _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
               }
             String repeatBlock = substring(matcher.group(), "}", "{/");
-            Hashtable<String, Object> repeatValues = (Hashtable<String, Object>) _valueObjects.clone();
             replacement = "";
-            repeatValues.put(pieces[1] + "-length", repeatTimes);
+            putValueObject(pieces[1], "");
+            putValueObject(pieces[1] + "-length", repeatTimes);
             for (int index = 0; index < repeatTimes; index++)
               {
-                TemplateProcessor processor = new TemplateProcessor(_locale, repeatValues);
-                processor.putValueObject(pieces[1] + "-offset", index + 1);
-                processor.putValueObject(pieces[1] + "-first", (index == 0));
-                processor.putValueObject(pieces[1] + "-last", (index == repeatTimes - 1));
-                processor.putValueObject(pieces[1], index + 1);
-                replacement += processor.apply(repeatBlock);
+                putValueObject(pieces[1] + "-offset", index + 1);
+                putValueObject(pieces[1] + "-first", (index == 0));
+                putValueObject(pieces[1] + "-last", (index == repeatTimes - 1));
+                putValueObject(pieces[1] + "-value", index + 1);
+                replacement += apply(repeatBlock);
               }
+            removeValueObject(pieces[1] + "-length");
+            removeValueObject(pieces[1] + "-offset");
+            removeValueObject(pieces[1] + "-first");
+            removeValueObject(pieces[1] + "-last");
+            removeValueObject(pieces[1] + "-value");
+            removeValueObject(pieces[1]);
           }
         else if (pieces[0].equals(PROPERTY))
           {
@@ -908,18 +914,14 @@ public class TemplateProcessor
             Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + "-length");
             return (offsetValue == null ? getArrayObject(pieces[0]).length : offsetValue);
           }
-        else if (pieces[1].toLowerCase().equals("-offset"))
+        else if (pieces[1].toLowerCase().equals("-offset") | pieces[1].toLowerCase().equals("-value"))
           {
-            Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + "-offset");
+            Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + pieces[1].toLowerCase());
             return (offsetValue == null ? 0 : offsetValue);
           }
-        else if (pieces[1].toLowerCase().equals("-first"))
+        else if (pieces[1].toLowerCase().equals("-first") || pieces[1].toLowerCase().equals("-last"))
           {
-            return (((Boolean) _valueObjects.get(pieces[0].toLowerCase() + "-first")).booleanValue());
-          }
-        else if (pieces[1].toLowerCase().equals("-last"))
-          {
-            return (((Boolean) _valueObjects.get(pieces[0].toLowerCase() + "-last")).booleanValue());
+            return (((Boolean) _valueObjects.get(pieces[0].toLowerCase() + pieces[1].toLowerCase())).booleanValue());
           }
         else
           {

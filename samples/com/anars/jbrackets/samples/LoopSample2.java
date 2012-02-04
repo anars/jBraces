@@ -30,7 +30,7 @@ public class LoopSample2
     String[] favoriteLanguages = { "C", "C++", "Java", "Scala", "Python", "PHP" };
     templateProcessor.putValueObject("languages", favoriteLanguages);
     String template = "List of our favorite programming languages :" +
-                      "{loop:languages} {get:languages}{/loop:languages}";
+                      "{loop:languages} {get:languages.-value}{/loop:languages}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

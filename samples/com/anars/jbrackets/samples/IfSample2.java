@@ -29,7 +29,7 @@ public class IfSample2
     TemplateProcessor templateProcessor = new TemplateProcessor();
     String template = "{repeat:student:10:20}" +
                       "{set:mark}{random-number:50:100}{/set:mark}" +
-                      "Math grade of the student {get:student} is {get:mark} / " +
+                      "Math grade of the student {get:student.-value} is {get:mark} / " +
                       "{if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}" +
                       "{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}" +
                       "{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}" +
