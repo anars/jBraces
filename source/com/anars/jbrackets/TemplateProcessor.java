@@ -142,10 +142,10 @@ public class TemplateProcessor
       "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
       "\\{" + SET + ":(\\w+)\\}.*?\\{/" + SET + ":\\13\\}|" + //
       "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\14\\}|" + //
-      "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
-      "([\'][^\']*[\'])):(equals|not-equals|greater-than|greater-than-or-equals|less-than|less-than-or-equals|empty|" + //
-      "not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-offset|\\.\\-length|" + //
-      "\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\16\\}", //
+      "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
+      "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
+      "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
+      "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\16\\}", //
       Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -654,6 +654,14 @@ public class TemplateProcessor
                     else if (pieces[3].equals("not-equals"))
                       {
                         condition = !leftSideStr.equals(rightSideStr);
+                      }
+                    if (pieces[3].equals("equals-ignore-case"))
+                      {
+                        condition = leftSideStr.equalsIgnoreCase(rightSideStr);
+                      }
+                    else if (pieces[3].equals("not-equals-ignore-case"))
+                      {
+                        condition = !leftSideStr.equalsIgnoreCase(rightSideStr);
                       }
                     else if (pieces[3].equals("empty"))
                       {
