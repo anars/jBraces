@@ -32,11 +32,11 @@
       <format property="build.number" pattern="yyyyMMdd"/>
     </tstamp>
     <replaceregexp file="${source.dir}/com/anars/jbrackets/TemplateProcessor.java"
-                   flags="g" match='VERSION = (.*);'
-                   replace='VERSION = ${version.number};'/>
+                   flags="g" match='public static final double VERSION = (.*);'
+                   replace='public static final double VERSION = ${version.number};'/>
     <replaceregexp file="${source.dir}/com/anars/jbrackets/TemplateProcessor.java"
-                   flags="g" match='BUILD = (.*);'
-                   replace='BUILD = ${build.number};'/>
+                   flags="g" match='public static final long BUILD = (.*);'
+                   replace='public static final long BUILD = ${build.number};'/>
     <mkdir dir="${classes.dir}"/>
     <javac includeantruntime="false" srcdir="${source.dir}"
            destdir="${classes.dir}" source="1.5" target="1.5"/>
