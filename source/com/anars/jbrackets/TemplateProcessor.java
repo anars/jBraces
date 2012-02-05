@@ -655,7 +655,7 @@ public class TemplateProcessor
                       {
                         condition = !leftSideStr.equals(rightSideStr);
                       }
-                    if (pieces[3].equals("equals-ignore-case"))
+                    else if (pieces[3].equals("equals-ignore-case"))
                       {
                         condition = leftSideStr.equalsIgnoreCase(rightSideStr);
                       }
