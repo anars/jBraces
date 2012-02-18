@@ -62,7 +62,7 @@ public class TemplateProcessor
 
   /**
    */
-  public static final long BUILD = 20120205;
+  public static final long BUILD = 20120218;
   private static final String[] LATIN_WORDS =
   {
     //

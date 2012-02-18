@@ -24,10 +24,20 @@ import com.anars.jbrackets.SpanFormatter;
 
 import java.util.Locale;
 
+/**
+ * CamelCase is the practice of writing compound words or phrases in which the
+ * elements are joined without spaces, with each element's initial letter capitalized.
+ *
+ *
+ * @author Kivanc Anar
+ * @since 0.2
+ */
 public class CamelCaseSpanFormatter
   extends SpanFormatter
 {
   /**
+   * First letter of each word is capitalized, spaces and punctuation removed.
+   * 
    * @param string
    * @param locale
    * @return
