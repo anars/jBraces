@@ -58,11 +58,11 @@ public class TemplateProcessor
 {
   /**
    */
-  public static final double VERSION = 0.2;
+  public static final double VERSION = 0.3;
 
   /**
    */
-  public static final long BUILD = 20120218;
+  public static final long BUILD = 20120820;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -103,6 +103,237 @@ public class TemplateProcessor
     "vocis", "voco", "volo", "voluntas", "vomica", "vox"
     //
     } ;
+  //
+  // Source http://en.wikipedia.org/wiki/List_of_pangrams
+  private static final String[] PANGRAM_SENTENCES =
+  {
+    //
+    "Nymphs blitz quick vex dwarf jog",
+    //
+    "DJs flock by when MTV ax quiz prog",
+    //
+    "Big fjords vex quick waltz nymph",
+    //
+    "Bawds jog, flick quartz, vex nymph",
+    //
+    "Waltz job vexed quick frog nymphs",
+    //
+    "Junk MTV quiz graced by fox whelps",
+    //
+    "Bawds jog, flick quartz, vex nymphs",
+    //
+    "Waltz, bad nymph, for quick jigs vex!",
+    //
+    "Fox nymphs grab quick-jived waltz",
+    //
+    "Brick quiz whangs jumpy veldt fox",
+    //
+    "Glib jocks quiz nymph to vex dwarf",
+    //
+    "Bright vixens jump; dozy fowl quack",
+    //
+    "Vexed nymphs go for quick waltz job",
+    //
+    "Quick wafting zephyrs vex bold Jim",
+    //
+    "Quick zephyrs blow, vexing daft Jim",
+    //
+    "Quick blowing zephyrs vex daft Jim",
+    //
+    "Sphinx of black quartz, judge my vow",
+    //
+    "Sex-charged fop blew my junk TV quiz",
+    //
+    "Both fickle dwarves jinx my pig quiz",
+    //
+    "Fat hag dwarves quickly zap jinx mob",
+    //
+    "Hick dwarves jam blitzing foxy quip",
+    //
+    "Fox dwarves chop my talking quiz job",
+    //
+    "Public junk dwarves quiz mighty fox",
+    //
+    "Jack fox bids ivy-strewn phlegm quiz",
+    //
+    "How quickly daft jumping zebras vex",
+    //
+    "Two driven jocks help fax my big quiz",
+    //
+    "\"Now fax quiz Jack!\" my brave ghost pled",
+    //
+    "Jack, love my big wad of sphinx quartz!",
+    //
+    "Fickle jinx bog dwarves spy math quiz",
+    //
+    "Big dwarves heckle my top quiz of jinx",
+    //
+    "Fickle bog dwarves jinx empathy quiz",
+    //
+    "Public junk dwarves hug my quartz fox",
+    //
+    "Jumping hay dwarves flock quartz box",
+    //
+    "Five jumping wizards hex bolty quick",
+    //
+    "Five hexing wizard bots jump quickly",
+    //
+    "Quick fox jumps nightly above wizard",
+    //
+    "Vamp fox held quartz duck just by wing",
+    //
+    "Five quacking zephyrs jolt my wax bed",
+    //
+    "The five boxing wizards jump quickly",
+    //
+    "Jackdaws love my big sphinx of quartz",
+    //
+    "My jocks box, get hard, unzip, quiver, flow",
+    //
+    "Kvetching, flummoxed by job, W. zaps Iraq",
+    //
+    "My ex pub quiz crowd gave joyful thanks",
+    //
+    "Cozy sphinx waves quart jug of bad milk",
+    //
+    "A very bad quack might jinx zippy fowls",
+    //
+    "Pack my box with five dozen liquor jugs",
+    //
+    "Few quips galvanized the mock jury box",
+    //
+    "Quick brown fox jumps over the lazy dog",
+    //
+    "Jumpy halfling dwarves pick quartz box",
+    //
+    "Vex quest wizard, judge my backflop hand",
+    //
+    "The jay, pig, fox, zebra and my wolves quack!",
+    //
+    "Blowzy red vixens fight for a quick jump",
+    //
+    "Sex prof gives back no quiz with mild joy",
+    //
+    "The quick brown fox jumps over a lazy dog",
+    //
+    "A quick brown fox jumps over the lazy dog",
+    //
+    "Quest judge wizard bonks foxy chimp love",
+    //
+    "Boxers had zap of gay jock love, quit women",
+    //
+    "Joaquin Phoenix was gazed by MTV for luck",
+    //
+    "JCVD might pique a sleazy boxer with funk",
+    //
+    "Quizzical twins proved my hijack-bug fix",
+    //
+    "The quick brown fox jumps over the lazy dog",
+    //
+    "Waxy and quivering, jocks fumble the pizza",
+    //
+    "When zombies arrive, quickly fax judge Pat",
+    //
+    "Heavy boxes perform quick waltzes and jigs",
+    //
+    "A quick chop jolted my big sexy frozen wives",
+    //
+    "A wizard's job is to vex chumps quickly in fog",
+    //
+    "Sympathizing would fix Quaker objectives",
+    //
+    "Pack my red box with five dozen quality jugs",
+    //
+    "Quads of blowzy fjord ignite map vex'd chicks",
+    //
+    "Fake bugs put in wax jonquils drive him crazy",
+    //
+    "Watch \"Jeopardy!\", Alex Trebek's fun TV quiz game",
+    //
+    "GQ jock wears vinyl tuxedo for showbiz promo",
+    //
+    "The quick brown fox jumped over the lazy dogs",
+    //
+    "Who packed five dozen old quart jars in my box?",
+    //
+    "Woven silk pyjamas exchanged for blue quartz",
+    //
+    "Brawny gods just flocked up to quiz and vex him",
+    //
+    "Twelve ziggurats quickly jumped a finch box",
+    //
+    "Prating jokers quizzically vexed me with fibs",
+    //
+    "My faxed joke won a pager in the cable TV quiz show",
+    //
+    "The quick onyx goblin jumps over the lazy dwarf",
+    //
+    "The lazy major was fixing Cupid's broken quiver",
+    //
+    "Amazingly few discotheques provide jukeboxes",
+    //
+    "Foxy diva Jennifer Lopez wasn't baking my quiche",
+    //
+    "Cozy lummox gives smart squid who asks for job pen",
+    //
+    "By Jove, my quick study of lexicography won a prize",
+    //
+    "Painful zombies quickly watch a jinxed graveyard",
+    //
+    "Fax back Jim's Gwyneth Paltrow video quiz",
+    //
+    "My girl wove six dozen plaid jackets before she quit",
+    //
+    "Six big devils from Japan quickly forgot how to waltz",
+    //
+    "\"Who am taking the ebonics quiz?\", the prof jovially axed",
+    //
+    "Why shouldn't a quixotic Kazakh vampire jog barefoot?",
+    //
+    "Grumpy wizards make a toxic brew for the jovial queen",
+    //
+    "Sixty zips were quickly picked from the woven jute bag",
+    //
+    "Big July earthquakes confound zany experimental vow",
+    //
+    "Foxy parsons quiz and cajole the lovably dim wiki-girl",
+    //
+    "Cute, kind, jovial, foxy physique, amazing beauty? Wowser!",
+    //
+    "Have a pick: twenty six letters Ñ no forcing a jumbled quiz!",
+    //
+    "A very big box sailed up then whizzed quickly from Japan",
+    //
+    "Jack quietly moved up front and seized the big ball of wax",
+    //
+    "Few black taxis drive up major roads on quiet hazy nights",
+    //
+    "Just poets wax boldly as kings and queens march over fuzz",
+    //
+    "Bored? Craving a pub quiz fix? Why, just come to the Royal Oak!",
+    //
+    "Grumpy wizards make toxic brew for the evil Queen and Jack",
+    //
+    "Crazy Fredericka bought many very exquisite opal jewels",
+    //
+    "The job of waxing linoleum frequently peeves chintzy kids",
+    //
+    "Back in June we delivered oxygen equipment of the same size",
+    //
+    "Just keep examining every low bid quoted for zinc etchings",
+    //
+    "How razorback-jumping frogs can level six piqued gymnasts!",
+    //
+    "A quick movement of the enemy will jeopardize six gunboats",
+    //
+    "All questions asked by five watched experts amaze the judge",
+    //
+    "The wizard quickly jinxed the gnomes before they vapourized",
+    //
+    "Every good cow, fox, squirrel, and zebra likes to jump over happy dogs"
+    //
+    } ;
+  //
   private static final String VO_NAME_CLASS_VERSION = "jb_class_version";
   private static final String VO_NAME_CLASS_BUILD = "jb_class_build";
   private static final String VO_NAME_LOCALE_CODE = "jb_locale_code";
@@ -123,6 +354,7 @@ public class TemplateProcessor
   private static final String SET = "set";
   private static final String PROPERTY = "property";
   private static final String LOREM_IPSUM = "lorem-ipsum";
+  private static final String PANGRAM = "pangram";
   private static final String FORMAT = "format";
   private static final String IF = "if";
   //
@@ -140,6 +372,7 @@ public class TemplateProcessor
       "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?\\}|" + //
       "\\{" + PROPERTY + ":[^}]*\\}|" + //
       "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
+      "\\{" + PANGRAM + ":\\d+:\\d+\\}|" + //
       "\\{" + SET + ":(\\w+)\\}.*?\\{/" + SET + ":\\13\\}|" + //
       "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\14\\}|" + //
       "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
@@ -501,6 +734,40 @@ public class TemplateProcessor
               }
             replacement = stringBufferParagraph.toString();
           }
+        else if (pieces[0].equals(PANGRAM))
+          {
+            int minSentences = 1;
+            int maxSentences = 1;
+            try
+              {
+                minSentences = Integer.parseInt(pieces[1]);
+              }
+            catch (Exception exception)
+              {
+                _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+              }
+            try
+              {
+                maxSentences = Integer.parseInt(pieces[2]);
+              }
+            catch (Exception exception)
+              {
+                maxSentences = minSentences;
+                _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+              }
+            int sentences = (int) (Math.random() * (maxSentences - minSentences + 1)) + minSentences;
+            StringBuffer stringBufferParagraph = new StringBuffer();
+            for (int sentenceIndex = 0; sentenceIndex < sentences; sentenceIndex++)
+              {
+                int sentence = (int) (Math.random() * PANGRAM_SENTENCES.length);
+                stringBufferParagraph.append(PANGRAM_SENTENCES[sentence]);
+                if (!PANGRAM_SENTENCES[sentence].endsWith("!") && !PANGRAM_SENTENCES[sentence].endsWith("?"))
+                  stringBufferParagraph.append(".");
+                if (sentenceIndex + 1 < sentences)
+                  stringBufferParagraph.append(" ");
+              }
+            replacement = stringBufferParagraph.toString();
+          }
         else if (pieces[0].equals(DATE) || pieces[0].equals(TIME))
           {
             Locale locale = _locale;
@@ -576,6 +843,7 @@ public class TemplateProcessor
                           putValueObject(pieces[1] + "-first", (index == 0));
                           putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
                           putValueObject(pieces[1] + "-value", object[index]);
+                          putValueObject(pieces[1], object[index]);
                           replacement += apply(loopTemplate);
                         }
                     else if (increment < 0)
@@ -585,6 +853,7 @@ public class TemplateProcessor
                           putValueObject(pieces[1] + "-first", (index == object.length - 1));
                           putValueObject(pieces[1] + "-last", (index == 0));
                           putValueObject(pieces[1] + "-value", object[index]);
+                          putValueObject(pieces[1], object[index]);
                           replacement += apply(loopTemplate);
                         }
                     removeValueObject(pieces[1] + "-offset");
@@ -922,7 +1191,7 @@ public class TemplateProcessor
             Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + "-length");
             return (offsetValue == null ? getArrayObject(pieces[0]).length : offsetValue);
           }
-        else if (pieces[1].toLowerCase().equals("-offset") | pieces[1].toLowerCase().equals("-value"))
+        else if (pieces[1].toLowerCase().equals("-offset") || pieces[1].toLowerCase().equals("-value"))
           {
             Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + pieces[1].toLowerCase());
             return (offsetValue == null ? 0 : offsetValue);
