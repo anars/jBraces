@@ -26,7 +26,7 @@ Have a bug? Please create an [issue][1] here on GitHub!
 
 #Twitter account
 
-Keep up to date on announcements and more by following Anar Software LLC on Twitter, [@ASLLC][2].
+Keep up to date on announcements and more by following Anar Software LLC on Twitter, [@AnarSoft][2].
 
 #Contributing
 
@@ -37,12 +37,12 @@ Keep up to date on announcements and more by following Anar Software LLC on Twit
 5. Create an [issue][1] with a link to your branch
 
 [1]: https://github.com/anars/jBrackets/issues
-[2]: http://twitter.com/ASLLC
+[2]: http://twitter.com/AnarSoft
 [3]: https://github.com/anars/jBrackets/tree/master/release
 
 #License
 
-Copyright (c) 2012 Anar Software LLC <http://anars.com>
+Copyright (c) 2012, 2013 Anar Software LLC <http://anars.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
