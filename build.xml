@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Copyright (c) 2012 Anar Software LLC <http://anars.com>
+ Copyright (c) 2012-2014 Anar Software LLC <http://anars.com>
  
  Permission is hereby granted, free of charge, to any person obtaining a copy 
  of this software and associated documentation files (the "Software"), to deal 
@@ -19,9 +19,9 @@
  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
-<project name="jBrackets" default="build" basedir=".">
+<project name="jBraces" default="build" basedir=".">
   <description>
-		jBrackets Ant Build File
+		jBraces Ant Build File
 	</description>
   <property file="build.properties"/>
   <property name="source.dir" location="source"/>
@@ -31,17 +31,17 @@
     <tstamp>
       <format property="build.number" pattern="yyyyMMdd"/>
     </tstamp>
-    <replaceregexp file="${source.dir}/com/anars/jbrackets/TemplateProcessor.java"
+    <replaceregexp file="${source.dir}/com/anars/jbraces/TemplateProcessor.java"
                    flags="g" match='public static final double VERSION = (.*);'
                    replace='public static final double VERSION = ${version.number};'/>
-    <replaceregexp file="${source.dir}/com/anars/jbrackets/TemplateProcessor.java"
+    <replaceregexp file="${source.dir}/com/anars/jbraces/TemplateProcessor.java"
                    flags="g" match='public static final long BUILD = (.*);'
                    replace='public static final long BUILD = ${build.number};'/>
     <mkdir dir="${classes.dir}"/>
     <javac includeantruntime="false" srcdir="${source.dir}"
            destdir="${classes.dir}" source="1.5" target="1.5"/>
     <mkdir dir="${release.dir}"/>
-    <jar jarfile="${release.dir}/jBrackets-r${build.number}.jar"
+    <jar jarfile="${release.dir}/jBraces-r${build.number}.jar"
          basedir="${classes.dir}" level="9">
       <manifest>
         <attribute name="Created-By" value="Anar Software LLC"/>
@@ -51,7 +51,7 @@
         <attribute name="Implementation-URL" value="http://anars.com"/>
       </manifest>
     </jar>
-    <checksum file="${release.dir}/jBrackets-r${build.number}.jar"
+    <checksum file="${release.dir}/jBraces-r${build.number}.jar"
               forceoverwrite="yes"/>
     <move verbose="true" todir="${release.dir}">
       <fileset dir="${release.dir}">
@@ -59,14 +59,14 @@
       </fileset>
       <mapper type="regexp" from="(.*)jar.MD5" to="\1md5"/>
     </move>
-    <copy file="jBrackets.license"
-          tofile="${release.dir}/jBrackets-r${build.number}.license"/>
-    <copy file="${release.dir}/jBrackets-r${build.number}.jar"
-          tofile="${release.dir}/jBrackets-${version.number}.jar"/>
-    <copy file="${release.dir}/jBrackets-r${build.number}.md5"
-          tofile="${release.dir}/jBrackets-${version.number}.md5"/>
-    <copy file="${release.dir}/jBrackets-r${build.number}.license"
-          tofile="${release.dir}/jBrackets-${version.number}.license"/>
+    <copy file="jBraces.license"
+          tofile="${release.dir}/jBraces-r${build.number}.license"/>
+    <copy file="${release.dir}/jBraces-r${build.number}.jar"
+          tofile="${release.dir}/jBraces-${version.number}.jar"/>
+    <copy file="${release.dir}/jBraces-r${build.number}.md5"
+          tofile="${release.dir}/jBraces-${version.number}.md5"/>
+    <copy file="${release.dir}/jBraces-r${build.number}.license"
+          tofile="${release.dir}/jBraces-${version.number}.license"/>
     <delete dir="${classes.dir}"/>
   </target>
 </project>

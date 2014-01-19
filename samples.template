@@ -18,7 +18,7 @@ Our third favorite programming language is {get:languages[3]}
 
 There are {get:languages.-length} favorite programming languages
 
-jBrackets version is {get:jb_class_version}, build is {get:jb_class_build} and current locale is {get:jb_locale_name}.
+jBraces version is {get:jb_class_version}, build is {get:jb_class_build} and current locale is {get:jb_locale_name}.
 
 {set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
 
