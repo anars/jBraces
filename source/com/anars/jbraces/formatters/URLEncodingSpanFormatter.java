@@ -41,13 +41,13 @@ public class URLEncodingSpanFormatter
   public String format(String string, Locale locale)
   {
     try
-      {
-        return (URLEncoder.encode(string, "utf-8"));
-      }
+    {
+      return (URLEncoder.encode(string, "utf-8"));
+    }
     catch (UnsupportedEncodingException unsupportedEncodingException)
-      {
-        _logger.log(Level.SEVERE, "Unsupported Encoding", unsupportedEncodingException);
-      }
+    {
+      _logger.log(Level.SEVERE, "Unsupported Encoding", unsupportedEncodingException);
+    }
     return (string);
   }
 }

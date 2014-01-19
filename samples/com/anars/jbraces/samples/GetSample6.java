@@ -22,12 +22,17 @@ package com.anars.jbraces.samples;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class RepeatSample2
+public class GetSample6
 {
-  public RepeatSample2()
+  public GetSample6()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Random 6 lottery numbers : {repeat:lottery:6} " + "{random-number:1:49}{/repeat:lottery}";
+    String[] favoriteLanguages =
+    {
+      "C", "C++", "Java", "Scala", "Python", "PHP"
+    };
+    templateProcessor.putValueObject("languages", favoriteLanguages);
+    String template = "Random programming language I picked for you is {get:languages[0]}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
@@ -35,6 +40,6 @@ public class RepeatSample2
 
   public static void main(String[] args)
   {
-    new RepeatSample2();
+    new GetSample6();
   }
 }

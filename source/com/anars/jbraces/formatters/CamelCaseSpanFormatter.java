@@ -37,7 +37,7 @@ public class CamelCaseSpanFormatter
 {
   /**
    * First letter of each word is capitalized, spaces and punctuation removed.
-   * 
+   *
    * @param string
    * @param locale
    * @return
@@ -47,11 +47,11 @@ public class CamelCaseSpanFormatter
     String[] words = string.replaceAll("^\\s+|[^\\w\\s]|\\s+$", "").split("\\s+");
     StringBuffer stringBuffer = new StringBuffer();
     for (int index = 0; index < words.length; index++)
-      {
-        stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
-        if (words[index].length() > 1)
-          stringBuffer.append(words[index].substring(1));
-      }
+    {
+      stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
+      if (words[index].length() > 1)
+        stringBuffer.append(words[index].substring(1));
+    }
     return (stringBuffer.toString());
   }
 }

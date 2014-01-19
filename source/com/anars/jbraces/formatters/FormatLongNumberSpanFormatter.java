@@ -41,13 +41,13 @@ public class FormatLongNumberSpanFormatter
     string = string.replaceAll("[^0-9\\-]", "");
     long value = 0;
     try
-      {
-        value = Long.parseLong(string);
-      }
+    {
+      value = Long.parseLong(string);
+    }
     catch (Exception exception)
-      {
-        _logger.log(Level.SEVERE, "Unable to parse value", exception);
-      }
+    {
+      _logger.log(Level.SEVERE, "Unable to parse value", exception);
+    }
     return (NumberFormat.getInstance(locale).format(value));
   }
 }

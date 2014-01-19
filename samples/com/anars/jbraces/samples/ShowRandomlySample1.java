@@ -27,8 +27,7 @@ public class ShowRandomlySample1
   public ShowRandomlySample1()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Welcome... {show-randomly:winner}Congratulations, " +
-                      "You are the winner!{/show-randomly:winner}";
+    String template = "Welcome... {show-randomly:winner}Congratulations, " + "You are the winner!{/show-randomly:winner}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

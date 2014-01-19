@@ -27,8 +27,7 @@ public class DateSample1
   public DateSample1()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Today is {date:EEEE}, {date:MMMM} " +
-                      "{date:d}, {date:yyyy}";
+    String template = "Today is {date:EEEE}, {date:MMMM} " + "{date:d}, {date:yyyy}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

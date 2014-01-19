@@ -33,29 +33,29 @@ public class DeCamelCaseSpanFormatter
     StringBuffer stringBuffer = new StringBuffer();
     for (int index = 0; index < words.length; index++)
       if (index == 0)
+      {
+        stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
+        if (words[index].length() > 1)
+          stringBuffer.append(words[index].substring(1));
+      }
+      else
+      {
+        stringBuffer.append(" ");
+        if (words[index].length() == 1)
         {
-          stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
+          stringBuffer.append(words[index].toLowerCase(locale));
+        }
+        else if (Character.isLowerCase(words[index].charAt(1)))
+        {
+          stringBuffer.append(words[index].substring(0, 1).toLowerCase(locale));
           if (words[index].length() > 1)
             stringBuffer.append(words[index].substring(1));
         }
-      else
+        else
         {
-          stringBuffer.append(" ");
-          if (words[index].length() == 1)
-            {
-              stringBuffer.append(words[index].toLowerCase(locale));
-            }
-          else if (Character.isLowerCase(words[index].charAt(1)))
-            {
-              stringBuffer.append(words[index].substring(0, 1).toLowerCase(locale));
-              if (words[index].length() > 1)
-                stringBuffer.append(words[index].substring(1));
-            }
-          else
-            {
-              stringBuffer.append(words[index]);
-            }
+          stringBuffer.append(words[index]);
         }
+      }
     return (stringBuffer.toString());
   }
 }

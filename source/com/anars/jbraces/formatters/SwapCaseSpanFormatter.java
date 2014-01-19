@@ -36,14 +36,14 @@ public class SwapCaseSpanFormatter
   {
     StringBuffer stringBuffer = new StringBuffer();
     for (int index = 0; index < string.length(); index++)
-      {
-        char character = string.charAt(index);
-        if (Character.isUpperCase(character))
-          character = Character.toLowerCase(character);
-        else
-          character = Character.toUpperCase(character);
-        stringBuffer.append(character);
-      }
+    {
+      char character = string.charAt(index);
+      if (Character.isUpperCase(character))
+        character = Character.toLowerCase(character);
+      else
+        character = Character.toUpperCase(character);
+      stringBuffer.append(character);
+    }
     return (stringBuffer.toString());
   }
 }

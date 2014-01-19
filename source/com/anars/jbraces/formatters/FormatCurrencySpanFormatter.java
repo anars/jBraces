@@ -41,13 +41,13 @@ public class FormatCurrencySpanFormatter
     string = string.replaceAll("[^0-9\\-\\.]", "");
     double value = 0;
     try
-      {
-        value = Double.parseDouble(string);
-      }
+    {
+      value = Double.parseDouble(string);
+    }
     catch (Exception exception)
-      {
-        _logger.log(Level.SEVERE, "Unable to parse value", exception);
-      }
+    {
+      _logger.log(Level.SEVERE, "Unable to parse value", exception);
+    }
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
     return (numberFormat.format(value));
   }

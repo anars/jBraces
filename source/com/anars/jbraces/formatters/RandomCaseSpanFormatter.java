@@ -36,12 +36,12 @@ public class RandomCaseSpanFormatter
   {
     StringBuffer stringBuffer = new StringBuffer();
     for (int index = 0; index < string.length(); index++)
-      {
-        char character = string.charAt(index);
-        if (Character.isLetter(character))
-          character = (int) (Math.random() * 2.0) == 1 ? Character.toLowerCase(character) : Character.toUpperCase(character);
-        stringBuffer.append(character);
-      }
+    {
+      char character = string.charAt(index);
+      if (Character.isLetter(character))
+        character = (int) (Math.random() * 2.0) == 1 ? Character.toLowerCase(character) : Character.toUpperCase(character);
+      stringBuffer.append(character);
+    }
     return (stringBuffer.toString());
   }
 }

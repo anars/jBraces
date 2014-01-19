@@ -27,9 +27,7 @@ public class GetSample5
   public GetSample5()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "jBraces version is {get:jb_class_version}, " +
-                      "build is {get:jb_class_build} and " +
-                      "current locale is {get:jb_locale_name}.";
+    String template = "jBraces version is {get:jb_class_version}, " + "build is {get:jb_class_build} and " + "current locale is {get:jb_locale_name}.";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

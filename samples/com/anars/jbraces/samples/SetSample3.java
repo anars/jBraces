@@ -27,11 +27,7 @@ public class SetSample3
   public SetSample3()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "{set:jb_locale_code}tr_TR{/set:jb_locale_code}The day is " +
-                      "'{date:EEEE}' in Turkish ({get:jb_language_name}), " +
-                      "{set:jb_locale_code}de_DE{/set:jb_locale_code}'{date:EEEE}' " +
-                      "in German ({get:jb_language_name}) and {set:jb_locale_code}{/set:jb_locale_code}" +
-                      "'{date:EEEE}' in default language ({get:jb_language_name}).";
+    String template = "{set:jb_locale_code}tr_TR{/set:jb_locale_code}The day is " + "'{date:EEEE}' in Turkish ({get:jb_language_name}), " + "{set:jb_locale_code}de_DE{/set:jb_locale_code}'{date:EEEE}' " + "in German ({get:jb_language_name}) and {set:jb_locale_code}{/set:jb_locale_code}" + "'{date:EEEE}' in default language ({get:jb_language_name}).";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

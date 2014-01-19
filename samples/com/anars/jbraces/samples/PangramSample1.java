@@ -27,8 +27,7 @@ public class PangramSample1
   public PangramSample1()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Here are the sentences using every letter of " +
-                      "the alphabet at least once : {pangram:2:5}";
+    String template = "Here are the sentences using every letter of " + "the alphabet at least once : {pangram:2:5}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
