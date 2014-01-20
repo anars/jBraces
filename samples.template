@@ -1,64 +1,104 @@
+com.anars.jbraces.samples.DateSample1
 Today is {date:EEEE}, {date:MMMM} {date:d}, {date:yyyy}
 
+com.anars.jbraces.samples.DateSample2
 The day is '{date:EEEE:TR}' in Turkish, '{date:EEEE:DE}' in German and '{date:EEEE:FR}' in French.
 
+com.anars.jbraces.samples.DrawSample1
 Is it a {draw:true:false} information that your are awesome?
 
+com.anars.jbraces.samples.DrawSample2
 Sheldon Cooper says: {draw:Rock:Paper:Scissors:Lizard:Spock}
 
+com.anars.jbraces.samples.FormatSample1
 Price of an average house in London is {format:FormatCurrency:en:gb}398476{/format:FormatCurrency}
 
+com.anars.jbraces.samples.FormatSample2
 {format:FormatDoubleNumber:tr:tr}1234567.89{/format:FormatDoubleNumber} and {format:FormatDoubleNumber:en:us}1234567.89{/format:FormatDoubleNumber} are same numbers in different countries.
 
+com.anars.jbraces.samples.GetSample1
 Company name is {get:company}
 
+com.anars.jbraces.samples.GetSample2
 The famous Times Square coordinates : latitude={get:TimesSqCoordinates.x}, longitude={get:TimesSqCoordinates.y}
 
+com.anars.jbraces.samples.GetSample3
 Our third favorite programming language is {get:languages[3]}
 
+com.anars.jbraces.samples.GetSample4
 There are {get:languages.-length} favorite programming languages
 
+com.anars.jbraces.samples.GetSample5
 jBraces version is {get:jb_class_version}, build is {get:jb_class_build} and current locale is {get:jb_locale_name}.
 
+com.anars.jbraces.samples.GetSample6
 Random programming language I picked for you is {get:languages[0]}
 
+com.anars.jbraces.samples.IfSample1
 {set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
 
+com.anars.jbraces.samples.IfSample2
 {repeat:student:10:20}{set:mark}{random-number:50:100}{/set:mark}Math grade of the student {get:student.-value} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
 {/repeat:student}
 
+com.anars.jbraces.samples.LoopSample1
 Each represents a programming language in the list :{loop:languages} X{/loop:languages}
 
+com.anars.jbraces.samples.LoopSample2
 List of our favorite programming languages :{loop:languages} {get:languages.-value}{/loop:languages}
 
+com.anars.jbraces.samples.LoopSample3
 Reversed list of our favorite programming languages :{loop:languages:-1} {get:languages.-value}{/loop:languages}
 
+com.anars.jbraces.samples.LoremIpsumSample1
 Here is placeholder text: {lorem-ipsum:2:5}
 
+com.anars.jbraces.samples.PangramSample1
+Here are the sentences using every letter of the alphabet at least once : {pangram:2:5}
+
+com.anars.jbraces.samples.PropertySample1
 The operating system is {property:os.name}
 
+com.anars.jbraces.samples.RandomNumberSample1
 Your lucky number is {random-number:1:100}
 
+com.anars.jbraces.samples.RepeatSample1
 It is really funny {repeat:laugh:5}Ha{/repeat:laugh}
 
+com.anars.jbraces.samples.RepeatSample2
 Random 6 lottery numbers : {repeat:lottery:6} {random-number:1:49}{/repeat:lottery}
 
+com.anars.jbraces.samples.RepeatSample3
 Threw 3 dice : {repeat:dice:3}
 Die {get:dice.-offset} is {random-number:1:6}{/repeat:dice}
 
+com.anars.jbraces.samples.RepeatSample4
 Threw bunch of random dice : {repeat:dice:3:9}
 Die {get:dice.-offset} of {get:dice.-length} is {random-number:1:6}{/repeat:dice}
 
+com.anars.jbraces.samples.SetSample1
 {set:hero}Superman{/set:hero}My childhood hero is {get:hero}
 
+com.anars.jbraces.samples.SetSample2
 {set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} is my childhood hero. {get:hero} always fight against bad people.
 
+com.anars.jbraces.samples.SetSample3
 {set:jb_locale_code}tr_TR{/set:jb_locale_code}The day is '{date:EEEE}' in Turkish ({get:jb_language_name}), {set:jb_locale_code}de_DE{/set:jb_locale_code}'{date:EEEE}' in German ({get:jb_language_name}) and {set:jb_locale_code}{/set:jb_locale_code}'{date:EEEE}' in default language ({get:jb_language_name}).
 
+com.anars.jbraces.samples.SetSample4
+{set:languages[4]}JavaScript{/set:languages[4]}Our fourth favorite programming language is {get:languages[4]}
+
+com.anars.jbraces.samples.SetSample5
+{set:languages[0]}Ruby{/set:languages[0]}Our seventh favorite programming language is {get:languages[7]}
+
+com.anars.jbraces.samples.ShowRandomlySample1
 Welcome... {show-randomly:winner}Congratulations, You are the winner!{/show-randomly:winner}
 
+com.anars.jbraces.samples.TimeSample1
 The time is {time:h}:{time:m} {time:a}
 
+com.anars.jbraces.samples.TimeSample2
 Time in military notation is {time:kk}{time:mm}
 
+com.anars.jbraces.samples.TimeSample3
 Current timezone is {time:zzzz}

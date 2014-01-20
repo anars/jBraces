@@ -35,6 +35,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.lang.reflect.Array;
+
 import java.net.URL;
 
 import java.text.SimpleDateFormat;
@@ -64,7 +66,7 @@ public class TemplateProcessor
 
   /**
    */
-  public static final long BUILD = 20140119;
+  public static final long BUILD = 20140120;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -375,12 +377,12 @@ public class TemplateProcessor
     "\\{" + PROPERTY + ":[^}]*\\}|" + //
     "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
     "\\{" + PANGRAM + ":\\d+:\\d+\\}|" + //
-    "\\{" + SET + ":(\\w+)\\}.*?\\{/" + SET + ":\\13\\}|" + //
-    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\14\\}|" + //
+    "\\{" + SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + SET + ":\\13\\}|" + //
+    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\15\\}|" + //
     "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\16\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\17\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -455,7 +457,17 @@ public class TemplateProcessor
    */
   public synchronized Object putValueObject(String name, Object valueObject)
   {
-    return (valueObject != null ? _valueObjects.put(name.toLowerCase(), valueObject) : null);
+    if (valueObject == null)
+      return (null);
+    if (!valueObject.getClass().isArray())
+      return (_valueObjects.put(name.toLowerCase(), valueObject));
+    if (valueObject instanceof Object[])
+      return (valueObject != null ? _valueObjects.put(name.toLowerCase(), valueObject) : null);
+    int arrayLength = Array.getLength(valueObject);
+    Object[] outputArray = new Object[arrayLength];
+    for (int index = 0; index < arrayLength; index++)
+      outputArray[index] = Array.get(valueObject, index);
+    return (_valueObjects.put(name.toLowerCase(), outputArray));
   }
 
   /**
@@ -833,45 +845,48 @@ public class TemplateProcessor
           int increment = 1;
           if (pieces.length == 3)
             increment = Integer.parseInt(pieces[2]);
-          Object[] object = (Object[]) _valueObjects.get(pieces[1].toLowerCase());
-          if (object != null)
-          {
-            String loopTemplate = substring(matcher.group(), "}", "{/");
-            replacement = "";
-            if (increment > 0)
-              for (int index = 0; index < object.length; index += increment)
-              {
-                putValueObject(pieces[1] + "-offset", index + 1);
-                putValueObject(pieces[1] + "-first", (index == 0));
-                putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
-                putValueObject(pieces[1] + "-value", object[index]);
-                putValueObject(pieces[1], object[index]);
-                replacement += apply(loopTemplate);
-              }
-            else if (increment < 0)
-              for (int index = object.length - 1; index >= 0; index += increment)
-              {
-                putValueObject(pieces[1] + "-offset", index + 1);
-                putValueObject(pieces[1] + "-first", (index == object.length - 1));
-                putValueObject(pieces[1] + "-last", (index == 0));
-                putValueObject(pieces[1] + "-value", object[index]);
-                putValueObject(pieces[1], object[index]);
-                replacement += apply(loopTemplate);
-              }
-            removeValueObject(pieces[1] + "-offset");
-            removeValueObject(pieces[1] + "-first");
-            removeValueObject(pieces[1] + "-last");
-            removeValueObject(pieces[1] + "-value");
-          }
-          else
-          {
-            _logger.log(Level.SEVERE, "Unable to find array \"" + pieces[1] + "\".");
-          }
+          Object[] object = getArrayObject(pieces[1]);
+          String loopTemplate = substring(matcher.group(), "}", "{/");
+          replacement = "";
+          if (increment > 0)
+            for (int index = 0; index < object.length; index += increment)
+            {
+              putValueObject(pieces[1] + "-offset", index + 1);
+              putValueObject(pieces[1] + "-first", (index == 0));
+              putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
+              putValueObject(pieces[1] + "-value", object[index]);
+              putValueObject(pieces[1], object[index]);
+              replacement += apply(loopTemplate);
+            }
+          else if (increment < 0)
+            for (int index = object.length - 1; index >= 0; index += increment)
+            {
+              putValueObject(pieces[1] + "-offset", index + 1);
+              putValueObject(pieces[1] + "-first", (index == object.length - 1));
+              putValueObject(pieces[1] + "-last", (index == 0));
+              putValueObject(pieces[1] + "-value", object[index]);
+              putValueObject(pieces[1], object[index]);
+              replacement += apply(loopTemplate);
+            }
+          removeValueObject(pieces[1] + "-offset");
+          removeValueObject(pieces[1] + "-first");
+          removeValueObject(pieces[1] + "-last");
+          removeValueObject(pieces[1] + "-value");
+          putValueObject(pieces[1], object);
         }
         catch (NumberFormatException numberFormatException)
         {
           _logger.log(Level.SEVERE, "Invalid Number", numberFormatException);
         }
+        catch (NotArrayException notArrayException)
+        {
+          _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+        }
+        catch (ArrayNotFoundException arrayNotFoundException)
+        {
+          _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+        }
+
         catch (Exception exception)
         {
           _logger.log(Level.SEVERE, "Exception", exception);
@@ -1116,7 +1131,56 @@ public class TemplateProcessor
           !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_NAME) && //
           !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_NAME))
         {
-          putValueObject(pieces[1], apply(substring(matcher.group(), "}", "{/")));
+          String setValue = apply(substring(matcher.group(), "}", "{/"));
+          int leftBracket = pieces[1].indexOf("[");
+          int rightBracket = pieces[1].indexOf("]", leftBracket);
+          if (leftBracket != -1 && rightBracket != -1)
+          {
+            String arrayName = pieces[1].substring(0, leftBracket);
+            int arrayOffset = 0;
+            Object[] objectArray = null;
+            try
+            {
+              arrayOffset = Integer.parseInt(pieces[1].substring(leftBracket + 1, rightBracket));
+              try
+              {
+                objectArray = getArrayObject(arrayName);
+              }
+              catch (ArrayNotFoundException arrayNotFoundException)
+              {
+                objectArray = new Object[0];
+              }
+              if (arrayOffset == 0)
+              {
+                objectArray = expandArray(objectArray, 1);
+                objectArray[objectArray.length - 1] = setValue;
+              }
+              else
+              {
+                if (arrayOffset > objectArray.length)
+                  objectArray = expandArray(objectArray, arrayOffset - objectArray.length);
+                objectArray[arrayOffset - 1] = setValue;
+              }
+              putValueObject(arrayName, objectArray);
+            }
+            catch (NumberFormatException numberFormatException)
+            {
+              _logger.log(Level.SEVERE, "Invalid Number", numberFormatException);
+            }
+            catch (NotArrayException notArrayException)
+            {
+              _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+            }
+            catch (Exception exception)
+            {
+              _logger.log(Level.SEVERE, "Exception", exception);
+            }
+          }
+          else
+          {
+            putValueObject(pieces[1], setValue);
+          }
+
         }
         else if (pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_CODE))
         {
@@ -1312,5 +1376,12 @@ public class TemplateProcessor
     substring = substring.substring(substring.indexOf(start) + 1);
     substring = substring.substring(0, lastIndex ? substring.lastIndexOf(end) : substring.indexOf(end));
     return (substring);
+  }
+
+  private Object[] expandArray(Object[] OriginalArray, int size)
+  {
+    Object[] newArray = new Object[OriginalArray.length + size];
+    System.arraycopy(OriginalArray, 0, newArray, 0, OriginalArray.length);
+    return (newArray);
   }
 }

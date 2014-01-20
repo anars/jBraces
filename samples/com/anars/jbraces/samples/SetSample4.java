@@ -18,39 +18,30 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.anars.jbraces;
+package com.anars.jbraces.samples;
 
-import java.awt.geom.Point2D;
+import com.anars.jbraces.TemplateProcessor;
 
-import java.io.File;
-
-public class ApplyToFileSample
+public class SetSample4
 {
-  public ApplyToFileSample()
+  public SetSample4()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.loadAllSpanFormatters();
-    templateProcessor.putValueObject("company", "Anar Software");
-    Point2D.Double coordinates = new Point2D.Double(40.75773, -73.985708);
-    templateProcessor.putValueObject("TimesSqCoordinates", coordinates);
     String[] favoriteLanguages =
     {
       "C", "C++", "Java", "Scala", "Python", "PHP"
     };
     templateProcessor.putValueObject("languages", favoriteLanguages);
-    try
-    {
-      String output = templateProcessor.apply(new File("samples.template"));
-      System.out.println(output);
-    }
-    catch (Exception exception)
-    {
-      exception.printStackTrace();
-    }
+    System.out.println(templateProcessor.getValueObject("languages"));
+    String template = "{set:languages[4]}JavaScript{/set:languages[4]}Our fourth favorite programming language is {get:languages[4]}";
+    System.out.println(template);
+    template = templateProcessor.apply(template);
+    System.out.println(template);
+    System.out.println(templateProcessor.getValueObject("languages"));
   }
 
   public static void main(String[] args)
   {
-    new ApplyToFileSample();
+    new SetSample4();
   }
 }
