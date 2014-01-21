@@ -1,0 +1,117 @@
+{format:BlackHole}
+	{set:ideaA[0]}orchestra{/set:ideaA[0]}
+	{set:ideaA[0]}apparatus{/set:ideaA[0]}
+	{set:ideaA[0]}sanctuary{/set:ideaA[0]}
+	{set:ideaA[0]}website{/set:ideaA[0]}
+	{set:ideaA[0]}animal{/set:ideaA[0]}
+	{set:ideaA[0]}machine{/set:ideaA[0]}
+	{set:ideaA[0]}game{/set:ideaA[0]}
+	{set:ideaA[0]}sex toy{/set:ideaA[0]}
+	{set:ideaA[0]}restaurant{/set:ideaA[0]}
+	{set:ideaA[0]}store{/set:ideaA[0]}
+	{set:ideaA[0]}movie{/set:ideaA[0]}
+	{set:ideaA[0]}instrument{/set:ideaA[0]}
+	{set:ideaA[0]}exhibit{/set:ideaA[0]}
+	{set:ideaA[0]}opera{/set:ideaA[0]}
+	{set:ideaA[0]}exercise machine{/set:ideaA[0]}
+	{set:ideaA[0]}clothing{/set:ideaA[0]}
+	{set:ideaA[0]}car{/set:ideaA[0]}
+	{set:ideaA[0]}toy{/set:ideaA[0]}
+	{set:ideaA[0]}hotel{/set:ideaA[0]}
+	{set:ideaA[0]}sound system{/set:ideaA[0]}
+	{set:ideaA[0]}furniture{/set:ideaA[0]}
+	{set:ideaA[0]}sport{/set:ideaA[0]}
+	{set:ideaA[0]}decoration{/set:ideaA[0]}
+	{set:ideaA[0]}event{/set:ideaA[0]}
+	{set:ideaA[0]}celebration{/set:ideaA[0]}
+	{set:ideaA[0]}vehicle{/set:ideaA[0]}
+	{set:ideaA[0]}food{/set:ideaA[0]}
+	{set:ideaA[0]}house{/set:ideaA[0]}
+	{set:ideaA[0]}appliance{/set:ideaA[0]}
+	{set:ideaA[0]}concept{/set:ideaA[0]}
+	{set:ideaA[0]}book{/set:ideaA[0]}
+	{set:ideaA[0]}art{/set:ideaA[0]}
+	{set:ideaA[0]}magazine{/set:ideaA[0]}
+	{set:ideaA[0]}company{/set:ideaA[0]}
+	{set:ideaA[0]}club{/set:ideaA[0]}
+	{set:ideaA[0]}garden{/set:ideaA[0]}
+
+	{set:ideaB[0]}morphing{/set:ideaB[0]}
+	{set:ideaB[0]}rural{/set:ideaB[0]}
+	{set:ideaB[0]}destructive{/set:ideaB[0]}
+	{set:ideaB[0]}tubular{/set:ideaB[0]}
+	{set:ideaB[0]}growing{/set:ideaB[0]}
+	{set:ideaB[0]}torture{/set:ideaB[0]}
+	{set:ideaB[0]}modular{/set:ideaB[0]}
+	{set:ideaB[0]}virtual{/set:ideaB[0]}
+	{set:ideaB[0]}holographic{/set:ideaB[0]}
+	{set:ideaB[0]}kinetic{/set:ideaB[0]}
+	{set:ideaB[0]}vibrating{/set:ideaB[0]}
+	{set:ideaB[0]}levitating{/set:ideaB[0]}
+	{set:ideaB[0]}rotating{/set:ideaB[0]}
+	{set:ideaB[0]}flying{/set:ideaB[0]}
+	{set:ideaB[0]}chocolate{/set:ideaB[0]}
+	{set:ideaB[0]}easy to assemble{/set:ideaB[0]}
+	{set:ideaB[0]}rubber{/set:ideaB[0]}
+	{set:ideaB[0]}shrinking{/set:ideaB[0]}
+	{set:ideaB[0]}edible{/set:ideaB[0]}
+	{set:ideaB[0]}neon{/set:ideaB[0]}
+	{set:ideaB[0]}collapsible{/set:ideaB[0]}
+	{set:ideaB[0]}musical{/set:ideaB[0]}
+	{set:ideaB[0]}temporary{/set:ideaB[0]}
+	{set:ideaB[0]}concrete{/set:ideaB[0]}
+	{set:ideaB[0]}invisible{/set:ideaB[0]}
+	{set:ideaB[0]}wooden{/set:ideaB[0]}
+	{set:ideaB[0]}hand crafted{/set:ideaB[0]}
+	{set:ideaB[0]}mechanized{/set:ideaB[0]}
+	{set:ideaB[0]}foam{/set:ideaB[0]}
+	{set:ideaB[0]}glitter{/set:ideaB[0]}
+	{set:ideaB[0]}aquatic{/set:ideaB[0]}
+	{set:ideaB[0]}candy{/set:ideaB[0]}
+	{set:ideaB[0]}paper{/set:ideaB[0]}
+	{set:ideaB[0]}inflatable{/set:ideaB[0]}
+	{set:ideaB[0]}illuminating{/set:ideaB[0]}
+	{set:ideaB[0]}nuclear{/set:ideaB[0]}
+
+	{set:ideaC[0]}comedic{/set:ideaC[0]}
+	{set:ideaC[0]}changeable{/set:ideaC[0]}
+	{set:ideaC[0]}pre-fab{/set:ideaC[0]}
+	{set:ideaC[0]}wicker{/set:ideaC[0]}
+	{set:ideaC[0]}artificial{/set:ideaC[0]}
+	{set:ideaC[0]}do-it-yourself{/set:ideaC[0]}
+	{set:ideaC[0]}powdery{/set:ideaC[0]}
+	{set:ideaC[0]}secret{/set:ideaC[0]}
+	{set:ideaC[0]}fresh{/set:ideaC[0]}
+	{set:ideaC[0]}dramatic{/set:ideaC[0]}
+	{set:ideaC[0]}eco-friendly{/set:ideaC[0]}
+	{set:ideaC[0]}erotic{/set:ideaC[0]}
+	{set:ideaC[0]}miniature{/set:ideaC[0]}
+	{set:ideaC[0]}multi-lingual{/set:ideaC[0]}
+	{set:ideaC[0]}scary{/set:ideaC[0]}
+	{set:ideaC[0]}geometric{/set:ideaC[0]}
+	{set:ideaC[0]}hot{/set:ideaC[0]}
+	{set:ideaC[0]}funny{/set:ideaC[0]}
+	{set:ideaC[0]}medieval{/set:ideaC[0]}
+	{set:ideaC[0]}battery operated{/set:ideaC[0]}
+	{set:ideaC[0]}jewel encrusted{/set:ideaC[0]}
+	{set:ideaC[0]}oversized{/set:ideaC[0]}
+	{set:ideaC[0]}exclusive{/set:ideaC[0]}
+	{set:ideaC[0]}luxurious{/set:ideaC[0]}
+	{set:ideaC[0]}ingenious{/set:ideaC[0]}
+	{set:ideaC[0]}nutritious{/set:ideaC[0]}
+	{set:ideaC[0]}automatic{/set:ideaC[0]}
+	{set:ideaC[0]}electric{/set:ideaC[0]}
+	{set:ideaC[0]}magnetic{/set:ideaC[0]}
+	{set:ideaC[0]}computerized{/set:ideaC[0]}
+	{set:ideaC[0]}transparent{/set:ideaC[0]}
+	{set:ideaC[0]}expensive{/set:ideaC[0]}
+	{set:ideaC[0]}revolutionary{/set:ideaC[0]}
+	{set:ideaC[0]}cold{/set:ideaC[0]}
+	{set:ideaC[0]}mobile{/set:ideaC[0]}
+	{set:ideaC[0]}inexpensive{/set:ideaC[0]}
+{/format:BlackHole}
+Idea Keywords :
+---------------
+{get:ideaA[0]}
+{get:ideaB[0]}
+{get:ideaC[0]}

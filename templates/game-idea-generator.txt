@@ -1,0 +1,1195 @@
+{format:BlackHole}
+//
+// Original idea and content by @orteil42
+// http://orteil.dashnet.org/gamegen
+//
+{set:type}{draw:fps:simulation:strategy:arcade:mmo:indie}{/set:type}
+{if:condition:type:equals:'fps'}
+	{set:genre[0]}a shooting game{/set:genre[0]}
+	{set:genre[0]}an action game{/set:genre[0]}
+	{set:genre[0]}a FPS{/set:genre[0]}
+	{set:genre[0]}a horror game{/set:genre[0]}
+
+	{set:action[0]}kill{/set:action[0]}
+	{set:action[0]}shoot{/set:action[0]}
+	{set:action[0]}club{/set:action[0]}
+	{set:action[0]}murder{/set:action[0]}
+	{set:action[0]}stab{/set:action[0]}
+	{set:action[0]}chop up{/set:action[0]}
+	{set:action[0]}wrestle{/set:action[0]}
+	{set:action[0]}kick{/set:action[0]}
+	{set:action[0]}punch{/set:action[0]}
+	{set:action[0]}slap{/set:action[0]}
+	{set:action[0]}destroy{/set:action[0]}
+	{set:action[0]}blow up{/set:action[0]}
+	{set:action[0]}eradicate{/set:action[0]}
+	{set:action[0]}begrudgingly join forces with{/set:action[0]}
+	{set:action[0]}ally with{/set:action[0]}
+	{set:action[0]}team up with{/set:action[0]}
+	{set:action[0]}interrogate{/set:action[0]}
+	{set:action[0]}do science on{/set:action[0]}
+	{set:action[0]}use your powers on{/set:action[0]}
+	{set:action[0]}save{/set:action[0]}
+	{set:action[0]}ride horses with{/set:action[0]}
+	{set:action[0]}drive cars with{/set:action[0]}
+	{set:action[0]}drive tanks with{/set:action[0]}
+	{set:action[0]}drive trucks with{/set:action[0]}
+	{set:action[0]}ride bikes with{/set:action[0]}
+	{set:action[0]}have been contracted to kill{/set:action[0]}
+	{set:action[0]}assassinate{/set:action[0]}
+	{set:action[0]}rob{/set:action[0]}
+	{set:action[0]}bribe{/set:action[0]}
+	{set:action[0]}hunt{/set:action[0]}
+	{set:action[0]}poison{/set:action[0]}
+	{set:action[0]}motivate{/set:action[0]}
+	{set:action[0]}work on the self-esteem of{/set:action[0]}
+	{set:action[0]}feel bad for{/set:action[0]}
+	{set:action[0]}cheer up{/set:action[0]}
+	{set:action[0]}go on a heist with{/set:action[0]}
+	{set:action[0]}pilot spaceships with{/set:action[0]}
+	{set:action[0]}listen to{/set:action[0]}
+	{set:action[0]}hijack{/set:action[0]}
+	{set:action[0]}goof around with{/set:action[0]}
+	{set:action[0]}run after{/set:action[0]}
+	{set:action[0]}smuggle{/set:action[0]}
+	{set:action[0]}defeat{/set:action[0]}
+	{set:action[0]}beat up{/set:action[0]}
+	{set:action[0]}date{/set:action[0]}
+	{set:action[0]}save the world from{/set:action[0]}
+	{set:action[0]}time travel with{/set:action[0]}
+	{set:action[0]}go back in time to kill{/set:action[0]}
+	{set:action[0]}shout at{/set:action[0]}
+	{set:action[0]}point your gun at{/set:action[0]}
+	{set:action[0]}commit war crimes with{/set:action[0]}
+	{set:action[0]}freeze{/set:action[0]}
+	{set:action[0]}burn{/set:action[0]}
+
+	{set:thing[0]}cars{/set:thing[0]}
+	{set:thing[0]}cops{/set:thing[0]}
+	{set:thing[0]}the police{/set:thing[0]}
+	{set:thing[0]}the CIA{/set:thing[0]}
+	{set:thing[0]}the president{/set:thing[0]}
+	{set:thing[0]}thugs{/set:thing[0]}
+	{set:thing[0]}criminals{/set:thing[0]}
+	{set:thing[0]}gangsters{/set:thing[0]}
+	{set:thing[0]}war criminals{/set:thing[0]}
+	{set:thing[0]}helicopters{/set:thing[0]}
+	{set:thing[0]}jeeps{/set:thing[0]}
+	{set:thing[0]}superheroes{/set:thing[0]}
+	{set:thing[0]}detectives{/set:thing[0]}
+	{set:thing[0]}villains{/set:thing[0]}
+	{set:thing[0]}monsters{/set:thing[0]}
+	{set:thing[0]}babies{/set:thing[0]}
+	{set:thing[0]}random people{/set:thing[0]}
+	{set:thing[0]}civilians{/set:thing[0]}
+	{set:thing[0]}innocent people{/set:thing[0]}
+	{set:thing[0]}prisoners{/set:thing[0]}
+	{set:thing[0]}explosions{/set:thing[0]}
+	{set:thing[0]}bankers{/set:thing[0]}
+	{set:thing[0]}space people{/set:thing[0]}
+	{set:thing[0]}puppies{/set:thing[0]}
+	{set:thing[0]}kittens{/set:thing[0]}
+	{set:thing[0]}sharks{/set:thing[0]}
+	{set:thing[0]}bears{/set:thing[0]}
+	{set:thing[0]}gorillas{/set:thing[0]}
+	{set:thing[0]}city guards{/set:thing[0]}
+	{set:thing[0]}ninjas{/set:thing[0]}
+	{set:thing[0]}knights{/set:thing[0]}
+	{set:thing[0]}spies{/set:thing[0]}
+	{set:thing[0]}soldiers{/set:thing[0]}
+	{set:thing[0]}barbarians{/set:thing[0]}
+	{set:thing[0]}aliens{/set:thing[0]}
+	{set:thing[0]}rappers{/set:thing[0]}
+	{set:thing[0]}conspiracy theorists{/set:thing[0]}
+	{set:thing[0]}clowns{/set:thing[0]}
+	{set:thing[0]}evil AIs{/set:thing[0]}
+	{set:thing[0]}giant robots{/set:thing[0]}
+	{set:thing[0]}war robots{/set:thing[0]}
+	{set:thing[0]}crowbars{/set:thing[0]}
+	{set:thing[0]}cosmonauts{/set:thing[0]}
+	{set:thing[0]}extra-dimensional entities{/set:thing[0]}
+	{set:thing[0]}ascended beings{/set:thing[0]}
+	{set:thing[0]}demi-gods{/set:thing[0]}
+	{set:thing[0]}wizards{/set:thing[0]}
+	{set:thing[0]}cavemen{/set:thing[0]}
+	{set:thing[0]}apes{/set:thing[0]}
+	{set:thing[0]}mutants{/set:thing[0]}
+	{set:thing[0]}zombies{/set:thing[0]}
+	{set:thing[0]}mutant zombies{/set:thing[0]}
+	{set:thing[0]}robots{/set:thing[0]}
+	{set:thing[0]}robot zombies{/set:thing[0]}
+	{set:thing[0]}mutant zombie robots{/set:thing[0]}
+	{set:thing[0]}nazis{/set:thing[0]}
+	{set:thing[0]}zombie nazis{/set:thing[0]}
+	{set:thing[0]}robot nazis{/set:thing[0]}
+	{set:thing[0]}zombie ghosts{/set:thing[0]}
+	{set:thing[0]}cyborgs{/set:thing[0]}
+	{set:thing[0]}hippies{/set:thing[0]}
+	{set:thing[0]}terrorists{/set:thing[0]}
+	{set:thing[0]}scientists{/set:thing[0]}
+	{set:thing[0]}researchers{/set:thing[0]}
+	{set:thing[0]}fashion designers{/set:thing[0]}
+	{set:thing[0]}jazz singers{/set:thing[0]}
+	{set:thing[0]}dinosaurs{/set:thing[0]}
+	{set:thing[0]}giant crabs{/set:thing[0]}
+	{set:thing[0]}cute girls{/set:thing[0]}
+	{set:thing[0]}hot boys{/set:thing[0]}
+	{set:thing[0]}famous people{/set:thing[0]}
+	{set:thing[0]}mascots{/set:thing[0]}
+	{set:thing[0]}your long-lost relatives{/set:thing[0]}
+	{set:thing[0]}asteroids{/set:thing[0]}
+	{set:thing[0]}the forces of good{/set:thing[0]}
+	{set:thing[0]}the forces of evil{/set:thing[0]}
+        
+	{set:goal[0]}to make dollah{/set:goal[0]}
+	{set:goal[0]}to get big{/set:goal[0]}
+	{set:goal[0]}to make a name for yourself{/set:goal[0]}
+	{set:goal[0]}to save the world{/set:goal[0]}
+	{set:goal[0]}to save the universe{/set:goal[0]}
+	{set:goal[0]}to investigate a conspiracy{/set:goal[0]}
+	{set:goal[0]}to prevent an evil plot{/set:goal[0]}
+	{set:goal[0]}to solve mysteries{/set:goal[0]}
+	{set:goal[0]}to make them pay{/set:goal[0]}
+	{set:goal[0]}because they looked at you weird{/set:goal[0]}
+	{set:goal[0]}(that'll show them){/set:goal[0]}
+	{set:goal[0]}to get your revenge{/set:goal[0]}
+	{set:goal[0]}to avenge your girlfriend{/set:goal[0]}
+	{set:goal[0]}to become the next big thing{/set:goal[0]}
+	{set:goal[0]}to be a bad enough dude{/set:goal[0]}
+	{set:goal[0]}to unlock achievements{/set:goal[0]}
+	{set:goal[0]}for achievements{/set:goal[0]}
+	{set:goal[0]}in outer space{/set:goal[0]}
+	{set:goal[0]}in a black hole{/set:goal[0]}
+	{set:goal[0]}in the future{/set:goal[0]}
+	{set:goal[0]}in the third world{/set:goal[0]}
+	{set:goal[0]}in the 40s{/set:goal[0]}
+	{set:goal[0]}in the 50s{/set:goal[0]}
+	{set:goal[0]}in the 70s{/set:goal[0]}
+	{set:goal[0]}in the 90s{/set:goal[0]}
+	{set:goal[0]}in the year 3000{/set:goal[0]}
+	{set:goal[0]}in the year 10,000{/set:goal[0]}
+	{set:goal[0]}in the 'nads{/set:goal[0]}
+	{set:goal[0]}in Russia{/set:goal[0]}
+	{set:goal[0]}in Europe{/set:goal[0]}
+	{set:goal[0]}in China{/set:goal[0]}
+	{set:goal[0]}in North Korea{/set:goal[0]}
+	{set:goal[0]}in South Africa{/set:goal[0]}
+	{set:goal[0]}in America{/set:goal[0]}
+	{set:goal[0]}in Australia{/set:goal[0]}
+	{set:goal[0]}on Mars{/set:goal[0]}
+	{set:goal[0]}on the Moon{/set:goal[0]}
+	{set:goal[0]}after landing on a mysterious planet{/set:goal[0]}
+	{set:goal[0]}in a frozen wasteland{/set:goal[0]}
+	{set:goal[0]}in the desert{/set:goal[0]}
+	{set:goal[0]}underwater{/set:goal[0]}
+	{set:goal[0]}in an abandoned facility{/set:goal[0]}
+	{set:goal[0]}inside a gigantic terrarium{/set:goal[0]}
+	{set:goal[0]}in a single closed room{/set:goal[0]}
+	{set:goal[0]}in a graveyard{/set:goal[0]}
+	{set:goal[0]}in a junkyard{/set:goal[0]}
+	{set:goal[0]}in the cyberspace{/set:goal[0]}
+	{set:goal[0]}in a wizard tower{/set:goal[0]}
+	{set:goal[0]}in a network of underground bunkers{/set:goal[0]}
+	{set:goal[0]}in a laboratory{/set:goal[0]}
+	{set:goal[0]}in a secret research facility{/set:goal[0]}
+	{set:goal[0]}in a lush grassland{/set:goal[0]}
+	{set:goal[0]}while stranded on an island{/set:goal[0]}
+	{set:goal[0]}on an uncharted island{/set:goal[0]}
+	{set:goal[0]}in an empty school{/set:goal[0]}
+	{set:goal[0]}in a historical monument{/set:goal[0]}
+	{set:goal[0]}in hilarious locations{/set:goal[0]}
+	{set:goal[0]}on the set of a movie{/set:goal[0]}
+	{set:goal[0]}until the sequel{/set:goal[0]}
+	{set:goal[0]}to find love{/set:goal[0]}
+	{set:goal[0]}to impress your date{/set:goal[0]}
+	{set:goal[0]}for freedom{/set:goal[0]}
+	{set:goal[0]}for liberty{/set:goal[0]}
+	{set:goal[0]}because it's the right thing to do{/set:goal[0]}
+	{set:goal[0]}because, I mean, why the hell not{/set:goal[0]}
+	{set:goal[0]}(don't question it){/set:goal[0]}
+	{set:goal[0]}and you have to find out why{/set:goal[0]}
+	{set:goal[0]}and the reason why becomes less and less obvious throughout the game{/set:goal[0]}
+	{set:goal[0]}to accelerate global warming{/set:goal[0]}
+	{set:goal[0]}to slow global warming{/set:goal[0]}
+	{set:goal[0]}because aliens{/set:goal[0]}
+	{set:goal[0]}because Hitler{/set:goal[0]}
+	{set:goal[0]}and go back in time{/set:goal[0]}
+	{set:goal[0]}TO THE MAX{/set:goal[0]}
+	{set:goal[0]}TO THE EXTREME{/set:goal[0]}
+	{set:goal[0]}(with day 1 DLC){/set:goal[0]}
+	{set:goal[0]}in a sandbox world{/set:goal[0]}
+	{set:goal[0]}and also it's kind of a dating sim{/set:goal[0]}
+	{set:goal[0]}and you have to be stealthy and stuff{/set:goal[0]}
+	{set:goal[0]}with kill-streak bonuses{/set:goal[0]}
+	{set:goal[0]}but then skeletons{/set:goal[0]}
+	{set:goal[0]}but you have no arms{/set:goal[0]}
+	{set:goal[0]}except halfway through you realize you're really not all that important to the plot{/set:goal[0]}
+	{set:goal[0]}but you don't play a big role in the story so you can actually do pretty much whatever you want{/set:goal[0]}
+	{set:goal[0]}and your sidekick is a bird{/set:goal[0]}
+	{set:goal[0]}with a snarky sidekick{/set:goal[0]}
+	{set:goal[0]}with a passive-aggressive sidekick{/set:goal[0]}
+	{set:goal[0]}with a slighly racist sidekick{/set:goal[0]}
+	{set:goal[0]}and your sidekick is the bad guy{/set:goal[0]}
+	{set:goal[0]}except you're the sidekick{/set:goal[0]}
+	{set:goal[0]}with a shape-shifting sidekick{/set:goal[0]}
+	{set:goal[0]}with too many sidekicks{/set:goal[0]}
+	{set:goal[0]}and everyone in the game hates you{/set:goal[0]}
+	{set:goal[0]}and you have superpowers{/set:goal[0]}
+	{set:goal[0]}with gigantic boss battles{/set:goal[0]}
+	{set:goal[0]}(it gets weirder){/set:goal[0]}
+	{set:goal[0]}(it gets very dark very fast){/set:goal[0]}
+	{set:goal[0]}(it's pretty light-hearted){/set:goal[0]}
+	{set:goal[0]}(also, sports){/set:goal[0]}
+	{set:goal[0]}and also you are a bear{/set:goal[0]}
+	{set:goal[0]}and you can't stop running{/set:goal[0]}
+	{set:goal[0]}but you keep randomly teleporting{/set:goal[0]}
+	{set:goal[0]}except the game keeps messing around with your perception{/set:goal[0]}
+	{set:goal[0]}except you're 3 years old{/set:goal[0]}
+	{set:goal[0]}but you're an old person{/set:goal[0]}
+	{set:goal[0]}until you feel regret{/set:goal[0]}
+	{set:goal[0]}and you can't stop gaining powers{/set:goal[0]}
+	{set:goal[0]}but you keep jumping forward in time{/set:goal[0]}
+	{set:goal[0]}but bees are trying to stop you{/set:goal[0]}
+	{set:goal[0]}with the addition of zombies{/set:goal[0]}
+	{set:goal[0]}and everybody's a robot{/set:goal[0]}
+	{set:goal[0]}but there are no humans{/set:goal[0]}
+	{set:goal[0]}and you're the last of your kind{/set:goal[0]}
+	{set:goal[0]}but only a handful of people remain{/set:goal[0]}
+	{set:goal[0]}with other survivors{/set:goal[0]}
+	{set:goal[0]}and magic has returned to the world{/set:goal[0]}
+	{set:goal[0]}and you're a wacky animal{/set:goal[0]}
+	{set:goal[0]}and you have way more limbs than necessary{/set:goal[0]}
+	{set:goal[0]}and you're a spider{/set:goal[0]}
+	{set:goal[0]}and you can summon your spirit animal{/set:goal[0]}
+	{set:goal[0]}but it's all explained in the end{/set:goal[0]}
+	{set:goal[0]}and it never ends{/set:goal[0]}
+	{set:goal[0]}and you gotta go fast{/set:goal[0]}
+	{set:goal[0]}as slowly as possible{/set:goal[0]}
+	{set:goal[0]}and it's totally adorable{/set:goal[0]}
+	{set:goal[0]}and it's scary as hell{/set:goal[0]}
+	{set:goal[0]}and you're all alone{/set:goal[0]}
+	{set:goal[0]}and everybody's afraid of you{/set:goal[0]}
+	{set:goal[0]}with lots of customization{/set:goal[0]}
+	{set:goal[0]}and your only weapon is mini-nukes{/set:goal[0]}
+	{set:goal[0]}but everything you touch explodes{/set:goal[0]}
+	{set:goal[0]}and everything you touch turns into more enemies{/set:goal[0]}
+	{set:goal[0]}and your arms are chainsaws{/set:goal[0]}
+	{set:goal[0]}and also you are a bird{/set:goal[0]}
+	{set:goal[0]}and you're an unfrozen caveman{/set:goal[0]}
+	{set:goal[0]}and you're also an ancient wizard{/set:goal[0]}
+	{set:goal[0]}but the bad guy was just trying to help you{/set:goal[0]}
+	{set:goal[0]}except you're really unlucky{/set:goal[0]}
+	{set:goal[0]}and you have superhuman luck{/set:goal[0]}
+	{set:goal[0]}except you're one of the bad guys{/set:goal[0]}
+	{set:goal[0]}like in the movie{/set:goal[0]}
+	{set:goal[0]}and the name and biography of everybody you kill is displayed onscreen{/set:goal[0]}
+	{set:goal[0]}and corpses don't disappear{/set:goal[0]}
+	{set:goal[0]}and you can use the corpses in creative ways{/set:goal[0]}
+	{set:goal[0]}during the apocalypse{/set:goal[0]}
+	{set:goal[0]}before the apocalypse{/set:goal[0]}
+	{set:goal[0]}after the apocalypse{/set:goal[0]}
+	{set:goal[0]}until the end of the world{/set:goal[0]}
+	{set:goal[0]}and you steal the powers of your defeated enemies{/set:goal[0]}
+	{set:goal[0]}and you have the power to become famous at will{/set:goal[0]}
+	{set:goal[0]}and you can erect walls at will{/set:goal[0]}
+	{set:goal[0]}and also you have telepathic powers{/set:goal[0]}
+	{set:goal[0]}and you have stretchy powers{/set:goal[0]}
+	{set:goal[0]}but you're composed of tiny critters{/set:goal[0]}
+	{set:goal[0]}and the bad guy is constantly stalking you wherever you go{/set:goal[0]}
+	{set:goal[0]}and there's a terrifying monster slowly making its way towards you during the whole game{/set:goal[0]}
+	{set:goal[0]}and you only have a few minutes to live{/set:goal[0]}
+	{set:goal[0]}while looking absolutely fantastic{/set:goal[0]}
+	{set:goal[0]}and you keep jumping through windows{/set:goal[0]}
+	{set:goal[0]}and you can't stop breaking stuff{/set:goal[0]}
+	{set:goal[0]}but you kill the people you try to help{/set:goal[0]}
+	{set:goal[0]}but you're a ghost{/set:goal[0]}
+	{set:goal[0]}and you're a cyborg{/set:goal[0]}
+	{set:goal[0]}and you're addicted to robot implants{/set:goal[0]}
+	{set:goal[0]}with unpredictable powers{/set:goal[0]}
+	{set:goal[0]}while setting fire to stuff{/set:goal[0]}
+	{set:goal[0]}and you hate every single minute of it{/set:goal[0]}
+	{set:goal[0]}- legally{/set:goal[0]}
+	{set:goal[0]}to stop a meteorite{/set:goal[0]}
+	{set:goal[0]}for world peace{/set:goal[0]}
+	{set:goal[0]}with fire{/set:goal[0]}
+	{set:goal[0]}with guns{/set:goal[0]}
+	{set:goal[0]}until the universe explodes{/set:goal[0]}
+	{set:goal[0]}until you die{/set:goal[0]}
+	{set:goal[0]}until you're the last person alive{/set:goal[0]}
+	{set:goal[0]}non-violently{/set:goal[0]}
+{/if:condition}
+{if:condition:type:equals:'simulation'}
+	{set:genre[0]}a tycoon game{/set:genre[0]}
+	{set:genre[0]}a sim game{/set:genre[0]}
+	{set:genre[0]}a simulation game{/set:genre[0]}
+	{set:genre[0]}a god game{/set:genre[0]}
+	
+	{set:action[0]}manage{/set:action[0]}
+	{set:action[0]}sell{/set:action[0]}
+	{set:action[0]}buy{/set:action[0]}
+	{set:action[0]}trade{/set:action[0]}
+	{set:action[0]}reticulate{/set:action[0]}
+	{set:action[0]}drag and drop{/set:action[0]}
+	{set:action[0]}displace{/set:action[0]}
+	{set:action[0]}mutate{/set:action[0]}
+	{set:action[0]}splice{/set:action[0]}
+	{set:action[0]}mix-and-match{/set:action[0]}
+	{set:action[0]}build{/set:action[0]}
+	{set:action[0]}customize{/set:action[0]}
+	{set:action[0]}herd{/set:action[0]}
+	{set:action[0]}terraform{/set:action[0]}
+	{set:action[0]}regulate{/set:action[0]}
+	{set:action[0]}plop down{/set:action[0]}
+	{set:action[0]}create{/set:action[0]}
+	{set:action[0]}make{/set:action[0]}
+	{set:action[0]}invent{/set:action[0]}
+	{set:action[0]}grow{/set:action[0]}
+	{set:action[0]}piece together{/set:action[0]}
+	{set:action[0]}hatch{/set:action[0]}
+	{set:action[0]}raise{/set:action[0]}
+	{set:action[0]}farm{/set:action[0]}
+	{set:action[0]}write about{/set:action[0]}
+	{set:action[0]}draw{/set:action[0]}
+	{set:action[0]}distribute{/set:action[0]}
+	{set:action[0]}craft{/set:action[0]}
+	{set:action[0]}compile{/set:action[0]}
+	{set:action[0]}solve{/set:action[0]}
+	{set:action[0]}monetize{/set:action[0]}
+	{set:action[0]}design{/set:action[0]}
+	{set:action[0]}mix{/set:action[0]}
+	{set:action[0]}experiment on{/set:action[0]}
+	{set:action[0]}experiment with{/set:action[0]}
+	{set:action[0]}copy-paste{/set:action[0]}
+	{set:action[0]}organize{/set:action[0]}
+	{set:action[0]}dress up{/set:action[0]}
+	{set:action[0]}train{/set:action[0]}
+	{set:action[0]}breed{/set:action[0]}
+	{set:action[0]}feed{/set:action[0]}
+	{set:action[0]}grow{/set:action[0]}
+	{set:action[0]}grow stuff on{/set:action[0]}
+	{set:action[0]}cure{/set:action[0]}
+	{set:action[0]}heal{/set:action[0]}
+	{set:action[0]}fix{/set:action[0]}
+	{set:action[0]}tame{/set:action[0]}
+	
+	{set:thing[0]}trees{/set:thing[0]}
+	{set:thing[0]}people{/set:thing[0]}
+	{set:thing[0]}humans{/set:thing[0]}
+	{set:thing[0]}creatures{/set:thing[0]}
+	{set:thing[0]}monsters{/set:thing[0]}
+	{set:thing[0]}customers{/set:thing[0]}
+	{set:thing[0]}animals{/set:thing[0]}
+	{set:thing[0]}plants{/set:thing[0]}
+	{set:thing[0]}birds{/set:thing[0]}
+	{set:thing[0]}fish{/set:thing[0]}
+	{set:thing[0]}cats{/set:thing[0]}
+	{set:thing[0]}dogs{/set:thing[0]}
+	{set:thing[0]}horses{/set:thing[0]}
+	{set:thing[0]}ants{/set:thing[0]}
+	{set:thing[0]}bees{/set:thing[0]}
+	{set:thing[0]}monkeys{/set:thing[0]}
+	{set:thing[0]}squids{/set:thing[0]}
+	{set:thing[0]}livestock{/set:thing[0]}
+	{set:thing[0]}aquariums{/set:thing[0]}
+	{set:thing[0]}stockbrokers{/set:thing[0]}
+	{set:thing[0]}farms{/set:thing[0]}
+	{set:thing[0]}crops{/set:thing[0]}
+	{set:thing[0]}towns{/set:thing[0]}
+	{set:thing[0]}cities{/set:thing[0]}
+	{set:thing[0]}countries{/set:thing[0]}
+	{set:thing[0]}charts{/set:thing[0]}
+	{set:thing[0]}businesses{/set:thing[0]}
+	{set:thing[0]}railroads{/set:thing[0]}
+	{set:thing[0]}vehicles{/set:thing[0]}
+	{set:thing[0]}ecosystems{/set:thing[0]}
+	{set:thing[0]}food chains{/set:thing[0]}
+	{set:thing[0]}solar systems{/set:thing[0]}
+	{set:thing[0]}universes{/set:thing[0]}
+	{set:thing[0]}nested universes{/set:thing[0]}
+	{set:thing[0]}timelines{/set:thing[0]}
+	{set:thing[0]}nested timelines{/set:thing[0]}
+	{set:thing[0]}sport teams{/set:thing[0]}
+	{set:thing[0]}babies{/set:thing[0]}
+	{set:thing[0]}hospitals{/set:thing[0]}
+	{set:thing[0]}schools{/set:thing[0]}
+	{set:thing[0]}restaurants{/set:thing[0]}
+	{set:thing[0]}police stations{/set:thing[0]}
+	{set:thing[0]}trains{/set:thing[0]}
+	{set:thing[0]}airplanes{/set:thing[0]}
+	{set:thing[0]}roads{/set:thing[0]}
+	{set:thing[0]}resources{/set:thing[0]}
+	{set:thing[0]}furniture{/set:thing[0]}
+	{set:thing[0]}tasks{/set:thing[0]}
+	{set:thing[0]}family members{/set:thing[0]}
+	{set:thing[0]}chores{/set:thing[0]}
+	{set:thing[0]}industries{/set:thing[0]}
+	{set:thing[0]}islands{/set:thing[0]}
+	{set:thing[0]}limbs{/set:thing[0]}
+	{set:thing[0]}genetics{/set:thing[0]}
+	{set:thing[0]}DNA{/set:thing[0]}
+	{set:thing[0]}nukes{/set:thing[0]}
+	{set:thing[0]}various biomes{/set:thing[0]}
+	
+	{set:goal[0]}to make money{/set:goal[0]}
+	{set:goal[0]}to save the environment{/set:goal[0]}
+	{set:goal[0]}to make everybody happy{/set:goal[0]}
+	{set:goal[0]}to become successful{/set:goal[0]}
+	{set:goal[0]}to score happiness points{/set:goal[0]}
+	{set:goal[0]}to score karma{/set:goal[0]}
+	{set:goal[0]}to establish your brand{/set:goal[0]}
+	{set:goal[0]}to dominate the market{/set:goal[0]}
+	{set:goal[0]}to create a sprawling industry{/set:goal[0]}
+	{set:goal[0]}to make a business{/set:goal[0]}
+	{set:goal[0]}until you\'re bored{/set:goal[0]}
+	{set:goal[0]}ad infinitum{/set:goal[0]}
+	{set:goal[0]}ad nauseam{/set:goal[0]}
+	{set:goal[0]}until you run out of funds{/set:goal[0]}
+	{set:goal[0]}until you own everything{/set:goal[0]}
+	{set:goal[0]}and you have infinite money{/set:goal[0]}
+	{set:goal[0]}and the sky isn\'t even the limit{/set:goal[0]}
+{/if:condition}
+{if:condition:type:equals:'strategy'}
+	{set:genre[0]}a strategy game{/set:genre[0]}
+	{set:genre[0]}a turn-based strategy game{/set:genre[0]}
+	{set:genre[0]}a real-time strategy game{/set:genre[0]}
+	{set:genre[0]}a war game{/set:genre[0]}
+	{set:genre[0]}a god game{/set:genre[0]}
+	
+	{set:action[0]}go to war with{/set:action[0]}
+	{set:action[0]}wage war on{/set:action[0]}
+	{set:action[0]}unite{/set:action[0]}
+	{set:action[0]}lead{/set:action[0]}
+	{set:action[0]}build{/set:action[0]}
+	{set:action[0]}destroy{/set:action[0]}
+	{set:action[0]}conquer{/set:action[0]}
+	{set:action[0]}invade{/set:action[0]}
+	{set:action[0]}colonize{/set:action[0]}
+	{set:action[0]}discover{/set:action[0]}
+	{set:action[0]}explore{/set:action[0]}
+	{set:action[0]}trade with{/set:action[0]}
+	{set:action[0]}bomb{/set:action[0]}
+	{set:action[0]}nuke{/set:action[0]}
+	{set:action[0]}lead the rebels in{/set:action[0]}
+	{set:action[0]}make peace with{/set:action[0]}
+	{set:action[0]}investigate{/set:action[0]}
+	{set:action[0]}rename{/set:action[0]}
+	{set:action[0]}collect gold from{/set:action[0]}
+	{set:action[0]}collect crystals from{/set:action[0]}
+	{set:action[0]}mine ore from{/set:action[0]}
+
+	{set:thing[0]}countries{/set:thing[0]}
+	{set:thing[0]}nations{/set:thing[0]}
+	{set:thing[0]}planets{/set:thing[0]}
+	{set:thing[0]}spaceships{/set:thing[0]}
+	{set:thing[0]}castles{/set:thing[0]}
+	{set:thing[0]}cities{/set:thing[0]}
+	{set:thing[0]}space cities{/set:thing[0]}
+	{set:thing[0]}strongholds{/set:thing[0]}
+	{set:thing[0]}towers{/set:thing[0]}
+	{set:thing[0]}dungeons{/set:thing[0]}
+	{set:thing[0]}citadels{/set:thing[0]}
+	{set:thing[0]}kingdoms{/set:thing[0]}
+	{set:thing[0]}abandoned towns{/set:thing[0]}
+	{set:thing[0]}cloud cities{/set:thing[0]}
+	{set:thing[0]}moving cities{/set:thing[0]}
+	{set:thing[0]}underwater cities{/set:thing[0]}
+	{set:thing[0]}unknown worlds{/set:thing[0]}
+	{set:thing[0]}other worlds{/set:thing[0]}
+	{set:thing[0]}parallel worlds{/set:thing[0]}
+	{set:thing[0]}other dimensions{/set:thing[0]}
+	{set:thing[0]}alien worlds{/set:thing[0]}
+	{set:thing[0]}heaven{/set:thing[0]}
+	{set:thing[0]}hell{/set:thing[0]}
+	{set:thing[0]}mythological places{/set:thing[0]}
+	{set:thing[0]}historical places{/set:thing[0]}
+	{set:thing[0]}islands{/set:thing[0]}
+	{set:thing[0]}sanctuaries{/set:thing[0]}
+	{set:thing[0]}temples{/set:thing[0]}
+	{set:thing[0]}ruins{/set:thing[0]}
+	{set:thing[0]}factories{/set:thing[0]}
+	{set:thing[0]}caves{/set:thing[0]}
+
+	{set:goal[0]}with a few armed men{/set:goal[0]}
+	{set:goal[0]}with uncountable legions{/set:goal[0]}
+	{set:goal[0]}starting from a small group of settlers{/set:goal[0]}
+	{set:goal[0]}starting from a small tribe{/set:goal[0]}
+	{set:goal[0]}starting from nothing{/set:goal[0]}
+	{set:goal[0]}using the nuclear power{/set:goal[0]}
+	{set:goal[0]}using diplomacy{/set:goal[0]}
+	{set:goal[0]}through commerce{/set:goal[0]}
+	{set:goal[0]}using science{/set:goal[0]}
+	{set:goal[0]}using an expansive technology tree{/set:goal[0]}
+	{set:goal[0]}through cultural superiority{/set:goal[0]}
+	{set:goal[0]}through religion{/set:goal[0]}
+	{set:goal[0]}through infiltration{/set:goal[0]}
+	{set:goal[0]}through terrorism{/set:goal[0]}
+	{set:goal[0]}with nuclear warfare{/set:goal[0]}
+	{set:goal[0]}with bio-terrorism{/set:goal[0]}
+	{set:goal[0]}with forbidden experiments{/set:goal[0]}
+	{set:goal[0]}with love{/set:goal[0]}
+	{set:goal[0]}with friendship{/set:goal[0]}
+	{set:goal[0]}through naval warfare{/set:goal[0]}
+	{set:goal[0]}with stealth{/set:goal[0]}
+	{set:goal[0]}using advanced tactics{/set:goal[0]}
+	{set:goal[0]}with clones{/set:goal[0]}
+	{set:goal[0]}with mutated animals{/set:goal[0]}
+	{set:goal[0]}with cow-boys{/set:goal[0]}
+	{set:goal[0]}with robots{/set:goal[0]}
+	{set:goal[0]}with monsters{/set:goal[0]}
+	{set:goal[0]}with businessmen{/set:goal[0]}
+	{set:goal[0]}with mutants{/set:goal[0]}
+	{set:goal[0]}with cyborgs{/set:goal[0]}
+	{set:goal[0]}with tanks{/set:goal[0]}
+	{set:goal[0]}with gunpowder{/set:goal[0]}
+	{set:goal[0]}while spawning minions{/set:goal[0]}
+	{set:goal[0]}by changing the terrain{/set:goal[0]}
+	{set:goal[0]}by gaining god points{/set:goal[0]}
+	{set:goal[0]}for victory{/set:goal[0]}
+	{set:goal[0]}for glory{/set:goal[0]}
+	{set:goal[0]}in the name of love{/set:goal[0]}
+	{set:goal[0]}to live forever{/set:goal[0]}
+	{set:goal[0]}to become the ruler of the world{/set:goal[0]}
+	{set:goal[0]}to form an invincible empire{/set:goal[0]}
+	{set:goal[0]}over a few thousand years{/set:goal[0]}
+	{set:goal[0]}through several campaigns{/set:goal[0]}
+	{set:goal[0]}before the end of the world{/set:goal[0]}
+	{set:goal[0]}to prevent the end of the world{/set:goal[0]}
+	{set:goal[0]}but you lead the forces of evil{/set:goal[0]}
+	{set:goal[0]}and you lead an army of insectoids{/set:goal[0]}
+	{set:goal[0]}but you have limited control{/set:goal[0]}
+	{set:goal[0]}and you have god-like powers{/set:goal[0]}
+	{set:goal[0]}and you can create miracles and curses{/set:goal[0]}
+	{set:goal[0]}until you own everything{/set:goal[0]}
+{/if:condition}
+{if:condition:type:equals:'arcade'}
+	{set:genre[0]}a puzzle game{/set:genre[0]}
+	{set:genre[0]}an arcade game{/set:genre[0]}
+	{set:genre[0]}a social media game{/set:genre[0]}
+	{set:genre[0]}a mobile game{/set:genre[0]}
+	{set:genre[0]}a browser game{/set:genre[0]}
+	{set:genre[0]}an online game{/set:genre[0]}
+	
+	{set:action[0]}align{/set:action[0]}
+	{set:action[0]}click on{/set:action[0]}
+	{set:action[0]}match{/set:action[0]}
+	{set:action[0]}throw{/set:action[0]}
+	{set:action[0]}toss{/set:action[0]}
+	{set:action[0]}fire pellets at{/set:action[0]}
+	{set:action[0]}control{/set:action[0]}
+	{set:action[0]}touch{/set:action[0]}
+	{set:action[0]}stack{/set:action[0]}
+	{set:action[0]}guess{/set:action[0]}
+	{set:action[0]}memorize{/set:action[0]}
+	{set:action[0]}rotate{/set:action[0]}
+	{set:action[0]}swap{/set:action[0]}
+	{set:action[0]}slide{/set:action[0]}
+	{set:action[0]}avoid{/set:action[0]}
+	{set:action[0]}drag and drop{/set:action[0]}
+	{set:action[0]}tickle{/set:action[0]}
+	{set:action[0]}race{/set:action[0]}
+	{set:action[0]}challenge{/set:action[0]}
+	{set:action[0]}collect{/set:action[0]}
+	{set:action[0]}draw{/set:action[0]}
+	{set:action[0]}unlock{/set:action[0]}
+	{set:action[0]}cook{/set:action[0]}
+	{set:action[0]}break{/set:action[0]}
+	{set:action[0]}solve puzzles involving{/set:action[0]}
+	{set:action[0]}collect{/set:action[0]}
+	{set:action[0]}juggle{/set:action[0]}
+	
+	{set:thing[0]}gems{/set:thing[0]}
+	{set:thing[0]}diamonds{/set:thing[0]}
+	{set:thing[0]}gold nuggets{/set:thing[0]}
+	{set:thing[0]}bricks{/set:thing[0]}
+	{set:thing[0]}bubbles{/set:thing[0]}
+	{set:thing[0]}squares{/set:thing[0]}
+	{set:thing[0]}triangles{/set:thing[0]}
+	{set:thing[0]}treasure{/set:thing[0]}
+	{set:thing[0]}blobs{/set:thing[0]}
+	{set:thing[0]}kitchen appliances{/set:thing[0]}
+	{set:thing[0]}nondescript fruits{/set:thing[0]}
+	{set:thing[0]}animals{/set:thing[0]}
+	{set:thing[0]}birds{/set:thing[0]}
+	{set:thing[0]}baby animals{/set:thing[0]}
+	{set:thing[0]}farm animals{/set:thing[0]}
+	{set:thing[0]}exotic fruits{/set:thing[0]}
+	{set:thing[0]}sentient plants{/set:thing[0]}
+	{set:thing[0]}your friends{/set:thing[0]}
+	{set:thing[0]}shapes{/set:thing[0]}
+	{set:thing[0]}jewels{/set:thing[0]}
+	{set:thing[0]}letters{/set:thing[0]}
+	{set:thing[0]}words{/set:thing[0]}
+	{set:thing[0]}numbers{/set:thing[0]}
+	{set:thing[0]}tokens{/set:thing[0]}
+	{set:thing[0]}coins{/set:thing[0]}
+	{set:thing[0]}eggs{/set:thing[0]}
+	{set:thing[0]}hats{/set:thing[0]}
+	{set:thing[0]}candy{/set:thing[0]}
+	{set:thing[0]}chocolate{/set:thing[0]}
+	{set:thing[0]}shoes{/set:thing[0]}
+	{set:thing[0]}clothing items{/set:thing[0]}
+	{set:thing[0]}princesses{/set:thing[0]}
+	{set:thing[0]}blocks{/set:thing[0]}
+	{set:thing[0]}cubes{/set:thing[0]}
+	{set:thing[0]}asteroids{/set:thing[0]}
+	{set:thing[0]}stars{/set:thing[0]}
+	{set:thing[0]}balls{/set:thing[0]}
+	{set:thing[0]}spheres{/set:thing[0]}
+	{set:thing[0]}magnets{/set:thing[0]}
+	{set:thing[0]}riddles{/set:thing[0]}
+	
+	{set:goal[0]}to win points{/set:goal[0]}
+	{set:goal[0]}to reach the highscore{/set:goal[0]}
+	{set:goal[0]}to make virtual money{/set:goal[0]}
+	{set:goal[0]}to buy virtual items{/set:goal[0]}
+	{set:goal[0]}for the mega-bonus{/set:goal[0]}
+	{set:goal[0]}to unlock bonus items{/set:goal[0]}
+	{set:goal[0]}to earn tokens{/set:goal[0]}
+	{set:goal[0]}to unlock the next level{/set:goal[0]}
+	{set:goal[0]}with your friends{/set:goal[0]}
+	{set:goal[0]}and buy extra content with real money{/set:goal[0]}
+	{set:goal[0]}by answering questions{/set:goal[0]}
+	{set:goal[0]}under the time limit{/set:goal[0]}
+	{set:goal[0]}and you can customize your character{/set:goal[0]}
+	{set:goal[0]}and you can customize your house{/set:goal[0]}
+{/if:condition}
+{if:condition:type:equals:'mmo'}
+	{set:genre[0]}an adventure game{/set:genre[0]}
+	{set:genre[0]}a role-playing game{/set:genre[0]}
+	{set:genre[0]}an MMO{/set:genre[0]}
+
+	{set:action[0]}slay{/set:action[0]}
+	{set:action[0]}battle{/set:action[0]}
+	{set:action[0]}vanquish{/set:action[0]}
+	{set:action[0]}challenge{/set:action[0]}
+	{set:action[0]}defeat{/set:action[0]}
+	{set:action[0]}save the world with{/set:action[0]}
+	{set:action[0]}banish{/set:action[0]}
+	{set:action[0]}enslave{/set:action[0]}
+	{set:action[0]}free{/set:action[0]}
+	{set:action[0]}resurrect{/set:action[0]}
+	{set:action[0]}meet{/set:action[0]}
+	{set:action[0]}annoy{/set:action[0]}
+	{set:action[0]}run away from{/set:action[0]}
+	{set:action[0]}hide from{/set:action[0]}
+	{set:action[0]}chase{/set:action[0]}
+	{set:action[0]}encounter{/set:action[0]}
+	{set:action[0]}must find{/set:action[0]}
+	{set:action[0]}save the world from{/set:action[0]}
+	{set:action[0]}must obtain collectible{/set:action[0]}
+	{set:action[0]}go to school with{/set:action[0]}
+	{set:action[0]}go to war with{/set:action[0]}
+	{set:action[0]}retrieve holy artifacts with{/set:action[0]}
+	{set:action[0]}hang out with{/set:action[0]}
+	{set:action[0]}learn from{/set:action[0]}
+	{set:action[0]}explore dungeons with{/set:action[0]}
+	{set:action[0]}explore dungeons full of{/set:action[0]}
+
+	{set:thing[0]}dragons{/set:thing[0]}
+	{set:thing[0]}goblins{/set:thing[0]}
+	{set:thing[0]}orcs{/set:thing[0]}
+	{set:thing[0]}unicorns{/set:thing[0]}
+	{set:thing[0]}monsters{/set:thing[0]}
+	{set:thing[0]}creatures{/set:thing[0]}
+	{set:thing[0]}spirits{/set:thing[0]}
+	{set:thing[0]}forest spirits{/set:thing[0]}
+	{set:thing[0]}ocean spirits{/set:thing[0]}
+	{set:thing[0]}spirits of nature{/set:thing[0]}
+	{set:thing[0]}mushrooms{/set:thing[0]}
+	{set:thing[0]}turtles{/set:thing[0]}
+	{set:thing[0]}knights{/set:thing[0]}
+	{set:thing[0]}barbarians{/set:thing[0]}
+	{set:thing[0]}town guards{/set:thing[0]}
+	{set:thing[0]}ninjas{/set:thing[0]}
+	{set:thing[0]}samurais{/set:thing[0]}
+	{set:thing[0]}evil wizards{/set:thing[0]}
+	{set:thing[0]}dark wizards{/set:thing[0]}
+	{set:thing[0]}witches{/set:thing[0]}
+	{set:thing[0]}ents{/set:thing[0]}
+	{set:thing[0]}halflings{/set:thing[0]}
+	{set:thing[0]}dwarves{/set:thing[0]}
+	{set:thing[0]}elves{/set:thing[0]}
+	{set:thing[0]}trolls{/set:thing[0]}
+	{set:thing[0]}giants{/set:thing[0]}
+	{set:thing[0]}gnomes{/set:thing[0]}
+	{set:thing[0]}pixies{/set:thing[0]}
+	{set:thing[0]}elementals{/set:thing[0]}
+	{set:thing[0]}wyrms{/set:thing[0]}
+	{set:thing[0]}sky worms{/set:thing[0]}
+	{set:thing[0]}sky whales{/set:thing[0]}
+	{set:thing[0]}cyclops{/set:thing[0]}
+	{set:thing[0]}bats{/set:thing[0]}
+	{set:thing[0]}vampires{/set:thing[0]}
+	{set:thing[0]}spider people{/set:thing[0]}
+	{set:thing[0]}reptilians{/set:thing[0]}
+	{set:thing[0]}hellrats{/set:thing[0]}
+	{set:thing[0]}hellhounds{/set:thing[0]}
+	{set:thing[0]}shape-shifters{/set:thing[0]}
+	{set:thing[0]}werewolves{/set:thing[0]}
+	{set:thing[0]}werepigs{/set:thing[0]}
+	{set:thing[0]}werefoxes{/set:thing[0]}
+	{set:thing[0]}manbeasts{/set:thing[0]}
+	{set:thing[0]}slimes{/set:thing[0]}
+	{set:thing[0]}oozes{/set:thing[0]}
+	{set:thing[0]}ghosts{/set:thing[0]}
+	{set:thing[0]}ghouls{/set:thing[0]}
+	{set:thing[0]}spiders{/set:thing[0]}
+	{set:thing[0]}bunnies{/set:thing[0]}
+	{set:thing[0]}enchanted furniture{/set:thing[0]}
+	{set:thing[0]}golems{/set:thing[0]}
+	{set:thing[0]}giant monsters{/set:thing[0]}
+	{set:thing[0]}world-spanning abominations{/set:thing[0]}
+	{set:thing[0]}eldritch monstruosities{/set:thing[0]}
+	{set:thing[0]}wizard kings{/set:thing[0]}
+	{set:thing[0]}princes{/set:thing[0]}
+	{set:thing[0]}princesses{/set:thing[0]}
+	{set:thing[0]}kings{/set:thing[0]}
+	{set:thing[0]}queens{/set:thing[0]}
+	{set:thing[0]}princes and princesses{/set:thing[0]}
+	{set:thing[0]}kings and queens{/set:thing[0]}
+	{set:thing[0]}necromancers{/set:thing[0]}
+	{set:thing[0]}heroes{/set:thing[0]}
+	{set:thing[0]}legendary warriors{/set:thing[0]}
+	{set:thing[0]}paladins{/set:thing[0]}
+	{set:thing[0]}bards{/set:thing[0]}
+	{set:thing[0]}rangers{/set:thing[0]}
+	{set:thing[0]}mages{/set:thing[0]}
+	{set:thing[0]}priests{/set:thing[0]}
+	{set:thing[0]}angels{/set:thing[0]}
+	{set:thing[0]}demons{/set:thing[0]}
+	{set:thing[0]}dinosaurs{/set:thing[0]}
+
+	{set:goal[0]}and explore the world{/set:goal[0]}
+	{set:goal[0]}to save the princess{/set:goal[0]}
+	{set:goal[0]}in a fantasy world{/set:goal[0]}
+	{set:goal[0]}in space{/set:goal[0]}
+	{set:goal[0]}in the modern world{/set:goal[0]}
+	{set:goal[0]}in the future{/set:goal[0]}
+	{set:goal[0]}in the deepest oceans{/set:goal[0]}
+	{set:goal[0]}in the snowy mountains{/set:goal[0]}
+	{set:goal[0]}in the lava kingdom{/set:goal[0]}
+	{set:goal[0]}in the darkest caves{/set:goal[0]}
+	{set:goal[0]}in gigantic strongholds{/set:goal[0]}
+	{set:goal[0]}and collect treasure{/set:goal[0]}
+	{set:goal[0]}and collect loot{/set:goal[0]}
+	{set:goal[0]}and loot sweet gear{/set:goal[0]}
+	{set:goal[0]}to gain levels{/set:goal[0]}
+	{set:goal[0]}to prevent the fabric of reality from unravelling{/set:goal[0]}
+	{set:goal[0]}to unravel the fabric of reality{/set:goal[0]}
+	{set:goal[0]}to warp spacetime{/set:goal[0]}
+	{set:goal[0]}while balancing your karma{/set:goal[0]}
+	{set:goal[0]}while being torn between the forces of good and evil{/set:goal[0]}
+	{set:goal[0]}while bards write songs about you{/set:goal[0]}
+	{set:goal[0]}on a boat{/set:goal[0]}
+	{set:goal[0]}on an airship{/set:goal[0]}
+	{set:goal[0]}on an island{/set:goal[0]}
+	{set:goal[0]}to forge the sacred sword{/set:goal[0]}
+	{set:goal[0]}to become the king{/set:goal[0]}
+	{set:goal[0]}with alchemy{/set:goal[0]}
+	{set:goal[0]}with magic{/set:goal[0]}
+	{set:goal[0]}in a wide-open procedural world{/set:goal[0]}
+	{set:goal[0]}as the legends foretold{/set:goal[0]}
+	{set:goal[0]}and fulfill prophecies{/set:goal[0]}
+	{set:goal[0]}because thou must{/set:goal[0]}
+	{set:goal[0]}until the level cap{/set:goal[0]}
+	{set:goal[0]}while upgrading your gear{/set:goal[0]}
+	{set:goal[0]}and it\'s very grindy{/set:goal[0]}
+{/if:condition}
+{if:condition:type:equals:'indie'}
+	{set:genre[0]}an indie game{/set:genre[0]}
+	{set:genre[0]}an experimental game{/set:genre[0]}
+	{set:genre[0]}a student project{/set:genre[0]}
+	{set:genre[0]}an artsy game{/set:genre[0]}
+	
+	{set:action[0]}color{/set:action[0]}
+	{set:action[0]}paint{/set:action[0]}
+	{set:action[0]}print{/set:action[0]}
+	{set:action[0]}conceptualize{/set:action[0]}
+	{set:action[0]}punch{/set:action[0]}
+	{set:action[0]}explore{/set:action[0]}
+	{set:action[0]}please{/set:action[0]}
+	{set:action[0]}dance to{/set:action[0]}
+	{set:action[0]}dance with{/set:action[0]}
+	{set:action[0]}associate{/set:action[0]}
+	{set:action[0]}click on{/set:action[0]}
+	{set:action[0]}mindlessly click on{/set:action[0]}
+	{set:action[0]}browse through{/set:action[0]}
+	{set:action[0]}navigate{/set:action[0]}
+	{set:action[0]}choose{/set:action[0]}
+	{set:action[0]}pick{/set:action[0]}
+	{set:action[0]}criticize{/set:action[0]}
+	{set:action[0]}look at{/set:action[0]}
+	{set:action[0]}stare at{/set:action[0]}
+	{set:action[0]}watch{/set:action[0]}
+	{set:action[0]}type{/set:action[0]}
+	{set:action[0]}listen to{/set:action[0]}
+	{set:action[0]}sing to{/set:action[0]}
+	{set:action[0]}recognize{/set:action[0]}
+	{set:action[0]}defy{/set:action[0]}
+	{set:action[0]}find{/set:action[0]}
+	{set:action[0]}run away from{/set:action[0]}
+	{set:action[0]}hide from{/set:action[0]}
+	{set:action[0]}target{/set:action[0]}
+	{set:action[0]}win{/set:action[0]}
+	{set:action[0]}lose{/set:action[0]}
+	{set:action[0]}generate{/set:action[0]}
+	{set:action[0]}randomize{/set:action[0]}
+	{set:action[0]}jump on{/set:action[0]}
+	{set:action[0]}bounce on{/set:action[0]}
+	{set:action[0]}gravitate around{/set:action[0]}
+	{set:action[0]}step on{/set:action[0]}
+	{set:action[0]}stomp on{/set:action[0]}
+	{set:action[0]}comment on{/set:action[0]}
+	{set:action[0]}blog about{/set:action[0]}
+	{set:action[0]}discuss{/set:action[0]}
+	{set:action[0]}repeat{/set:action[0]}
+	{set:action[0]}toggle{/set:action[0]}
+	{set:action[0]}scroll{/set:action[0]}
+	{set:action[0]}party with{/set:action[0]}
+	{set:action[0]}bury{/set:action[0]}
+	{set:action[0]}excavate{/set:action[0]}
+	{set:action[0]}mine{/set:action[0]}
+	{set:action[0]}acknowledge{/set:action[0]}
+	{set:action[0]}downvote{/set:action[0]}
+	{set:action[0]}notice{/set:action[0]}
+	{set:action[0]}understand{/set:action[0]}
+	{set:action[0]}misunderstand{/set:action[0]}
+	{set:action[0]}blur{/set:action[0]}
+	{set:action[0]}startle{/set:action[0]}
+	{set:action[0]}shave{/set:action[0]}
+	{set:action[0]}haunt{/set:action[0]}
+	{set:action[0]}taunt{/set:action[0]}
+	{set:action[0]}ostracize{/set:action[0]}
+	{set:action[0]}seduce{/set:action[0]}
+	{set:action[0]}touch{/set:action[0]}
+	{set:action[0]}fondle{/set:action[0]}
+	{set:action[0]}befriend{/set:action[0]}
+	{set:action[0]}fight{/set:action[0]}
+	{set:action[0]}analyze{/set:action[0]}
+	{set:action[0]}overanalyze{/set:action[0]}
+	{set:action[0]}deconstruct{/set:action[0]}
+	{set:action[0]}break down{/set:action[0]}
+	{set:action[0]}roll around{/set:action[0]}
+	{set:action[0]}spend a rad time with{/set:action[0]}
+	{set:action[0]}grow a beard with{/set:action[0]}
+	{set:action[0]}fatten{/set:action[0]}
+	{set:action[0]}embiggen{/set:action[0]}
+	{set:action[0]}shrink{/set:action[0]}
+	{set:action[0]}discover the beauty of{/set:action[0]}
+	{set:action[0]}rethink game mechanics with{/set:action[0]}
+	{set:action[0]}reattach bits of{/set:action[0]}
+	{set:action[0]}miss{/set:action[0]}
+	{set:action[0]}wander around a world without{/set:action[0]}
+	{set:action[0]}wander in a world where everybody turned into{/set:action[0]}
+	{set:action[0]}wander in search of{/set:action[0]}
+	{set:action[0]}learn to love{/set:action[0]}
+	{set:action[0]}fall in love with{/set:action[0]}
+	{set:action[0]}experience the clumsiness of{/set:action[0]}
+	{set:action[0]}suffer the mockery of{/set:action[0]}
+	{set:action[0]}link{/set:action[0]}
+	{set:action[0]}share{/set:action[0]}
+	{set:action[0]}rank{/set:action[0]}
+	{set:action[0]}fold{/set:action[0]}
+	{set:action[0]}craft{/set:action[0]}
+	{set:action[0]}knit{/set:action[0]}
+	{set:action[0]}make movies with{/set:action[0]}
+	{set:action[0]}write songs with{/set:action[0]}
+	{set:action[0]}write poetry with{/set:action[0]}
+	{set:action[0]}make music with{/set:action[0]}
+	{set:action[0]}tickle{/set:action[0]}
+	{set:action[0]}shrug at{/set:action[0]}
+	{set:action[0]}photograph{/set:action[0]}
+	{set:action[0]}breastfeed{/set:action[0]}
+	{set:action[0]}gamify{/set:action[0]}
+	{set:action[0]}rewrite{/set:action[0]}
+	{set:action[0]}rethink{/set:action[0]}
+	{set:action[0]}think about{/set:action[0]}
+	{set:action[0]}reinvent{/set:action[0]}
+	{set:action[0]}procedurally generate{/set:action[0]}
+	{set:action[0]}stop breathing if you don\'t hug{/set:action[0]}
+	{set:action[0]}stop breathing if you don\'t destroy{/set:action[0]}
+	{set:action[0]}stop breathing if you don\'t find{/set:action[0]}
+	{set:action[0]}hug{/set:action[0]}
+	{set:action[0]}kiss{/set:action[0]}
+	{set:action[0]}mingle with{/set:action[0]}
+	{set:action[0]}learn to accept{/set:action[0]}
+	
+	{set:thing[0]}blocks{/set:thing[0]}
+	{set:thing[0]}cubes{/set:thing[0]}
+	{set:thing[0]}random worlds{/set:thing[0]}
+	{set:thing[0]}procedurally-generated worlds{/set:thing[0]}
+	{set:thing[0]}text{/set:thing[0]}
+	{set:thing[0]}3D models{/set:thing[0]}
+	{set:thing[0]}sound samples{/set:thing[0]}
+	{set:thing[0]}bitmaps{/set:thing[0]}
+	{set:thing[0]}the presidency{/set:thing[0]}
+	{set:thing[0]}the government{/set:thing[0]}
+	{set:thing[0]}the end of the world{/set:thing[0]}
+	{set:thing[0]}conspiracy theories{/set:thing[0]}
+	{set:thing[0]}secret societies{/set:thing[0]}
+	{set:thing[0]}alternative lifestyles{/set:thing[0]}
+	{set:thing[0]}drug laws{/set:thing[0]}
+	{set:thing[0]}the human condition{/set:thing[0]}
+	{set:thing[0]}gravity{/set:thing[0]}
+	{set:thing[0]}religion{/set:thing[0]}
+	{set:thing[0]}religious figures{/set:thing[0]}
+	{set:thing[0]}nuns{/set:thing[0]}
+	{set:thing[0]}tall dark strangers{/set:thing[0]}
+	{set:thing[0]}dark and stormy nights{/set:thing[0]}
+	{set:thing[0]}clich?s{/set:thing[0]}
+	{set:thing[0]}politics{/set:thing[0]}
+	{set:thing[0]}society{/set:thing[0]}
+	{set:thing[0]}art{/set:thing[0]}
+	{set:thing[0]}literature{/set:thing[0]}
+	{set:thing[0]}spelling mistakes{/set:thing[0]}
+	{set:thing[0]}sports{/set:thing[0]}
+	{set:thing[0]}history{/set:thing[0]}
+	{set:thing[0]}global economics{/set:thing[0]}
+	{set:thing[0]}the economy{/set:thing[0]}
+	{set:thing[0]}death penalty{/set:thing[0]}
+	{set:thing[0]}social issues{/set:thing[0]}
+	{set:thing[0]}stem cells{/set:thing[0]}
+	{set:thing[0]}fetuses{/set:thing[0]}
+	{set:thing[0]}education{/set:thing[0]}
+	{set:thing[0]}pointless wars{/set:thing[0]}
+	{set:thing[0]}websites{/set:thing[0]}
+	{set:thing[0]}random pictures of random people{/set:thing[0]}
+	{set:thing[0]}pictures{/set:thing[0]}
+	{set:thing[0]}videos{/set:thing[0]}
+	{set:thing[0]}fanfic{/set:thing[0]}
+	{set:thing[0]}essays{/set:thing[0]}
+	{set:thing[0]}appliances{/set:thing[0]}
+	{set:thing[0]}parameters{/set:thing[0]}
+	{set:thing[0]}sliders{/set:thing[0]}
+	{set:thing[0]}music{/set:thing[0]}
+	{set:thing[0]}paradoxes{/set:thing[0]}
+	{set:thing[0]}brains{/set:thing[0]}
+	{set:thing[0]}souls{/set:thing[0]}
+	{set:thing[0]}your soul{/set:thing[0]}
+	{set:thing[0]}your family{/set:thing[0]}
+	{set:thing[0]}your subconscious{/set:thing[0]}
+	{set:thing[0]}yourself{/set:thing[0]}
+	{set:thing[0]}me{/set:thing[0]}
+	{set:thing[0]}rocks{/set:thing[0]}
+	{set:thing[0]}pebbles{/set:thing[0]}
+	{set:thing[0]}tunnels{/set:thing[0]}
+	{set:thing[0]}mountains{/set:thing[0]}
+	{set:thing[0]}forests{/set:thing[0]}
+	{set:thing[0]}the ocean{/set:thing[0]}
+	{set:thing[0]}the sky{/set:thing[0]}
+	{set:thing[0]}the world{/set:thing[0]}
+	{set:thing[0]}statues{/set:thing[0]}
+	{set:thing[0]}things that look like you{/set:thing[0]}
+	{set:thing[0]}insects{/set:thing[0]}
+	{set:thing[0]}evolving creatures{/set:thing[0]}
+	{set:thing[0]}DNA{/set:thing[0]}
+	{set:thing[0]}organisms{/set:thing[0]}
+	{set:thing[0]}chromosomes{/set:thing[0]}
+	{set:thing[0]}colors{/set:thing[0]}
+	{set:thing[0]}walls{/set:thing[0]}
+	{set:thing[0]}doors{/set:thing[0]}
+	{set:thing[0]}windows{/set:thing[0]}
+	{set:thing[0]}magic cards{/set:thing[0]}
+	{set:thing[0]}ropes{/set:thing[0]}
+	{set:thing[0]}cupboards{/set:thing[0]}
+	{set:thing[0]}books{/set:thing[0]}
+	{set:thing[0]}encyclopedias{/set:thing[0]}
+	{set:thing[0]}natural disasters{/set:thing[0]}
+	{set:thing[0]}controversial topics{/set:thing[0]}
+	{set:thing[0]}ingredients{/set:thing[0]}
+	{set:thing[0]}music notes{/set:thing[0]}
+	{set:thing[0]}pixels{/set:thing[0]}
+	{set:thing[0]}jokes{/set:thing[0]}
+	{set:thing[0]}puns{/set:thing[0]}
+	{set:thing[0]}your sense of self-worth{/set:thing[0]}
+	{set:thing[0]}ideas{/set:thing[0]}
+	{set:thing[0]}concepts{/set:thing[0]}
+	{set:thing[0]}things{/set:thing[0]}
+	{set:thing[0]}the universe{/set:thing[0]}
+	{set:thing[0]}individual atoms{/set:thing[0]}
+	{set:thing[0]}the human body{/set:thing[0]}
+	{set:thing[0]}moustaches{/set:thing[0]}
+	{set:thing[0]}lists{/set:thing[0]}
+	{set:thing[0]}game mechanics{/set:thing[0]}
+	{set:thing[0]}allegories{/set:thing[0]}
+	{set:thing[0]}metaphors{/set:thing[0]}
+	{set:thing[0]}similes{/set:thing[0]}
+	{set:thing[0]}symbols{/set:thing[0]}
+	{set:thing[0]}maths{/set:thing[0]}
+	{set:thing[0]}equations{/set:thing[0]}
+	{set:thing[0]}social norms{/set:thing[0]}
+	{set:thing[0]}gender roles{/set:thing[0]}
+	{set:thing[0]}privileges{/set:thing[0]}
+	{set:thing[0]}pregnancy{/set:thing[0]}
+	{set:thing[0]}your phobias{/set:thing[0]}
+	{set:thing[0]}awkwardness{/set:thing[0]}
+	{set:thing[0]}the Internet{/set:thing[0]}
+	{set:thing[0]}internet memes{/set:thing[0]}
+	{set:thing[0]}artists{/set:thing[0]}
+	{set:thing[0]}musicians{/set:thing[0]}
+	{set:thing[0]}goths{/set:thing[0]}
+	{set:thing[0]}emo kids{/set:thing[0]}
+	{set:thing[0]}hipsters{/set:thing[0]}
+	{set:thing[0]}autism{/set:thing[0]}
+	{set:thing[0]}the elderly{/set:thing[0]}
+	{set:thing[0]}photographs{/set:thing[0]}
+	{set:thing[0]}food{/set:thing[0]}
+	{set:thing[0]}flowers{/set:thing[0]}
+	{set:thing[0]}clouds{/set:thing[0]}
+	{set:thing[0]}clams{/set:thing[0]}
+	{set:thing[0]}slugs{/set:thing[0]}
+	{set:thing[0]}snails{/set:thing[0]}
+	{set:thing[0]}black holes{/set:thing[0]}
+	{set:thing[0]}bread{/set:thing[0]}
+	{set:thing[0]}deities{/set:thing[0]}
+	{set:thing[0]}gods{/set:thing[0]}
+	{set:thing[0]}portals{/set:thing[0]}
+	{set:thing[0]}the wind{/set:thing[0]}
+	{set:thing[0]}dead bodies{/set:thing[0]}
+	{set:thing[0]}the very fabric of reality{/set:thing[0]}
+	{set:thing[0]}dreams{/set:thing[0]}
+	{set:thing[0]}pop songs{/set:thing[0]}
+	{set:thing[0]}regular expressions{/set:thing[0]}
+	{set:thing[0]}the developer{/set:thing[0]}
+	{set:thing[0]}sarcasm{/set:thing[0]}
+	{set:thing[0]}the 4th wall{/set:thing[0]}
+	{set:thing[0]}emotions{/set:thing[0]}
+	{set:thing[0]}feelings{/set:thing[0]}
+	{set:thing[0]}familiar sounds{/set:thing[0]}
+	{set:thing[0]}familiar scents{/set:thing[0]}
+	{set:thing[0]}the fundamental laws of the universe{/set:thing[0]}
+	{set:thing[0]}the laws of physics{/set:thing[0]}
+	{set:thing[0]}achievements{/set:thing[0]}
+	{set:thing[0]}procrastination{/set:thing[0]}
+	{set:thing[0]}lateral thought{/set:thing[0]}
+	{set:thing[0]}boredom{/set:thing[0]}
+	{set:thing[0]}depression{/set:thing[0]}
+	{set:thing[0]}relationships{/set:thing[0]}
+	{set:thing[0]}love{/set:thing[0]}
+	{set:thing[0]}loneliness{/set:thing[0]}
+	{set:thing[0]}celebrities{/set:thing[0]}
+	{set:thing[0]}bloggers{/set:thing[0]}
+	{set:thing[0]}game designers{/set:thing[0]}
+	{set:thing[0]}nature{/set:thing[0]}
+	{set:thing[0]}civilization{/set:thing[0]}
+	{set:thing[0]}philosophy{/set:thing[0]}
+	{set:thing[0]}life{/set:thing[0]}
+	{set:thing[0]}absolutely everything{/set:thing[0]}
+	{set:thing[0]}everybody{/set:thing[0]}
+	{set:thing[0]}everything you cross{/set:thing[0]}
+	{set:thing[0]}anything you want{/set:thing[0]}
+	{set:thing[0]}something else{/set:thing[0]}
+	{set:thing[0]}something different{/set:thing[0]}
+	
+	{set:goal[0]}using your webcam{/set:goal[0]}
+	{set:goal[0]}using your printer{/set:goal[0]}
+	{set:goal[0]}- but like, it\'s totally atmospheric{/set:goal[0]}
+	{set:goal[0]}while wearing a top-hat{/set:goal[0]}
+	{set:goal[0]}wearing different costumes{/set:goal[0]}
+	{set:goal[0]}in the dark{/set:goal[0]}
+	{set:goal[0]}with your eyes closed{/set:goal[0]}
+	{set:goal[0]}with 3D glasses{/set:goal[0]}
+	{set:goal[0]}- but without sound{/set:goal[0]}
+	{set:goal[0]}- in text form{/set:goal[0]}
+	{set:goal[0]}(there\'s a board game too){/set:goal[0]}
+	{set:goal[0]}for a contest{/set:goal[0]}
+	{set:goal[0]}in a deathmatch{/set:goal[0]}
+	{set:goal[0]}and it\'s super old-timey{/set:goal[0]}
+	{set:goal[0]}and it\'s WAY retro{/set:goal[0]}
+	{set:goal[0]}and it\'s slick and futuristic and stuff{/set:goal[0]}
+	{set:goal[0]}in eye-popping 3D{/set:goal[0]}
+	{set:goal[0]}while holding your breath{/set:goal[0]}
+	{set:goal[0]}without blinking{/set:goal[0]}
+	{set:goal[0]}with violence{/set:goal[0]}
+	{set:goal[0]}for fun{/set:goal[0]}
+	{set:goal[0]}in alphabetical order{/set:goal[0]}
+	{set:goal[0]}in new exciting ways{/set:goal[0]}
+	{set:goal[0]}any way you want{/set:goal[0]}
+	{set:goal[0]}over the course of a year{/set:goal[0]}
+	{set:goal[0]}over several decades{/set:goal[0]}
+	{set:goal[0]}through the seasons{/set:goal[0]}
+	{set:goal[0]}while collecting them all{/set:goal[0]}
+	{set:goal[0]}to work on your self-esteem{/set:goal[0]}
+	{set:goal[0]}with no interactivity whatsoever{/set:goal[0]}
+	{set:goal[0]}through the internet{/set:goal[0]}
+	{set:goal[0]}in realtime{/set:goal[0]}
+	{set:goal[0]}with geolocation{/set:goal[0]}
+	{set:goal[0]}(it\'s not really a game){/set:goal[0]}
+	{set:goal[0]}in binary{/set:goal[0]}
+	{set:goal[0]}metaphorically{/set:goal[0]}
+	{set:goal[0]}symbolically{/set:goal[0]}
+	{set:goal[0]}repetitively{/set:goal[0]}
+	{set:goal[0]}competitively{/set:goal[0]}
+	{set:goal[0]}(in beta){/set:goal[0]}
+	{set:goal[0]}in front of the whole world{/set:goal[0]}
+	{set:goal[0]}and you gradually become beautiful{/set:goal[0]}
+	{set:goal[0]}but you gradually turn into a monster{/set:goal[0]}
+	{set:goal[0]}and you control light and darkness{/set:goal[0]}
+	{set:goal[0]}and you can summon a variety of animals{/set:goal[0]}
+	{set:goal[0]}and you can create a variety of objects{/set:goal[0]}
+	{set:goal[0]}and you have different powers at different times{/set:goal[0]}
+	{set:goal[0]}and everybody in the game speaks in broken english{/set:goal[0]}
+	{set:goal[0]}and everybody is voiced by other players currently playing the game{/set:goal[0]}
+	{set:goal[0]}and you play on the same world as everyone else{/set:goal[0]}
+	{set:goal[0]}and near the end you ascend to godhood{/set:goal[0]}
+	{set:goal[0]}and gravity doesn\'t exist{/set:goal[0]}
+	{set:goal[0]}with astrology{/set:goal[0]}
+	{set:goal[0]}with maths{/set:goal[0]}
+	{set:goal[0]}with geometry{/set:goal[0]}
+	{set:goal[0]}with quantum physics{/set:goal[0]}
+	{set:goal[0]}and you can escape to other dimensions{/set:goal[0]}
+	{set:goal[0]}with terraforming{/set:goal[0]}
+	{set:goal[0]}with the power of baking{/set:goal[0]}
+	{set:goal[0]}with a pickaxe{/set:goal[0]}
+	{set:goal[0]}with a shovel{/set:goal[0]}
+	{set:goal[0]}with an axe{/set:goal[0]}
+	{set:goal[0]}with a magic wand{/set:goal[0]}
+	{set:goal[0]}and also you push around blocks{/set:goal[0]}
+	{set:goal[0]}while telling jokes{/set:goal[0]}
+	{set:goal[0]}but you control the hero indirectly{/set:goal[0]}
+	{set:goal[0]}and you can control everyone in the game indirectly{/set:goal[0]}
+	{set:goal[0]}with the power of javascript{/set:goal[0]}
+	{set:goal[0]}and you learn a thing ot two along the way{/set:goal[0]}
+	{set:goal[0]}and the game won\'t stop scrolling{/set:goal[0]}
+	{set:goal[0]}by reversing time{/set:goal[0]}
+	{set:goal[0]}by controlling the flow of time{/set:goal[0]}
+	{set:goal[0]}by changing the physical properties of things{/set:goal[0]}
+	{set:goal[0]}by altering your body{/set:goal[0]}
+	{set:goal[0]}by changing the rules of the game{/set:goal[0]}
+	{set:goal[0]}from outside the game{/set:goal[0]}
+	{set:goal[0]}by toying with gravity{/set:goal[0]}
+	{set:goal[0]}by toying with physics{/set:goal[0]}
+	{set:goal[0]}through social engineering{/set:goal[0]}
+	{set:goal[0]}with meta game mechanics{/set:goal[0]}
+	{set:goal[0]}ironically{/set:goal[0]}
+	{set:goal[0]}unironically{/set:goal[0]}
+	{set:goal[0]}randomly{/set:goal[0]}
+	{set:goal[0]}with occasional jump-scares{/set:goal[0]}
+	{set:goal[0]}and the game is stupidly linear{/set:goal[0]}
+	{set:goal[0]}and you do that with only one button{/set:goal[0]}
+	{set:goal[0]}but the controls are ridiculously difficult{/set:goal[0]}
+	{set:goal[0]}and the graphics upgrade as you play{/set:goal[0]}
+	{set:goal[0]}and the music gets progressibely worse{/set:goal[0]}
+	{set:goal[0]}and there\'s a laughtrack{/set:goal[0]}
+	{set:goal[0]}and there\'s an audience that reacts to your actions{/set:goal[0]}
+	{set:goal[0]}but you\'re the clumsiest person ever{/set:goal[0]}
+	{set:goal[0]}and the sound effects are gameplay hints{/set:goal[0]}
+	{set:goal[0]}and the gameplay changes depending on when you\'re playing it{/set:goal[0]}
+	{set:goal[0]}and the gameplay changes depending on where you\'re playing it{/set:goal[0]}
+	{set:goal[0]}and the gameplay depends on the time of the day{/set:goal[0]}
+	{set:goal[0]}and the game reacts differently to how you play it{/set:goal[0]}
+	{set:goal[0]}and the game reacts differently depending on who plays it{/set:goal[0]}
+	{set:goal[0]}and it\'s sort of a parody{/set:goal[0]}
+	{set:goal[0]}- or so it seems{/set:goal[0]}
+	{set:goal[0]}- with a twist{/set:goal[0]}
+	{set:goal[0]}except it\'s all a dream{/set:goal[0]}
+	{set:goal[0]}(it gets pretty meta){/set:goal[0]}
+	{set:goal[0]}(it gets kinda self-referential){/set:goal[0]}
+	{set:goal[0]}(and it\'s also a commentary on video games as a media){/set:goal[0]}
+	{set:goal[0]}because of social differences{/set:goal[0]}
+	{set:goal[0]}to win the game{/set:goal[0]}
+	{set:goal[0]}but doing so loses the game{/set:goal[0]}
+	{set:goal[0]}or whatever{/set:goal[0]}
+{/if:condition}
+{/format:BlackHole}
+{get:genre[0]} where you {get:action[0]} {get:thing[0]} {get:goal[0]}.
