@@ -62,11 +62,11 @@ public class TemplateProcessor
 {
   /**
    */
-  public static final double VERSION = 0.4;
+  public static final double VERSION = 0.5;
 
   /**
    */
-  public static final long BUILD = 20140120;
+  public static final long BUILD = 20140601;
   private static final String[] LATIN_WORDS =
   {
     //
