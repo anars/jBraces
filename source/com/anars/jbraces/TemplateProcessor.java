@@ -373,16 +373,16 @@ public class TemplateProcessor
     "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
     "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
-    "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?\\}|" + //
+    "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
     "\\{" + PROPERTY + ":[^}]*\\}|" + //
     "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
     "\\{" + PANGRAM + ":\\d+:\\d+\\}|" + //
     "\\{" + SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + SET + ":\\13\\}|" + //
     "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\15\\}|" + //
-    "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|" + //
+    "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\17\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\17\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -853,7 +853,9 @@ public class TemplateProcessor
             {
               putValueObject(pieces[1] + "-offset", index + 1);
               putValueObject(pieces[1] + "-first", (index == 0));
-              putValueObject(pieces[1] + "-last", (index + 1 >= object.length));
+              putValueObject(pieces[1] + "-second", (index == 1));
+              putValueObject(pieces[1] + "-penultimate", (index + 1 == object.length - 1));
+              putValueObject(pieces[1] + "-last", (index + 1 == object.length));
               putValueObject(pieces[1] + "-value", object[index]);
               putValueObject(pieces[1], object[index]);
               replacement += apply(loopTemplate);
@@ -863,6 +865,8 @@ public class TemplateProcessor
             {
               putValueObject(pieces[1] + "-offset", index + 1);
               putValueObject(pieces[1] + "-first", (index == object.length - 1));
+              putValueObject(pieces[1] + "-second", (index == object.length - 2));
+              putValueObject(pieces[1] + "-penultimate", (index == 1));
               putValueObject(pieces[1] + "-last", (index == 0));
               putValueObject(pieces[1] + "-value", object[index]);
               putValueObject(pieces[1], object[index]);
@@ -870,6 +874,8 @@ public class TemplateProcessor
             }
           removeValueObject(pieces[1] + "-offset");
           removeValueObject(pieces[1] + "-first");
+          removeValueObject(pieces[1] + "-second");
+          removeValueObject(pieces[1] + "-penultimate");
           removeValueObject(pieces[1] + "-last");
           removeValueObject(pieces[1] + "-value");
           putValueObject(pieces[1], object);
@@ -1080,6 +1086,8 @@ public class TemplateProcessor
         {
           putValueObject(pieces[1] + "-offset", index + 1);
           putValueObject(pieces[1] + "-first", (index == 0));
+          putValueObject(pieces[1] + "-second", (index == 1));
+          putValueObject(pieces[1] + "-penultimate", (index == repeatTimes - 2));
           putValueObject(pieces[1] + "-last", (index == repeatTimes - 1));
           putValueObject(pieces[1] + "-value", index + 1);
           replacement += apply(repeatBlock);
@@ -1087,6 +1095,8 @@ public class TemplateProcessor
         removeValueObject(pieces[1] + "-length");
         removeValueObject(pieces[1] + "-offset");
         removeValueObject(pieces[1] + "-first");
+        removeValueObject(pieces[1] + "-second");
+        removeValueObject(pieces[1] + "-penultimate");
         removeValueObject(pieces[1] + "-last");
         removeValueObject(pieces[1] + "-value");
         removeValueObject(pieces[1]);
@@ -1262,8 +1272,8 @@ public class TemplateProcessor
       {
         Object offsetValue = _valueObjects.get(pieces[0].toLowerCase() + pieces[1].toLowerCase());
         return (offsetValue == null ? 0 : offsetValue);
-      }
-      else if (pieces[1].toLowerCase().equals("-first") || pieces[1].toLowerCase().equals("-last"))
+      } // 
+      else if (pieces[1].toLowerCase().equals("-first") || pieces[1].toLowerCase().equals("-second") || pieces[1].toLowerCase().equals("-penultimate") || pieces[1].toLowerCase().equals("-last"))
       {
         return (((Boolean) _valueObjects.get(pieces[0].toLowerCase() + pieces[1].toLowerCase())).booleanValue());
       }
