@@ -62,11 +62,11 @@ import java.util.regex.Pattern;
  {
    /**
     */
-   public static final double VERSION = 0.6;
+   public static final double VERSION = 0.7;
 
    /**
     */
-   public static final long BUILD = 20141028;
+   public static final long BUILD = 20141103;
    private static final String[] LATIN_WORDS =
    {
      //
@@ -1203,7 +1203,7 @@ import java.util.regex.Pattern;
              setLocale(new Locale(localeString.substring(0, 2), localeString.substring(3)));
          }
        }
-       matcher.appendReplacement(stringBuffer, replacement == null ? "" : replacement);
+       matcher.appendReplacement(stringBuffer, replacement == null ? "" : Matcher.quoteReplacement(replacement));
        replacement = null;
      }
      matcher.appendTail(stringBuffer);
