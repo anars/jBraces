@@ -62,11 +62,11 @@ import java.util.regex.Pattern;
  {
    /**
     */
-   public static final double VERSION = 0.7;
+   public static final double VERSION = 0.8;
 
    /**
     */
-   public static final long BUILD = 20141103;
+   public static final long BUILD = 20150803;
    private static final String[] LATIN_WORDS =
    {
      //
