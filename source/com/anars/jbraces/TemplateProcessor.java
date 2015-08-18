@@ -49,10 +49,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,7 +64,7 @@ import java.util.regex.Pattern;
 
    /**
     */
-   public static final long BUILD = 20150803;
+   public static final long BUILD = 20150818;
    private static final String[] LATIN_WORDS =
    {
      //
@@ -381,7 +379,7 @@ import java.util.regex.Pattern;
      "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\15\\}|" + //
      "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
      "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
-     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
+     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number|starts-with|ends-with|contains|starts-with-ignore-case|ends-with-ignore-case|contains-ignore-case)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
      "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\17\\}", //
      Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
    private Locale _locale = null;
@@ -963,6 +961,30 @@ import java.util.regex.Pattern;
              {
                condition = !leftSideStr.equals("");
              }
+             else if (pieces[3].equals("starts-with"))
+             {
+               condition = leftSideStr.startsWith(rightSideStr);
+             }
+             else if (pieces[3].equals("ends-with"))
+             {
+               condition = leftSideStr.endsWith(rightSideStr);
+             }
+             else if (pieces[3].equals("contains"))
+             {
+               condition = leftSideStr.contains(rightSideStr);
+             }
+             else if (pieces[3].equals("starts-with-ignore-case"))
+             {
+               condition = leftSideStr.toLowerCase(_locale).startsWith(rightSideStr.toLowerCase(_locale));
+             }
+             else if (pieces[3].equals("ends-with-ignore-case"))
+             {
+               condition = leftSideStr.toLowerCase(_locale).endsWith(rightSideStr.toLowerCase(_locale));
+             }
+             else if (pieces[3].equals("contains-ignore-case"))
+             {
+               condition = leftSideStr.toLowerCase(_locale).contains(rightSideStr.toLowerCase(_locale));
+             }
              else
              {
                int leftSideInt = 0;
@@ -1118,7 +1140,7 @@ import java.util.regex.Pattern;
            if (spanFormatter != null)
            {
              String spanTemplate = substring(matcher.group(), "}", "{/");
-             replacement = spanFormatter.format(apply(spanTemplate), locale);
+             replacement = apply(spanFormatter.format(apply(spanTemplate), locale));
            }
            else
            {
