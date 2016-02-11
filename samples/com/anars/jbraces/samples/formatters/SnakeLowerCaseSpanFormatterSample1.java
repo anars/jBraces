@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2014 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -30,7 +30,7 @@ public class SnakeLowerCaseSpanFormatterSample1
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
     templateProcessor.putSpanFormatter("SnakeLowerCase", new SnakeLowerCaseSpanFormatter());
-    String template = "{format:SnakeLowerCase}Copyright (c) 2012-2014 Anar Software LLC <http://anars.com>{/format:SnakeLowerCase}";
+    String template = "{format:SnakeLowerCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:SnakeLowerCase}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2014 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -30,7 +30,7 @@ public class UpperCaseSpanFormatterSample1
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
     templateProcessor.putSpanFormatter("UpperCase", new UpperCaseSpanFormatter());
-    String template = "{format:UpperCase}Copyright (c) 2012-2014 Anar Software LLC <http://anars.com>{/format:UpperCase}";
+    String template = "{format:UpperCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:UpperCase}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
