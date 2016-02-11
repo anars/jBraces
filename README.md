@@ -1,6 +1,6 @@
 #Information
 
-**jBraces** is Java based light-weight, simple-syntax template engine to generate any formatted text including source code, web pages, e-mails ... etc.
+**jBraces** is Java based lightweight, simple syntax template engine to generate any formatted text including source code, web pages, e-mails ... etc.
 
 #Build Instructions
 
