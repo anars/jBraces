@@ -76,6 +76,10 @@ com.anars.jbraces.samples.RepeatSample4
 Threw bunch of random dice : {repeat:dice:3:9}
 Die {get:dice.-offset} of {get:dice.-length} is {random-number:1:6}{/repeat:dice}
 
+com.anars.jbraces.samples.RepeatSample5
+{set:mintimes}1{/set:mintimes}{set:maxtimes}5{/set:maxtimes}Threw bunch of random dice : {repeat:dice:mintimes:maxtimes}
+Die {get:dice.-offset} of {get:dice.-length} is {random-number:1:6}{/repeat:dice}
+
 com.anars.jbraces.samples.SetSample1
 {set:hero}Superman{/set:hero}My childhood hero is {get:hero}
 

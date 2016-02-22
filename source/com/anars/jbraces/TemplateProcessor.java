@@ -60,11 +60,11 @@ public class TemplateProcessor
 {
   /**
    */
-  public static final double VERSION = 1.0;
+  public static final double VERSION = 1.1;
 
   /**
    */
-  public static final long BUILD = 20160211;
+  public static final long BUILD = 20160222;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -364,23 +364,23 @@ public class TemplateProcessor
   //
   private Pattern _pattern = Pattern.compile(
     //
-    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\1\\}|" + //
-    "\\{" + SHOW_RANDOMLY + ":(\\w+)\\}.*?\\{/" + SHOW_RANDOMLY + ":\\3\\}|" + //
-    "\\{" + REPEAT + ":(\\w+):\\d+(:\\d+)?\\}.*?\\{/" + REPEAT + ":\\4\\}|" + //
-    "\\{" + RANDOM_NUMBER + ":\\-?\\d+:\\-?\\d+\\}|" + //
-    "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
-    "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
-    "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
+    "\\{" + SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + SET + ":\\1\\}|" + //
     "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
     "\\{" + PROPERTY + ":[^}]*\\}|" + //
+    "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
+    "\\{" + SHOW_RANDOMLY + ":(\\w+)\\}.*?\\{/" + SHOW_RANDOMLY + ":\\8\\}|" + //
+    "\\{" + RANDOM_NUMBER + ":\\-?\\d+:\\-?\\d+\\}|" + //
+    "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
+    "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
     "\\{" + PANGRAM + ":\\d+:\\d+\\}|" + //
-    "\\{" + SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + SET + ":\\13\\}|" + //
-    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\15\\}|" + //
     "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number|starts-with|ends-with|contains|starts-with-ignore-case|ends-with-ignore-case|contains-ignore-case)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\17\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\11\\}|" + //
+    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\28\\}|" + //
+    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\30\\}|" + //
+    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\46\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -1098,19 +1098,58 @@ public class TemplateProcessor
         int repeatTimes = 1;
         try
         {
-          if(pieces.length == 4)
-          {
-            int startNumber = repeatTimes = Integer.parseInt(pieces[2]);
-            repeatTimes = ((int)(Math.random() * (Integer.parseInt(pieces[3]) - startNumber + 1)) + startNumber);
-          }
-          else
+          try
           {
             repeatTimes = Integer.parseInt(pieces[2]);
           }
+          catch(NumberFormatException numberFormatException)
+          {
+            repeatTimes = Integer.parseInt(getObjectValue(pieces[2]).toString());
+          }
+          if(pieces.length == 4)
+          {
+            int startNumber = repeatTimes;
+            try
+            {
+              repeatTimes = ((int)(Math.random() * (Integer.parseInt(pieces[3]) - startNumber + 1)) + startNumber);
+            }
+            catch(NumberFormatException numberFormatException)
+            {
+              repeatTimes = ((int)(Math.random() * (Integer.parseInt(getObjectValue(pieces[3]).toString()) - startNumber + 1)) + startNumber);
+            }
+          }
+        }
+        catch(NumberFormatException objectNumberFormatException)
+        {
+          _logger.log(Level.SEVERE, "Value Not a Number", objectNumberFormatException);
+        }
+        catch(ObjectNotFoundException objectNotFoundException)
+        {
+          _logger.log(Level.SEVERE, "Object Not Found", objectNotFoundException);
+        }
+        catch(AttributeNotFoundException attributeNotFoundException)
+        {
+          _logger.log(Level.SEVERE, "Attribute Not Found", attributeNotFoundException);
+        }
+        catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException)
+        {
+          _logger.log(Level.SEVERE, "Array Index Out Of Bound", arrayIndexOutOfBoundsException);
+        }
+        catch(NotArrayException notArrayException)
+        {
+          _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+        }
+        catch(ArrayNotFoundException arrayNotFoundException)
+        {
+          _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+        }
+        catch(NullPointerException nullPointerException)
+        {
+          _logger.log(Level.SEVERE, "Null Pointer", nullPointerException);
         }
         catch(Exception exception)
         {
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+          _logger.log(Level.SEVERE, "Exception", exception);
         }
         String repeatBlock = substring(matcher.group(), "}", "{/");
         replacement = "";
@@ -1246,7 +1285,6 @@ public class TemplateProcessor
       output = apply(output);
     return (output);
   }
-
   private Object[] getArrayObject(String name)
     throws ArrayNotFoundException, NotArrayException
   {
@@ -1262,7 +1300,6 @@ public class TemplateProcessor
       throw new NotArrayException(name);
     }
   }
-
   private Object getObjectValue(String name)
     throws ArrayNotFoundException, NotArrayException, ArrayIndexOutOfBoundsException, ObjectNotFoundException, AttributeNotFoundException
   {
@@ -1384,7 +1421,6 @@ public class TemplateProcessor
       _logger.log(Level.SEVERE, "Exception", exception);
     }
   }
-
   private List<Class> findClasses(File directory, String packageName)
     throws ClassNotFoundException
   {
@@ -1407,12 +1443,10 @@ public class TemplateProcessor
       }
     return (classList);
   }
-
   private String substring(String string, String start, String end)
   {
     return (substring(string, start, end, true));
   }
-
   private String substring(String string, String start, String end, boolean lastIndex)
   {
     String substring = string;
@@ -1420,7 +1454,6 @@ public class TemplateProcessor
     substring = substring.substring(0, lastIndex ? substring.lastIndexOf(end) : substring.indexOf(end));
     return (substring);
   }
-
   private Object[] expandArray(Object[] OriginalArray, int size)
   {
     Object[] newArray = new Object[OriginalArray.length + size];
