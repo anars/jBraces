@@ -22,12 +22,12 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class RandomNumberSample1
+public class TextSample2
 {
-  public RandomNumberSample1()
+  public TextSample2()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Your lucky number is {random-number:1:100}";
+    String template = "Here are the sentences using every letter of the alphabet at least once : {text:pangram:2:5}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
@@ -35,6 +35,6 @@ public class RandomNumberSample1
 
   public static void main(String[] arg)
   {
-    new RandomNumberSample1();
+    new TextSample2();
   }
 }

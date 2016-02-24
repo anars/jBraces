@@ -22,19 +22,19 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class PangramSample1
+public class RandomlySample1
 {
-  public PangramSample1()
+  public RandomlySample1()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Here are the sentences using every letter of " + "the alphabet at least once : {pangram:2:5}";
+    String template = "Welcome... {randomly:winner}Congratulations, " + "You are the winner!{/randomly:winner}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
   }
 
-  public static void main(String[] arg)
+  public static void main(String[] args)
   {
-    new PangramSample1();
+    new RandomlySample1();
   }
 }

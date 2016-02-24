@@ -32,12 +32,10 @@ public class SetSample4
       "C", "C++", "Java", "Scala", "Python", "PHP"
     };
     templateProcessor.putValueObject("languages", favoriteLanguages);
-    System.out.println(templateProcessor.getValueObject("languages"));
     String template = "{set:languages[4]}JavaScript{/set:languages[4]}Our fourth favorite programming language is {get:languages[4]}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
-    System.out.println(templateProcessor.getValueObject("languages"));
   }
 
   public static void main(String[] args)

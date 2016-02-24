@@ -60,11 +60,11 @@ public class TemplateProcessor
 {
   /**
    */
-  public static final double VERSION = 1.1;
+  public static final double VERSION = 1.2;
 
   /**
    */
-  public static final long BUILD = 20160222;
+  public static final long BUILD = 20160223;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -345,20 +345,21 @@ public class TemplateProcessor
   private static final String VO_NAME_LANGUAGE_CODE = "jb_language_code";
   private static final String VO_NAME_LANGUAGE_NAME = "jb_language_name";
   //
-  private static final String LOOP = "loop";
-  private static final String SHOW_RANDOMLY = "show-randomly";
-  private static final String REPEAT = "repeat";
-  private static final String RANDOM_NUMBER = "random-number";
+  private static final String SET = "set";
+  private static final String GET = "get";
+  private static final String PROPERTY = "property";
   private static final String DRAW = "draw";
+  private static final String SHOW_RANDOMLY = "randomly";
+  private static final String RANDOM_NUMBER = "number";
   private static final String DATE = "date";
   private static final String TIME = "time";
-  private static final String GET = "get";
-  private static final String SET = "set";
-  private static final String PROPERTY = "property";
-  private static final String LOREM_IPSUM = "lorem-ipsum";
-  private static final String PANGRAM = "pangram";
-  private static final String FORMAT = "format";
+  private static final String TEXT = "text";
+  //private static final String LOREM_IPSUM = "loremipsum";
+  //private static final String PANGRAM = "pangram";
   private static final String IF = "if";
+  private static final String LOOP = "loop";
+  private static final String REPEAT = "repeat";
+  private static final String FORMAT = "format";
   //
   private Logger _logger = Logger.getLogger(getClass().getCanonicalName());
   //
@@ -372,15 +373,14 @@ public class TemplateProcessor
     "\\{" + RANDOM_NUMBER + ":\\-?\\d+:\\-?\\d+\\}|" + //
     "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
-    "\\{" + LOREM_IPSUM + ":\\d+:\\d+\\}|" + //
-    "\\{" + PANGRAM + ":\\d+:\\d+\\}|" + //
+    "\\{" + TEXT + ":(latin|pangram|gibberish):\\d+:\\d+\\}|" + //
     "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number|starts-with|ends-with|contains|starts-with-ignore-case|ends-with-ignore-case|contains-ignore-case)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\11\\}|" + //
-    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\28\\}|" + //
-    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\30\\}|" + //
-    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\46\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\12\\}|" + //
+    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\29\\}|" + //
+    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\31\\}|" + //
+    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\47\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -710,13 +710,13 @@ public class TemplateProcessor
           _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
         }
       }
-      else if(pieces[0].equals(LOREM_IPSUM))
+      else if(pieces[0].equals(TEXT))
       {
         int minSentences = 1;
         int maxSentences = 1;
         try
         {
-          minSentences = Integer.parseInt(pieces[1]);
+          minSentences = Integer.parseInt(pieces[2]);
         }
         catch(Exception exception)
         {
@@ -724,56 +724,7 @@ public class TemplateProcessor
         }
         try
         {
-          maxSentences = Integer.parseInt(pieces[2]);
-        }
-        catch(Exception exception)
-        {
-          maxSentences = minSentences;
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
-        }
-        int sentences = (int)(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
-        StringBuffer stringBufferParagraph = new StringBuffer("Lorem ipsum");
-        for(int sentenceIndex = 0; sentenceIndex < sentences; sentenceIndex++)
-        {
-          int wordCount = (int)(Math.random() * 6) + 3;
-          for(int wordIndex = 0; wordIndex < wordCount; wordIndex++)
-          {
-            String word = LATIN_WORDS[(int)(Math.random() * LATIN_WORDS.length)];
-            if(wordIndex == 0 && sentenceIndex != 0)
-              stringBufferParagraph.append(" " + word.substring(0, 1).toUpperCase() + word.substring(1));
-            else
-              stringBufferParagraph.append(" " + word);
-          }
-          switch((int)Math.random() * 10)
-          {
-            case 8:
-              stringBufferParagraph.append("!");
-              break;
-            case 9:
-              stringBufferParagraph.append("?");
-              break;
-            default:
-              stringBufferParagraph.append(".");
-              break;
-          }
-        }
-        replacement = stringBufferParagraph.toString();
-      }
-      else if(pieces[0].equals(PANGRAM))
-      {
-        int minSentences = 1;
-        int maxSentences = 1;
-        try
-        {
-          minSentences = Integer.parseInt(pieces[1]);
-        }
-        catch(Exception exception)
-        {
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
-        }
-        try
-        {
-          maxSentences = Integer.parseInt(pieces[2]);
+          maxSentences = Integer.parseInt(pieces[3]);
         }
         catch(Exception exception)
         {
@@ -782,14 +733,47 @@ public class TemplateProcessor
         }
         int sentences = (int)(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
         StringBuffer stringBufferParagraph = new StringBuffer();
+        if (pieces[1].equalsIgnoreCase("latin"))
+          stringBufferParagraph.append("Lorem ipsum");
         for(int sentenceIndex = 0; sentenceIndex < sentences; sentenceIndex++)
         {
-          int sentence = (int)(Math.random() * PANGRAM_SENTENCES.length);
-          stringBufferParagraph.append(PANGRAM_SENTENCES[sentence]);
-          if(!PANGRAM_SENTENCES[sentence].endsWith("!") && !PANGRAM_SENTENCES[sentence].endsWith("?"))
-            stringBufferParagraph.append(".");
-          if(sentenceIndex + 1 < sentences)
-            stringBufferParagraph.append(" ");
+          if (pieces[1].equalsIgnoreCase("latin"))
+          {
+            int wordCount = (int)(Math.random() * 6) + 3;
+            for(int wordIndex = 0; wordIndex < wordCount; wordIndex++)
+            {
+              String word = LATIN_WORDS[(int)(Math.random() * LATIN_WORDS.length)];
+              if(wordIndex == 0 && sentenceIndex != 0)
+                stringBufferParagraph.append(" " + word.substring(0, 1).toUpperCase() + word.substring(1));
+              else
+                stringBufferParagraph.append(" " + word);
+            }
+            switch((int)Math.random() * 10)
+            {
+              case 8:
+                stringBufferParagraph.append("!");
+                break;
+              case 9:
+                stringBufferParagraph.append("?");
+                break;
+              default:
+                stringBufferParagraph.append(".");
+                break;
+            }
+          }
+          else if (pieces[1].equalsIgnoreCase("pangram"))
+          {
+            int sentence = (int)(Math.random() * PANGRAM_SENTENCES.length);
+            stringBufferParagraph.append(PANGRAM_SENTENCES[sentence]);
+            if(!PANGRAM_SENTENCES[sentence].endsWith("!") && !PANGRAM_SENTENCES[sentence].endsWith("?"))
+              stringBufferParagraph.append(".");
+            if(sentenceIndex + 1 < sentences)
+              stringBufferParagraph.append(" ");
+          }
+          else if (pieces[1].equalsIgnoreCase("gibberish"))
+          {
+            
+          }
         }
         replacement = stringBufferParagraph.toString();
       }
@@ -1285,6 +1269,7 @@ public class TemplateProcessor
       output = apply(output);
     return (output);
   }
+
   private Object[] getArrayObject(String name)
     throws ArrayNotFoundException, NotArrayException
   {
@@ -1300,6 +1285,7 @@ public class TemplateProcessor
       throw new NotArrayException(name);
     }
   }
+
   private Object getObjectValue(String name)
     throws ArrayNotFoundException, NotArrayException, ArrayIndexOutOfBoundsException, ObjectNotFoundException, AttributeNotFoundException
   {
@@ -1421,6 +1407,7 @@ public class TemplateProcessor
       _logger.log(Level.SEVERE, "Exception", exception);
     }
   }
+
   private List<Class> findClasses(File directory, String packageName)
     throws ClassNotFoundException
   {
@@ -1443,10 +1430,12 @@ public class TemplateProcessor
       }
     return (classList);
   }
+
   private String substring(String string, String start, String end)
   {
     return (substring(string, start, end, true));
   }
+
   private String substring(String string, String start, String end, boolean lastIndex)
   {
     String substring = string;
@@ -1454,6 +1443,7 @@ public class TemplateProcessor
     substring = substring.substring(0, lastIndex ? substring.lastIndexOf(end) : substring.indexOf(end));
     return (substring);
   }
+
   private Object[] expandArray(Object[] OriginalArray, int size)
   {
     Object[] newArray = new Object[OriginalArray.length + size];

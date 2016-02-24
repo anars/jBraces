@@ -22,12 +22,12 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class LoremIpsumSample1
+public class TextSample3
 {
-  public LoremIpsumSample1()
+  public TextSample3()
   {
     TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Here is placeholder text: {lorem-ipsum:2:5}";
+    String template = "Here are the sentences using random syllable : {text:gibberish:2:5}";
     System.out.println(template);
     template = templateProcessor.apply(template);
     System.out.println(template);
@@ -35,6 +35,6 @@ public class LoremIpsumSample1
 
   public static void main(String[] arg)
   {
-    new LoremIpsumSample1();
+    new TextSample3();
   }
 }
