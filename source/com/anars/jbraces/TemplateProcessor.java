@@ -336,6 +336,16 @@ public class TemplateProcessor
     //
   };
   //
+  private static final String[] ENGLISH_VOWELS =
+  {
+    "a", "e", "i", "o", "u"
+  };
+  //
+  private static final String[] ENGLISH_CONSONANTS =
+  {
+    "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"
+  };
+  //
   private static final String VO_NAME_CLASS_VERSION = "jb_class_version";
   private static final String VO_NAME_CLASS_BUILD = "jb_class_build";
   private static final String VO_NAME_LOCALE_CODE = "jb_locale_code";
@@ -354,8 +364,6 @@ public class TemplateProcessor
   private static final String DATE = "date";
   private static final String TIME = "time";
   private static final String TEXT = "text";
-  //private static final String LOREM_IPSUM = "loremipsum";
-  //private static final String PANGRAM = "pangram";
   private static final String IF = "if";
   private static final String LOOP = "loop";
   private static final String REPEAT = "repeat";
@@ -733,11 +741,11 @@ public class TemplateProcessor
         }
         int sentences = (int)(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
         StringBuffer stringBufferParagraph = new StringBuffer();
-        if (pieces[1].equalsIgnoreCase("latin"))
+        if(pieces[1].equalsIgnoreCase("latin"))
           stringBufferParagraph.append("Lorem ipsum");
         for(int sentenceIndex = 0; sentenceIndex < sentences; sentenceIndex++)
         {
-          if (pieces[1].equalsIgnoreCase("latin"))
+          if(pieces[1].equalsIgnoreCase("latin"))
           {
             int wordCount = (int)(Math.random() * 6) + 3;
             for(int wordIndex = 0; wordIndex < wordCount; wordIndex++)
@@ -761,7 +769,7 @@ public class TemplateProcessor
                 break;
             }
           }
-          else if (pieces[1].equalsIgnoreCase("pangram"))
+          else if(pieces[1].equalsIgnoreCase("pangram"))
           {
             int sentence = (int)(Math.random() * PANGRAM_SENTENCES.length);
             stringBufferParagraph.append(PANGRAM_SENTENCES[sentence]);
@@ -770,9 +778,39 @@ public class TemplateProcessor
             if(sentenceIndex + 1 < sentences)
               stringBufferParagraph.append(" ");
           }
-          else if (pieces[1].equalsIgnoreCase("gibberish"))
+          else if(pieces[1].equalsIgnoreCase("gibberish"))
           {
-            
+            int wordCount = ((int)(Math.random() * 5)) + 1;
+            for(int wordIndex = 0; wordIndex < wordCount; wordIndex++)
+            {
+              StringBuffer stringBufferWord = new StringBuffer();
+              stringBufferWord.append((int)(Math.random() * 2.0) == 1 ? ENGLISH_VOWELS[(int)(Math.random() * ENGLISH_VOWELS.length)] : "");
+              int syllableCount = ((int)(Math.random() * 5)) + 1;
+              for(int syllableIndex = 0; syllableIndex < syllableCount; syllableIndex++)
+              {
+                stringBufferWord.append(ENGLISH_CONSONANTS[(int)(Math.random() * ENGLISH_CONSONANTS.length)]);
+                stringBufferWord.append(ENGLISH_VOWELS[(int)(Math.random() * ENGLISH_VOWELS.length)]);
+              }
+              if(wordIndex != 0)
+                stringBufferParagraph.append(" ");
+              else
+                stringBufferWord.setCharAt(0, Character.toUpperCase(stringBufferWord.charAt(0)));
+              stringBufferParagraph.append(stringBufferWord.toString());
+            }
+            switch((int)Math.random() * 10)
+            {
+              case 8:
+                stringBufferParagraph.append("!");
+                break;
+              case 9:
+                stringBufferParagraph.append("?");
+                break;
+              default:
+                stringBufferParagraph.append(".");
+                break;
+            }
+            if(sentenceIndex + 1 < sentences)
+              stringBufferParagraph.append(" ");
           }
         }
         replacement = stringBufferParagraph.toString();
