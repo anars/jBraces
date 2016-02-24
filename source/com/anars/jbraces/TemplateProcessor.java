@@ -64,7 +64,7 @@ public class TemplateProcessor
 
   /**
    */
-  public static final long BUILD = 20160223;
+  public static final long BUILD = 20160224;
   private static final String[] LATIN_WORDS =
   {
     //
@@ -381,14 +381,14 @@ public class TemplateProcessor
     "\\{" + NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
     "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
-    "\\{" + TEXT + ":(latin|pangram|gibberish):\\d+:\\d+\\}|" + //
+    "\\{" + TEXT + ":(latin|pangram|gibberish):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
     "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number|starts-with|ends-with|contains|starts-with-ignore-case|ends-with-ignore-case|contains-ignore-case)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\26\\}|" + //
-    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\43\\}|" + //
-    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\45\\}|" + //
-    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\61\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\40\\}|" + //
+    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\57\\}|" + //
+    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\59\\}|" + //
+    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\75\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -798,18 +798,79 @@ public class TemplateProcessor
         {
           minSentences = Integer.parseInt(pieces[2]);
         }
-        catch(Exception exception)
+        catch(NumberFormatException numberFormatException)
         {
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+          try
+          {
+            minSentences = Integer.parseInt(getObjectValue(pieces[2]).toString());
+          }
+          catch(ObjectNotFoundException objectNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Object Not Found", objectNotFoundException);
+          }
+          catch(AttributeNotFoundException attributeNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Attribute Not Found", attributeNotFoundException);
+          }
+          catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException)
+          {
+            _logger.log(Level.SEVERE, "Array Index Out Of Bound", arrayIndexOutOfBoundsException);
+          }
+          catch(NotArrayException notArrayException)
+          {
+            _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+          }
+          catch(ArrayNotFoundException arrayNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+          }
+          catch(NullPointerException nullPointerException)
+          {
+            _logger.log(Level.SEVERE, "Null Pointer", nullPointerException);
+          }
+          catch(Exception exception)
+          {
+            _logger.log(Level.SEVERE, "Exception", exception);
+          }
         }
         try
         {
           maxSentences = Integer.parseInt(pieces[3]);
         }
-        catch(Exception exception)
+        catch(NumberFormatException numberFormatException)
         {
-          maxSentences = minSentences;
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+          try
+          {
+            maxSentences = Integer.parseInt(getObjectValue(pieces[3]).toString());
+          }
+          catch(ObjectNotFoundException objectNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Object Not Found", objectNotFoundException);
+          }
+          catch(AttributeNotFoundException attributeNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Attribute Not Found", attributeNotFoundException);
+          }
+          catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException)
+          {
+            _logger.log(Level.SEVERE, "Array Index Out Of Bound", arrayIndexOutOfBoundsException);
+          }
+          catch(NotArrayException notArrayException)
+          {
+            _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+          }
+          catch(ArrayNotFoundException arrayNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+          }
+          catch(NullPointerException nullPointerException)
+          {
+            _logger.log(Level.SEVERE, "Null Pointer", nullPointerException);
+          }
+          catch(Exception exception)
+          {
+            _logger.log(Level.SEVERE, "Exception", exception);
+          }
         }
         int sentences = (int)(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
         StringBuffer stringBufferParagraph = new StringBuffer();
@@ -1379,7 +1440,6 @@ public class TemplateProcessor
       output = apply(output);
     return (output);
   }
-
   private Object[] getArrayObject(String name)
     throws ArrayNotFoundException, NotArrayException
   {
@@ -1395,7 +1455,6 @@ public class TemplateProcessor
       throw new NotArrayException(name);
     }
   }
-
   private Object getObjectValue(String name)
     throws ArrayNotFoundException, NotArrayException, ArrayIndexOutOfBoundsException, ObjectNotFoundException, AttributeNotFoundException
   {
@@ -1517,7 +1576,6 @@ public class TemplateProcessor
       _logger.log(Level.SEVERE, "Exception", exception);
     }
   }
-
   private List<Class> findClasses(File directory, String packageName)
     throws ClassNotFoundException
   {
@@ -1540,12 +1598,10 @@ public class TemplateProcessor
       }
     return (classList);
   }
-
   private String substring(String string, String start, String end)
   {
     return (substring(string, start, end, true));
   }
-
   private String substring(String string, String start, String end, boolean lastIndex)
   {
     String substring = string;
@@ -1553,7 +1609,6 @@ public class TemplateProcessor
     substring = substring.substring(0, lastIndex ? substring.lastIndexOf(end) : substring.indexOf(end));
     return (substring);
   }
-
   private Object[] expandArray(Object[] OriginalArray, int size)
   {
     Object[] newArray = new Object[OriginalArray.length + size];

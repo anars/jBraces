@@ -104,6 +104,9 @@ Here are the sentences using every letter of the alphabet at least once : {text:
 com.anars.jbraces.samples.functions.TextSample3
 Here are the sentences using random syllable : {text:gibberish:2:5}
 
+com.anars.jbraces.samples.functions.TextSample4
+{set:max}5{/set:max}Here are the sentences using random syllable : {text:gibberish:2:max}
+
 com.anars.jbraces.samples.functions.TimeSample1
 The time is {time:h}:{time:m} {time:a}
 
