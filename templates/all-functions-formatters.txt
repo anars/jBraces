@@ -128,6 +128,9 @@ com.anars.jbraces.samples.formatters.DeCamelCaseSpanFormatterSample1
 com.anars.jbraces.samples.formatters.FileSizeSpanFormatterSample1
 1000 Bytes = {format:FileSize}1000{/format:FileSize} / 10000000 Bytes = {format:FileSize}10000000{/format:FileSize}
 
+com.anars.jbraces.samples.formatters.FirstCharSpanFormatterSample1
+Barack {format:FirstChar}Hussein{/format:FirstChar}. Obama
+
 com.anars.jbraces.samples.formatters.FormatCurrencySpanFormatterSample1
 Price of an average house in London is {format:FormatCurrency:en:gb}398476{/format:FormatCurrency}
 
