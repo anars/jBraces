@@ -53,6 +53,9 @@ Reversed list of our favorite programming languages :{loop:languages:-1} {get:la
 com.anars.jbraces.samples.functions.NumberSample1
 Your lucky number is {number:1:100}
 
+com.anars.jbraces.samples.functions.NumberSample2
+{set:max}50{/set:max}Your lucky number is {number:1:max}
+
 com.anars.jbraces.samples.functions.PropertySample1
 The operating system is {property:os.name}
 

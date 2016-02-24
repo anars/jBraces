@@ -359,8 +359,8 @@ public class TemplateProcessor
   private static final String GET = "get";
   private static final String PROPERTY = "property";
   private static final String DRAW = "draw";
-  private static final String SHOW_RANDOMLY = "randomly";
-  private static final String RANDOM_NUMBER = "number";
+  private static final String RANDOMLY = "randomly";
+  private static final String NUMBER = "number";
   private static final String DATE = "date";
   private static final String TIME = "time";
   private static final String TEXT = "text";
@@ -377,18 +377,18 @@ public class TemplateProcessor
     "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
     "\\{" + PROPERTY + ":[^}]*\\}|" + //
     "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
-    "\\{" + SHOW_RANDOMLY + ":(\\w+)\\}.*?\\{/" + SHOW_RANDOMLY + ":\\8\\}|" + //
-    "\\{" + RANDOM_NUMBER + ":\\-?\\d+:\\-?\\d+\\}|" + //
+    "\\{" + RANDOMLY + ":(\\w+)\\}.*?\\{/" + RANDOMLY + ":\\8\\}|" + //
+    "\\{" + NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
     "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + TIME + ":[aHkKhmsSzZ]+(:\\w{2}){0,2}\\}|" + //
     "\\{" + TEXT + ":(latin|pangram|gibberish):\\d+:\\d+\\}|" + //
     "\\{" + IF + ":(\\w+):((\\w+((\\[\\d+\\])?(\\.\\w+)|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|" + //
     "([\'][^\']*[\'])):(equals|equals-ignore-case|not-equals|not-equals-ignore-case|greater-than|greater-than-or-equals|" + //
     "less-than|less-than-or-equals|empty|not-empty|exists|not-exists|even-number|odd-number|starts-with|ends-with|contains|starts-with-ignore-case|ends-with-ignore-case|contains-ignore-case)(:((\\w+((\\[\\d+\\])?(\\.\\w+)|" + //
-    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\12\\}|" + //
-    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\29\\}|" + //
-    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\31\\}|" + //
-    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\47\\}", //
+    "(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)|([\'][^\']*[\'])))?\\}.*?\\{/" + IF + ":\\26\\}|" + //
+    "\\{" + LOOP + ":(\\w+)(:\\-?\\d+)?\\}.*?\\{/" + LOOP + ":\\43\\}|" + //
+    "\\{" + REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + REPEAT + ":\\45\\}|" + //
+    "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\61\\}", //
     Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
   private Locale _locale = null;
   private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
@@ -706,17 +706,89 @@ public class TemplateProcessor
       String matchedString = substring(matcher.group(), "{", "}", false);
       String replacement = null;
       String[] pieces = matchedString.split(":");
-      if(pieces[0].equals(RANDOM_NUMBER))
+      if(pieces[0].equals(NUMBER))
       {
+        long startNumber = 0;
+        long endNumber = 0;
         try
         {
-          long startNumber = Long.parseLong(pieces[1]);
-          replacement = "" + ((long)(Math.random() * (Long.parseLong(pieces[2]) - startNumber + 1)) + startNumber);
+          startNumber = Long.parseLong(pieces[1]);
         }
-        catch(Exception exception)
+        catch(NumberFormatException numberFormatException)
         {
-          _logger.log(Level.SEVERE, "An error occurred while getting \"{" + matchedString + "}\".", exception);
+          try
+          {
+            startNumber = Long.parseLong(getObjectValue(pieces[1]).toString());
+          }
+          catch(ObjectNotFoundException objectNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Object Not Found", objectNotFoundException);
+          }
+          catch(AttributeNotFoundException attributeNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Attribute Not Found", attributeNotFoundException);
+          }
+          catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException)
+          {
+            _logger.log(Level.SEVERE, "Array Index Out Of Bound", arrayIndexOutOfBoundsException);
+          }
+          catch(NotArrayException notArrayException)
+          {
+            _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+          }
+          catch(ArrayNotFoundException arrayNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+          }
+          catch(NullPointerException nullPointerException)
+          {
+            _logger.log(Level.SEVERE, "Null Pointer", nullPointerException);
+          }
+          catch(Exception exception)
+          {
+            _logger.log(Level.SEVERE, "Exception", exception);
+          }
         }
+        try
+        {
+          endNumber = Long.parseLong(pieces[2]);
+        }
+        catch(NumberFormatException numberFormatException)
+        {
+          try
+          {
+            endNumber = Long.parseLong(getObjectValue(pieces[2]).toString());
+          }
+          catch(ObjectNotFoundException objectNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Object Not Found", objectNotFoundException);
+          }
+          catch(AttributeNotFoundException attributeNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Attribute Not Found", attributeNotFoundException);
+          }
+          catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException)
+          {
+            _logger.log(Level.SEVERE, "Array Index Out Of Bound", arrayIndexOutOfBoundsException);
+          }
+          catch(NotArrayException notArrayException)
+          {
+            _logger.log(Level.SEVERE, "Not An Array", notArrayException);
+          }
+          catch(ArrayNotFoundException arrayNotFoundException)
+          {
+            _logger.log(Level.SEVERE, "Array Not Found", arrayNotFoundException);
+          }
+          catch(NullPointerException nullPointerException)
+          {
+            _logger.log(Level.SEVERE, "Null Pointer", nullPointerException);
+          }
+          catch(Exception exception)
+          {
+            _logger.log(Level.SEVERE, "Exception", exception);
+          }
+        }
+        replacement = "" + ((long)(Math.random() * (endNumber - startNumber + 1)) + startNumber);
       }
       else if(pieces[0].equals(TEXT))
       {
@@ -1106,7 +1178,7 @@ public class TemplateProcessor
         }
         replacement = condition ? apply(ifBlock) : "";
       }
-      else if(pieces[0].equals(SHOW_RANDOMLY))
+      else if(pieces[0].equals(RANDOMLY))
       {
         String randomlyBlock = substring(matcher.group(), "}", "{/");
         replacement = (int)(Math.random() * 2.0) == 1 ? apply(randomlyBlock) : "";
