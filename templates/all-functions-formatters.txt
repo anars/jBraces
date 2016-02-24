@@ -140,6 +140,10 @@ com.anars.jbraces.samples.formatters.FormatDoubleNumberSpanFormatterSample1
 com.anars.jbraces.samples.formatters.FormatLongNumberSpanFormatterSample1
 {format:FormatLongNumber:tr:tr}1234567{/format:FormatLongNumber} and {format:FormatLongNumber:en:us}1234567{/format:FormatLongNumber} are same numbers in different countries.
 
+com.anars.jbraces.samples.formatters.HyphenSpanFormatterSample1
+Anar Software LLC
+{format:Hyphen}Anar Software LLC{/format:Hyphen}
+
 com.anars.jbraces.samples.formatters.LeadingTrimSpanFormatterSample1
 {format:LeadingTrim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:LeadingTrim}
 
