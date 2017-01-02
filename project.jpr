@@ -76,7 +76,6 @@
          <string v="-Xlint:-serial"/>
          <string v="-Xlint:-unchecked"/>
       </list>
-      <value n="target" v="1.5"/>
       <value n="webIANAEncoding" v="ISO-8859-1"/>
    </hash>
    <hash n="oracle.jdeveloper.javadoc.JProjectJavadoc">
