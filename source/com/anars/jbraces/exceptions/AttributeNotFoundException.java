@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -20,14 +20,21 @@
  */
 package com.anars.jbraces.exceptions;
 
+/**
+ * This is an exception that is thrown whenever a reference is made to a non-existent attribute.
+ */
 public class AttributeNotFoundException
-  extends Exception
-{
-  /**
-   * @param string
-   */
-  public AttributeNotFoundException(String string)
-  {
-    super(string);
-  }
+    extends Exception {
+
+    @SuppressWarnings("compatibility:-3344167107331990097")
+    private static final long serialVersionUID = 9296983928710131L;
+
+    /**
+     * Constructs a new exception with the specified detail message.
+     *
+     * @param message
+     */
+    public AttributeNotFoundException(String message) {
+        super(message);
+    }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -20,14 +20,21 @@
  */
 package com.anars.jbraces.exceptions;
 
+/**
+ * This is an exception that is thrown whenever a reference is made to a non-existent object.
+ */
 public class ObjectNotFoundException
-  extends Exception
-{
-  /**
-   * @param string
-   */
-  public ObjectNotFoundException(String string)
-  {
-    super(string);
-  }
+    extends Exception {
+
+    @SuppressWarnings("compatibility:3624186293512465394")
+    private static final long serialVersionUID = 6818807961866638L;
+
+    /**
+     * Constructs a new exception with the specified detail message.
+     *
+     * @param message
+     */
+    public ObjectNotFoundException(String message) {
+        super(message);
+    }
 }

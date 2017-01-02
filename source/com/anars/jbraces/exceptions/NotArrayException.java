@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -20,14 +20,21 @@
  */
 package com.anars.jbraces.exceptions;
 
+/**
+ * Thrown when an application attempts to use non-array reference.
+ */
 public class NotArrayException
-  extends Exception
-{
-  /**
-   * @param string
-   */
-  public NotArrayException(String string)
-  {
-    super(string);
-  }
+    extends Exception {
+
+    @SuppressWarnings("compatibility:4090931613306503616")
+    private static final long serialVersionUID = 7931818564187733L;
+
+    /**
+     * Constructs a new exception with the specified detail message.
+     *
+     * @param message
+     */
+    public NotArrayException(String message) {
+        super(message);
+    }
 }
