@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,20 +22,17 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class FormatSample2
-{
-  public FormatSample2()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.loadAllSpanFormatters();
-    String template = "{format:FormatDoubleNumber:tr:tr}1234567.89{/format:FormatDoubleNumber} and {format:FormatDoubleNumber:en:us}1234567.89{/format:FormatDoubleNumber} are same numbers in different countries.";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class FormatSample2 {
 
-  public static void main(String[] args)
-  {
-    new FormatSample2();
-  }
+    public FormatSample2() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.loadAllSpanFormatters();
+        String template = "{format:FormatDoubleNumber:tr:tr}1234567.89{/format:FormatDoubleNumber} and {format:FormatDoubleNumber:en:us}1234567.89{/format:FormatDoubleNumber} are same numbers in different countries.";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new FormatSample2();
+    }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,19 +22,16 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class SetSample2
-{
-  public SetSample2()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "{set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} " + "is my childhood hero. {get:hero} always fight against bad people.";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class SetSample2 {
 
-  public static void main(String[] args)
-  {
-    new SetSample2();
-  }
+    public SetSample2() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        String template = "{set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} " + "is my childhood hero. {get:hero} always fight against bad people.";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new SetSample2();
+    }
 }

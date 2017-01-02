@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,19 +22,16 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class RepeatSample4
-{
-  public RepeatSample4()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "Threw bunch of random dice : {repeat:dice:3:9}\n" + "Die {get:dice.-offset} of {get:dice.-length} " + "is {number:1:6}{/repeat:dice}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class RepeatSample4 {
 
-  public static void main(String[] args)
-  {
-    new RepeatSample4();
-  }
+    public RepeatSample4() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        String template = "Threw bunch of random dice : {repeat:dice:3:9}\n" + "Die {get:dice.-offset} of {get:dice.-length} " + "is {number:1:6}{/repeat:dice}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new RepeatSample4();
+    }
 }

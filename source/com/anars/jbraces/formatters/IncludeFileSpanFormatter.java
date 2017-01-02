@@ -28,45 +28,38 @@ import java.io.FileReader;
 import java.util.Locale;
 
 public class IncludeFileSpanFormatter
-  extends SpanFormatter
-{
-  /**
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    BufferedReader bufferedReader = null;
-    StringBuffer stringBuffer = new StringBuffer();
-    String lineSeparator = System.getProperty("line.separator");
-    try
-    {
-      bufferedReader = new BufferedReader(new FileReader(string.trim()));
-      String lineString = bufferedReader.readLine();
-      while(lineString != null)
-      {
-        stringBuffer.append(lineString);
-        stringBuffer.append(lineSeparator);
-        lineString = bufferedReader.readLine();
-      }
+    extends SpanFormatter {
+
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        BufferedReader bufferedReader = null;
+        StringBuffer stringBuffer = new StringBuffer();
+        String lineSeparator = System.getProperty("line.separator");
+        try {
+            bufferedReader = new BufferedReader(new FileReader(string.trim()));
+            String lineString = bufferedReader.readLine();
+            while(lineString != null) {
+                stringBuffer.append(lineString);
+                stringBuffer.append(lineSeparator);
+                lineString = bufferedReader.readLine();
+            }
+        }
+        catch(Exception exception) {
+            // Ignore
+        }
+        finally {
+            try {
+                bufferedReader.close();
+            }
+            catch(Exception exception) {
+                // Ignore
+            }
+            bufferedReader = null;
+        }
+        return (stringBuffer.toString());
     }
-    catch(Exception exception)
-    {
-      // Ignore
-    }
-    finally
-    {
-      try
-      {
-        bufferedReader.close();
-      }
-      catch(Exception exception)
-      {
-        // Ignore
-      }
-      bufferedReader = null;
-    }
-    return (stringBuffer.toString());
-  }
 }

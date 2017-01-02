@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -26,33 +26,25 @@ import java.awt.geom.Point2D;
 
 import java.io.File;
 
-public class ApplyToFileSample
-{
-  public ApplyToFileSample()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.loadAllSpanFormatters();
-    templateProcessor.putValueObject("company", "Anar Software");
-    Point2D.Double coordinates = new Point2D.Double(40.75773, -73.985708);
-    templateProcessor.putValueObject("TimesSqCoordinates", coordinates);
-    String[] favoriteLanguages =
-    {
-      "C", "C++", "Java", "Scala", "Python", "PHP"
-    };
-    templateProcessor.putValueObject("languages", favoriteLanguages);
-    try
-    {
-      String output = templateProcessor.apply(new File("templates/all-functions-formatters.txt"));
-      System.out.println(output);
-    }
-    catch (Exception exception)
-    {
-      exception.printStackTrace();
-    }
-  }
+public class ApplyToFileSample {
 
-  public static void main(String[] args)
-  {
-    new ApplyToFileSample();
-  }
+    public ApplyToFileSample() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.loadAllSpanFormatters();
+        templateProcessor.putValueObject("company", "Anar Software");
+        Point2D.Double coordinates = new Point2D.Double(40.75773, -73.985708);
+        templateProcessor.putValueObject("TimesSqCoordinates", coordinates);
+        String[] favoriteLanguages = { "C", "C++", "Java", "Scala", "Python", "PHP" };
+        templateProcessor.putValueObject("languages", favoriteLanguages);
+        try {
+            String output = templateProcessor.apply(new File("templates/all-functions-formatters.txt"));
+            System.out.println(output);
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        new ApplyToFileSample();
+    }
 }

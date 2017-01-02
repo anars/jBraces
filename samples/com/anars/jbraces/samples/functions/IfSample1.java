@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,19 +22,16 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class IfSample1
-{
-  public IfSample1()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "{set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. " + "{if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are " + "super strength, speed, stamina, endurance and durability{/if:supermanpowers}" + "{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, " + "he does not possess any superpowers{/if:batmanpowers}.";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class IfSample1 {
 
-  public static void main(String[] args)
-  {
-    new IfSample1();
-  }
+    public IfSample1() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        String template = "{set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. " + "{if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are " + "super strength, speed, stamina, endurance and durability{/if:supermanpowers}" + "{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, " + "he does not possess any superpowers{/if:batmanpowers}.";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new IfSample1();
+    }
 }

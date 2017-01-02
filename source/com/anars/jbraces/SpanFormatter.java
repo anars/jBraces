@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -21,28 +21,28 @@
 package com.anars.jbraces;
 
 import java.util.Locale;
-
 import java.util.logging.Logger;
 
-public abstract class SpanFormatter
-{
-  /**
-   */
-  protected Logger _logger = Logger.getLogger(getClass().getCanonicalName());
+/**
+ */
+public abstract class SpanFormatter {
 
-  /**
-   * @param string
-   * @return
-   */
-  public String format(String string)
-  {
-    return (format(string, Locale.getDefault()));
-  }
+    /**
+     */
+    protected Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
-  /**
-   * @param string
-   * @param locale
-   * @return
-   */
-  abstract public String format(String string, Locale locale);
+    /**
+     * @param string
+     * @return
+     */
+    public String format(String string) {
+        return (format(string, Locale.getDefault()));
+    }
+
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    abstract public String format(String string, Locale locale);
 }

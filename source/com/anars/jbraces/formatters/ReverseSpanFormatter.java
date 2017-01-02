@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -25,19 +25,18 @@ import com.anars.jbraces.SpanFormatter;
 import java.util.Locale;
 
 public class ReverseSpanFormatter
-  extends SpanFormatter
-{
-  /**
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    StringBuilder reversed = new StringBuilder();
-    int index = string.length();
-    for (; index > 0;)
-      reversed.append(string.charAt(--index));
-    return (reversed.toString());
-  }
+    extends SpanFormatter {
+
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        StringBuilder reversed = new StringBuilder();
+        int index = string.length();
+        for(; index > 0;)
+            reversed.append(string.charAt(--index));
+        return (reversed.toString());
+    }
 }

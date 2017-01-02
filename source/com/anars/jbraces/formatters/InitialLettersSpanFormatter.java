@@ -18,20 +18,25 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.anars.jbraces.samples.functions;
+package com.anars.jbraces.formatters;
 
-import com.anars.jbraces.TemplateProcessor;
+import com.anars.jbraces.SpanFormatter;
 
-public class RepeatSample1 {
+import java.util.Locale;
 
-    public RepeatSample1() {
-        TemplateProcessor templateProcessor = new TemplateProcessor();
-        String template = "It is really funny {repeat:laugh:5}Ha{/repeat:laugh}";
-        System.out.println(template);
-        template = templateProcessor.apply(template);
-        System.out.println(template);
-    }
-    public static void main(String[] args) {
-        new RepeatSample1();
+public class InitialLettersSpanFormatter
+    extends SpanFormatter {
+
+    public String format(String string, Locale locale) {
+        String[] words = string.trim().split("\\s+");
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int index = 0; index < words.length; index++) {
+            if(index != 0)
+                stringBuffer.append(" ");
+            stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
+            if(words[index].length() > 1)
+                stringBuffer.append(words[index].substring(1).toLowerCase(locale));
+        }
+        return (stringBuffer.toString());
     }
 }

@@ -22,24 +22,40 @@ package com.anars.jbraces.formatters;
 
 import com.anars.jbraces.SpanFormatter;
 
-import java.util.Locale;
+import java.text.SimpleDateFormat;
 
-/**
- *
- * @author Kivanc Anar
- * @since 1.2
- */
-public class HyphenSpanFormatter
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+
+public class TimestampEditSpanFormatter
     extends SpanFormatter {
 
-    /**
-     * Replaces all characters with hyphen character
-     *
-     * @param string
-     * @param locale
-     * @return
-     */
+    private static SimpleDateFormat INPUT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+    private SimpleDateFormat _outputFormat = null;
+    public TimestampEditSpanFormatter() {
+        _outputFormat = new SimpleDateFormat("MM/dd/yyyy KK:mm a");
+    }
+    public TimestampEditSpanFormatter(String dateFormat) {
+        _outputFormat = new SimpleDateFormat(dateFormat);
+    }
+    public TimestampEditSpanFormatter(SimpleDateFormat dateFormat) {
+        _outputFormat = dateFormat;
+    }
     public String format(String string, Locale locale) {
-        return (string.replaceAll(".", "-"));
+        Date date = null;
+        try {
+            date = INPUT_FORMAT.parse(string.trim());
+        }
+        catch(Exception exception) {
+            _logger.log(Level.SEVERE, "Unable to parse date", exception);
+        }
+        try {
+            string = _outputFormat.format(date);
+        }
+        catch(Exception exception) {
+            _logger.log(Level.SEVERE, "Unable to format date", exception);
+        }
+        return (string);
     }
 }

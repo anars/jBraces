@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -24,21 +24,18 @@ import com.anars.jbraces.TemplateProcessor;
 
 import java.awt.geom.Point2D;
 
-public class GetSample2
-{
-  public GetSample2()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    Point2D.Double coordinates = new Point2D.Double(40.75773, -73.985708);
-    templateProcessor.putValueObject("TimesSqCoordinates", coordinates);
-    String template = "The famous Times Square coordinates : " + "latitude={get:TimesSqCoordinates.x}, " + "longitude={get:TimesSqCoordinates.y}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class GetSample2 {
 
-  public static void main(String[] args)
-  {
-    new GetSample2();
-  }
+    public GetSample2() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        Point2D.Double coordinates = new Point2D.Double(40.75773, -73.985708);
+        templateProcessor.putValueObject("TimesSqCoordinates", coordinates);
+        String template = "The famous Times Square coordinates : " + "latitude={get:TimesSqCoordinates.x}, " + "longitude={get:TimesSqCoordinates.y}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new GetSample2();
+    }
 }

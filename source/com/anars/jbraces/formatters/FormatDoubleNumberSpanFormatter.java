@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -25,30 +25,25 @@ import com.anars.jbraces.SpanFormatter;
 import java.text.NumberFormat;
 
 import java.util.Locale;
-
 import java.util.logging.Level;
 
 public class FormatDoubleNumberSpanFormatter
-  extends SpanFormatter
-{
+    extends SpanFormatter {
 
-  /**
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    string = string.replaceAll("[^0-9\\-\\.]", "");
-    double value = 0;
-    try
-    {
-      value = Double.parseDouble(string);
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        string = string.replaceAll("[^0-9\\-\\.]", "");
+        double value = 0;
+        try {
+            value = Double.parseDouble(string);
+        }
+        catch(Exception exception) {
+            _logger.log(Level.SEVERE, "Unable to parse value", exception);
+        }
+        return (NumberFormat.getInstance(locale).format(value));
     }
-    catch (Exception exception)
-    {
-      _logger.log(Level.SEVERE, "Unable to parse value", exception);
-    }
-    return (NumberFormat.getInstance(locale).format(value));
-  }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -21,23 +21,19 @@
 package com.anars.jbraces.samples.formatters;
 
 import com.anars.jbraces.TemplateProcessor;
-
 import com.anars.jbraces.formatters.LeadingTrimSpanFormatter;
 
-public class LeadingTrimSpanFormatterSample1
-{
-  public LeadingTrimSpanFormatterSample1()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.putSpanFormatter("LeadingTrim", new LeadingTrimSpanFormatter());
-    String template = "{format:LeadingTrim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:LeadingTrim}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class LeadingTrimSpanFormatterSample1 {
 
-  public static void main(String[] args)
-  {
-    new LeadingTrimSpanFormatterSample1();
-  }
+    public LeadingTrimSpanFormatterSample1() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.putSpanFormatter("LeadingTrim", new LeadingTrimSpanFormatter());
+        String template = "{format:LeadingTrim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:LeadingTrim}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new LeadingTrimSpanFormatterSample1();
+    }
 }

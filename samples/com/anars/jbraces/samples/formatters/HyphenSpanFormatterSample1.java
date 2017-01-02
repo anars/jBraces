@@ -1,6 +1,6 @@
 //
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,17 @@ package com.anars.jbraces.samples.formatters;
 import com.anars.jbraces.TemplateProcessor;
 import com.anars.jbraces.formatters.HyphenSpanFormatter;
 
-public class HyphenSpanFormatterSample1
-{
-  public HyphenSpanFormatterSample1()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.putSpanFormatter("Hyphen", new HyphenSpanFormatter());
-    String template = "Anar Software LLC\n{format:Hyphen}Anar Software LLC{/format:Hyphen}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class HyphenSpanFormatterSample1 {
 
-  public static void main(String[] args)
-  {
-    new HyphenSpanFormatterSample1();
-  }
+    public HyphenSpanFormatterSample1() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.putSpanFormatter("Hyphen", new HyphenSpanFormatter());
+        String template = "Anar Software LLC\n{format:Hyphen}Anar Software LLC{/format:Hyphen}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new HyphenSpanFormatterSample1();
+    }
 }

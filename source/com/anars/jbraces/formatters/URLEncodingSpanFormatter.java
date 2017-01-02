@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -27,27 +27,23 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import java.util.Locale;
-
 import java.util.logging.Level;
 
 public class URLEncodingSpanFormatter
-  extends SpanFormatter
-{
-  /**
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    try
-    {
-      return (URLEncoder.encode(string, "utf-8"));
+    extends SpanFormatter {
+
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        try {
+            return (URLEncoder.encode(string, "utf-8"));
+        }
+        catch(UnsupportedEncodingException unsupportedEncodingException) {
+            _logger.log(Level.SEVERE, "Unsupported Encoding", unsupportedEncodingException);
+        }
+        return (string);
     }
-    catch (UnsupportedEncodingException unsupportedEncodingException)
-    {
-      _logger.log(Level.SEVERE, "Unsupported Encoding", unsupportedEncodingException);
-    }
-    return (string);
-  }
 }

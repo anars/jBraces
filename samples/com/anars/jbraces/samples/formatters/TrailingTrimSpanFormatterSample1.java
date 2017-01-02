@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -21,23 +21,19 @@
 package com.anars.jbraces.samples.formatters;
 
 import com.anars.jbraces.TemplateProcessor;
-
 import com.anars.jbraces.formatters.TrailingTrimSpanFormatter;
 
-public class TrailingTrimSpanFormatterSample1
-{
-  public TrailingTrimSpanFormatterSample1()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.putSpanFormatter("TrailingTrim", new TrailingTrimSpanFormatter());
-    String template = "{format:TrailingTrim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:TrailingTrim}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class TrailingTrimSpanFormatterSample1 {
 
-  public static void main(String[] args)
-  {
-    new TrailingTrimSpanFormatterSample1();
-  }
+    public TrailingTrimSpanFormatterSample1() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.putSpanFormatter("TrailingTrim", new TrailingTrimSpanFormatter());
+        String template = "{format:TrailingTrim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:TrailingTrim}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new TrailingTrimSpanFormatterSample1();
+    }
 }

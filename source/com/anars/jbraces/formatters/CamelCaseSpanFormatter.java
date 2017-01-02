@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -33,25 +33,23 @@ import java.util.Locale;
  * @since 0.2
  */
 public class CamelCaseSpanFormatter
-  extends SpanFormatter
-{
-  /**
-   * First letter of each word is capitalized, spaces and punctuation removed.
-   *
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    String[] words = string.replaceAll("^\\s+|[^\\w\\s]|\\s+$", "").split("\\s+");
-    StringBuffer stringBuffer = new StringBuffer();
-    for (int index = 0; index < words.length; index++)
-    {
-      stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
-      if (words[index].length() > 1)
-        stringBuffer.append(words[index].substring(1));
+    extends SpanFormatter {
+
+    /**
+     * First letter of each word is capitalized, spaces and punctuation removed.
+     *
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        String[] words = string.replaceAll("^\\s+|[^\\w\\s]|\\s+$", "").split("\\s+");
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int index = 0; index < words.length; index++) {
+            stringBuffer.append(words[index].substring(0, 1).toUpperCase(locale));
+            if(words[index].length() > 1)
+                stringBuffer.append(words[index].substring(1));
+        }
+        return (stringBuffer.toString());
     }
-    return (stringBuffer.toString());
-  }
 }

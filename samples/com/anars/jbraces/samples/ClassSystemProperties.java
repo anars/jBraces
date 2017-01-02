@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -24,24 +24,19 @@ import com.anars.jbraces.TemplateProcessor;
 
 import java.io.File;
 
-public class ClassSystemProperties
-{
-  public ClassSystemProperties()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    try
-    {
-      String output = templateProcessor.apply(new File("templates/class-system-properties.txt"));
-      System.out.println(output);
-    }
-    catch (Exception exception)
-    {
-      exception.printStackTrace();
-    }
-  }
+public class ClassSystemProperties {
 
-  public static void main(String[] args)
-  {
-    new ClassSystemProperties();
-  }
+    public ClassSystemProperties() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        try {
+            String output = templateProcessor.apply(new File("templates/class-system-properties.txt"));
+            System.out.println(output);
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        new ClassSystemProperties();
+    }
 }

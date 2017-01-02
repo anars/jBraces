@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,19 +22,16 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class GetSample5
-{
-  public GetSample5()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "jBraces version is {get:jb_class_version}, " + "build is {get:jb_class_build} and " + "current locale is {get:jb_locale_name}.";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class GetSample5 {
 
-  public static void main(String[] args)
-  {
-    new GetSample5();
-  }
+    public GetSample5() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        String template = "jBraces version is {get:jb_class_version}, " + "build is {get:jb_class_build} and " + "current locale is {get:jb_locale_name}.";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] args) {
+        new GetSample5();
+    }
 }

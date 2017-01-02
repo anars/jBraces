@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -21,30 +21,24 @@
 package com.anars.jbraces.samples;
 
 import com.anars.jbraces.TemplateProcessor;
-
 import com.anars.jbraces.formatters.BlackHoleSpanFormatter;
 
 import java.io.File;
 
-public class IdeaGenerator
-{
-  public IdeaGenerator()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    templateProcessor.putSpanFormatter("BlackHole", new BlackHoleSpanFormatter());
-    try
-    {
-      String output = templateProcessor.apply(new File("templates/idea-generator.txt"));
-      System.out.println(output);
-    }
-    catch (Exception exception)
-    {
-      exception.printStackTrace();
-    }
-  }
+public class IdeaGenerator {
 
-  public static void main(String[] args)
-  {
-    new IdeaGenerator();
-  }
+    public IdeaGenerator() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        templateProcessor.putSpanFormatter("BlackHole", new BlackHoleSpanFormatter());
+        try {
+            String output = templateProcessor.apply(new File("templates/idea-generator.txt"));
+            System.out.println(output);
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        new IdeaGenerator();
+    }
 }

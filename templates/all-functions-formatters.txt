@@ -117,13 +117,13 @@ com.anars.jbraces.samples.functions.TimeSample3
 Current timezone is {time:zzzz}
 
 com.anars.jbraces.samples.formatters.BlackHoleSpanFormatterSample1
-{format:BlackHole}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:BlackHole}
+{format:BlackHole}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:BlackHole}
 
 com.anars.jbraces.samples.formatters.CamelCaseSpanFormatterSample1
-{format:CamelCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:CamelCase}
+{format:CamelCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:CamelCase}
 
 com.anars.jbraces.samples.formatters.DeCamelCaseSpanFormatterSample1
-{format:DeCamelCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:DeCamelCase}
+{format:DeCamelCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:DeCamelCase}
 
 com.anars.jbraces.samples.formatters.FileSizeSpanFormatterSample1
 1000 Bytes = {format:FileSize}1000{/format:FileSize} / 10000000 Bytes = {format:FileSize}10000000{/format:FileSize}
@@ -145,67 +145,67 @@ Anar Software LLC
 {format:Hyphen}Anar Software LLC{/format:Hyphen}
 
 com.anars.jbraces.samples.formatters.LeadingTrimSpanFormatterSample1
-{format:LeadingTrim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:LeadingTrim}
+{format:LeadingTrim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:LeadingTrim}
 
 com.anars.jbraces.samples.formatters.LowerCaseSpanFormatterSample1
-{format:LowerCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:LowerCase}
+{format:LowerCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:LowerCase}
 
 com.anars.jbraces.samples.formatters.OnlyDigitsSpanFormatterSample1
-{format:OnlyDigits}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:OnlyDigits}
+{format:OnlyDigits}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:OnlyDigits}
 
 com.anars.jbraces.samples.formatters.OnlyWordCharacterSpanFormatterSample1
-{format:OnlyWordCharacter}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:OnlyWordCharacter}
+{format:OnlyWordCharacter}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:OnlyWordCharacter}
 
 com.anars.jbraces.samples.formatters.RandomCaseSpanFormatterSample1
-{format:RandomCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RandomCase}
+{format:RandomCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RandomCase}
 
 com.anars.jbraces.samples.formatters.RemoveDuplicateSpacesSpanFormatterSample1
-{format:RemoveDuplicateSpaces}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RemoveDuplicateSpaces}
+{format:RemoveDuplicateSpaces}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RemoveDuplicateSpaces}
 
 com.anars.jbraces.samples.formatters.RemoveEmptyLinesSpanFormatterSample1
-{format:RemoveEmptyLines}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RemoveEmptyLines}
+{format:RemoveEmptyLines}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RemoveEmptyLines}
 
 com.anars.jbraces.samples.formatters.RemoveLeadingZerosSpanFormatterSample1
-{format:RemoveLeadingZeros}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RemoveLeadingZeros}
+{format:RemoveLeadingZeros}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RemoveLeadingZeros}
 
 com.anars.jbraces.samples.formatters.RemoveWhitespacesSpanFormatterSample1
-{format:RemoveWhitespaces}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RemoveWhitespaces}
+{format:RemoveWhitespaces}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RemoveWhitespaces}
 
 com.anars.jbraces.samples.formatters.RemoveXMLTagsSpanFormatterSample1
-{format:RemoveXMLTags}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:RemoveXMLTags}
+{format:RemoveXMLTags}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:RemoveXMLTags}
 
 com.anars.jbraces.samples.formatters.ReverseSpanFormatterSample1
-{format:Reverse}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:Reverse}
+{format:Reverse}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:Reverse}
 
 com.anars.jbraces.samples.formatters.SnakeCaseSpanFormatterSample1
-{format:SnakeCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:SnakeCase}
+{format:SnakeCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:SnakeCase}
 
 com.anars.jbraces.samples.formatters.SnakeLowerCaseSpanFormatterSample1
-{format:SnakeLowerCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:SnakeLowerCase}
+{format:SnakeLowerCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:SnakeLowerCase}
 
 com.anars.jbraces.samples.formatters.SnakeUpperCaseSpanFormatterSample1
-{format:SnakeUpperCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:SnakeUpperCase}
+{format:SnakeUpperCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:SnakeUpperCase}
 
 com.anars.jbraces.samples.formatters.SwapCaseSpanFormatterSample1
-{format:SwapCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:SwapCase}
+{format:SwapCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:SwapCase}
 
 com.anars.jbraces.samples.formatters.TrailingTrimSpanFormatterSample1
-{format:TrailingTrim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:TrailingTrim}
+{format:TrailingTrim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:TrailingTrim}
 
 com.anars.jbraces.samples.formatters.TrainCaseSpanFormatterSample1
-{format:TrainCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:TrainCase}
+{format:TrainCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:TrainCase}
 
 com.anars.jbraces.samples.formatters.TrainLowerCaseSpanFormatterSample1
-{format:TrainLowerCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:TrainLowerCase}
+{format:TrainLowerCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:TrainLowerCase}
 
 com.anars.jbraces.samples.formatters.TrainUpperCaseSpanFormatterSample1
-{format:TrainUpperCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:TrainUpperCase}
+{format:TrainUpperCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:TrainUpperCase}
 
 com.anars.jbraces.samples.formatters.TrimSpanFormatterSample1
-{format:Trim}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:Trim}
+{format:Trim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:Trim}
 
 com.anars.jbraces.samples.formatters.UpperCaseSpanFormatterSample1
-{format:UpperCase}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:UpperCase}
+{format:UpperCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:UpperCase}
 
 com.anars.jbraces.samples.formatters.URLEncodingSpanFormatterSample1
-{format:URLEncoding}Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>{/format:URLEncoding}
+{format:URLEncoding}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:URLEncoding}

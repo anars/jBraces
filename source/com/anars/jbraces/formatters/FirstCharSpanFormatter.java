@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -30,17 +30,16 @@ import java.util.Locale;
  * @since 1.2
  */
 public class FirstCharSpanFormatter
-  extends SpanFormatter
-{
-  /**
-   * First character of the string
-   *
-   * @param string
-   * @param locale
-   * @return
-   */
-  public String format(String string, Locale locale)
-  {
-    return ((string + " ").substring(0, 1));
-  }
+    extends SpanFormatter {
+
+    /**
+     * First character of the string
+     *
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        return ((string + " ").substring(0, 1));
+    }
 }

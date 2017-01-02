@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2016 Anar Software LLC <http://anars.com>
+ * Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal 
@@ -22,19 +22,16 @@ package com.anars.jbraces.samples.functions;
 
 import com.anars.jbraces.TemplateProcessor;
 
-public class TextSample4
-{
-  public TextSample4()
-  {
-    TemplateProcessor templateProcessor = new TemplateProcessor();
-    String template = "{set:max}5{/set:max}Here are the sentences using random syllable : {text:gibberish:2:max}";
-    System.out.println(template);
-    template = templateProcessor.apply(template);
-    System.out.println(template);
-  }
+public class TextSample4 {
 
-  public static void main(String[] arg)
-  {
-    new TextSample4();
-  }
+    public TextSample4() {
+        TemplateProcessor templateProcessor = new TemplateProcessor();
+        String template = "{set:max}5{/set:max}Here are the sentences using random syllable : {text:gibberish:2:max}";
+        System.out.println(template);
+        template = templateProcessor.apply(template);
+        System.out.println(template);
+    }
+    public static void main(String[] arg) {
+        new TextSample4();
+    }
 }
