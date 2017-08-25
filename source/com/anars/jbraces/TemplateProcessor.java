@@ -60,11 +60,11 @@ public class TemplateProcessor {
 
     /**
      */
-    public static final double VERSION = 1.3;
+    public static final double VERSION = 1.4;
 
     /**
      */
-    public static final long BUILD = 20170102;
+    public static final long BUILD = 20170825;
     private static final String[] LATIN_WORDS = {
         //
         "abduco", "accipio", "acer", "acquiro", "addo", "adduco", "adeo", "adepto", "adfero", "adficio", //
@@ -368,7 +368,7 @@ public class TemplateProcessor {
         "\\{" + SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + SET + ":\\1\\}|" + //
         "\\{" + GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
         "\\{" + PROPERTY + ":[^}]*\\}|" + //
-        "\\{" + DRAW + ":\\w+:\\w+(:\\w+)*\\}|" + //
+        "\\{" + DRAW + ":.*:.*(:.*)*\\}|" + //
         "\\{" + RANDOMLY + ":(\\w+)\\}.*?\\{/" + RANDOMLY + ":\\8\\}|" + //
         "\\{" + NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
         "\\{" + DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
