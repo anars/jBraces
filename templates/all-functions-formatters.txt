@@ -116,6 +116,10 @@ Time in military notation is {time:kk}{time:mm}
 com.anars.jbraces.samples.functions.TimeSample3
 Current timezone is {time:zzzz}
 
+com.anars.jbraces.samples.functions.TimeSample4
+{set:jb_timezone_code}US/Eastern{/set:jb_timezone_code}In New York, current timezone is {time:zzzz}, and the time is {time:h}:{time:mm} {time:a}.
+{set:jb_timezone_code}US/Pacific{/set:jb_timezone_code}In Los Angeles, current timezone is {time:zzzz}, and the time is {time:h}:{time:mm} {time:a}.
+
 com.anars.jbraces.samples.formatters.BlackHoleSpanFormatterSample1
 {format:BlackHole}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:BlackHole}
 

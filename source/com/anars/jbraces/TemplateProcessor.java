@@ -49,6 +49,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -60,11 +61,11 @@ public class TemplateProcessor {
 
     /**
      */
-    public static final double VERSION = 1.4;
+    public static final double VERSION = 1.5;
 
     /**
      */
-    public static final long BUILD = 20170825;
+    public static final long BUILD = 20170828;
     private static final String[] LATIN_WORDS = {
         //
         "abduco", "accipio", "acer", "acquiro", "addo", "adduco", "adeo", "adepto", "adfero", "adficio", //
@@ -346,6 +347,8 @@ public class TemplateProcessor {
     private static final String VO_NAME_COUNTRY_NAME = "jb_country_name";
     private static final String VO_NAME_LANGUAGE_CODE = "jb_language_code";
     private static final String VO_NAME_LANGUAGE_NAME = "jb_language_name";
+    private static final String VO_NAME_TIMEZONE_CODE = "jb_timezone_code";
+    private static final String VO_NAME_TIMEZONE_NAME = "jb_timezone_name";
     //
     private static final String SET = "set";
     private static final String GET = "get";
@@ -383,6 +386,7 @@ public class TemplateProcessor {
         "\\{" + FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + FORMAT + ":\\75\\}", //
         Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
     private Locale _locale = null;
+    private TimeZone _timezone = null;
     private Hashtable<String, Object> _valueObjects = new Hashtable<String, Object>();
     private Hashtable<String, SpanFormatter> _spanFormatters = new Hashtable<String, SpanFormatter>();
 
@@ -393,6 +397,7 @@ public class TemplateProcessor {
         putValueObject(VO_NAME_CLASS_VERSION, VERSION);
         putValueObject(VO_NAME_CLASS_BUILD, BUILD);
         setLocale(Locale.getDefault());
+        setTimezone(TimeZone.getDefault());
     }
 
     /**
@@ -610,6 +615,8 @@ public class TemplateProcessor {
      * @param locale
      */
     public void setLocale(Locale locale) {
+        if(locale == null)
+            locale = Locale.getDefault();
         _locale = locale;
         putValueObject(VO_NAME_LOCALE_CODE, locale.toString());
         putValueObject(VO_NAME_LOCALE_NAME, locale.getDisplayName(locale));
@@ -617,13 +624,50 @@ public class TemplateProcessor {
         putValueObject(VO_NAME_COUNTRY_NAME, locale.getDisplayCountry(locale));
         putValueObject(VO_NAME_LANGUAGE_CODE, locale.getLanguage());
         putValueObject(VO_NAME_LANGUAGE_NAME, locale.getDisplayLanguage(locale));
+        putValueObject(VO_NAME_TIMEZONE_NAME, getTimezone().getDisplayName(getLocale()));
     }
 
     /**
      * @return
      */
     public Locale getLocale() {
-        return (_locale);
+        return (_locale == null ? Locale.getDefault() : _locale);
+    }
+
+    /**
+     * @param timezone
+     */
+    public void setTimezone(TimeZone timezone) {
+        if(timezone == null)
+            timezone = TimeZone.getDefault();
+        _timezone = timezone;
+        putValueObject(VO_NAME_TIMEZONE_CODE, timezone.getID());
+        putValueObject(VO_NAME_TIMEZONE_NAME, timezone.getDisplayName(getLocale()));
+    }
+
+    /**
+     * @param timezone
+     */
+    public void setTimezone(String timezoneID) {
+        if(timezoneID != null) {
+            TimeZone timezone = null;
+            timezoneID = timezoneID.trim();
+            String[] timezoneIDs = TimeZone.getAvailableIDs();
+            for(int index = 0; index < timezoneIDs.length && timezone == null; index++)
+                if(timezoneIDs[index].equalsIgnoreCase(timezoneID))
+                    timezone = TimeZone.getTimeZone(timezoneIDs[index]);
+            setTimezone(timezone);
+        }
+        else {
+            setTimezone(TimeZone.getDefault());
+        }
+    }
+
+    /**
+     * @return
+     */
+    public TimeZone getTimezone() {
+        return (_timezone == null ? TimeZone.getDefault() : _timezone);
     }
 
     /**
@@ -860,7 +904,9 @@ public class TemplateProcessor {
                 else if(pieces.length == 4)
                     locale = new Locale(pieces[2], pieces[3]);
                 try {
-                    replacement = (new SimpleDateFormat(pieces[1], locale)).format(new Date());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pieces[1], locale);
+                    simpleDateFormat.setTimeZone(_timezone);
+                    replacement = simpleDateFormat.format(new Date());
                 }
                 catch(IllegalArgumentException illegalArgumentException) {
                     _logger.log(Level.SEVERE, "Invalid date and time format; \"" + pieces[1] + "\".", illegalArgumentException);
@@ -1183,7 +1229,8 @@ public class TemplateProcessor {
                 if(!pieces[1].equalsIgnoreCase(VO_NAME_CLASS_VERSION) && !pieces[1].equalsIgnoreCase(VO_NAME_CLASS_BUILD) && //
                     !pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LOCALE_NAME) && //
                     !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_COUNTRY_NAME) && //
-                    !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_NAME)) {
+                    !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_LANGUAGE_NAME) && //
+                    !pieces[1].equalsIgnoreCase(VO_NAME_TIMEZONE_CODE) && !pieces[1].equalsIgnoreCase(VO_NAME_TIMEZONE_NAME)) {
                     String setValue = apply(substring(matcher.group(), "}", "{/"));
                     int leftBracket = pieces[1].indexOf("[");
                     int rightBracket = pieces[1].indexOf("]", leftBracket);
@@ -1232,6 +1279,13 @@ public class TemplateProcessor {
                         setLocale(new Locale(localeString));
                     else if(localeString.length() == 5 && localeString.charAt(2) == '_')
                         setLocale(new Locale(localeString.substring(0, 2), localeString.substring(3)));
+                }
+                else if(pieces[1].equalsIgnoreCase(VO_NAME_TIMEZONE_CODE)) {
+                    String timezoneString = substring(matcher.group(), "}", "{/").trim();
+                    if(timezoneString.length() == 0)
+                        setTimezone(TimeZone.getDefault());
+                    else
+                        setTimezone(timezoneString);
                 }
             }
             matcher.appendReplacement(stringBuffer, replacement == null ? "" : Matcher.quoteReplacement(replacement));

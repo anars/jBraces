@@ -8,6 +8,9 @@ Country Code = {get:jb_country_code}
 Country Name = {get:jb_country_name}
 Language Code = {get:jb_country_code}
 Language Name = {get:jb_country_name}
+Time Zone Code = {get:jb_timezone_code}
+Time Zone Name = {get:jb_timezone_name}
+
 
 System Properties :
 -------------------
