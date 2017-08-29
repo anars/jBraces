@@ -33,15 +33,19 @@ public class TimestampEditSpanFormatter
 
     private static SimpleDateFormat INPUT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
     private SimpleDateFormat _outputFormat = null;
+
     public TimestampEditSpanFormatter() {
         _outputFormat = new SimpleDateFormat("MM/dd/yyyy KK:mm a");
     }
+
     public TimestampEditSpanFormatter(String dateFormat) {
         _outputFormat = new SimpleDateFormat(dateFormat);
     }
+
     public TimestampEditSpanFormatter(SimpleDateFormat dateFormat) {
         _outputFormat = dateFormat;
     }
+
     public String format(String string, Locale locale) {
         Date date = null;
         try {

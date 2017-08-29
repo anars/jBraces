@@ -51,9 +51,11 @@ public class AllFunctionSamples {
             exception.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new AllFunctionSamples();
     }
+
     private List<Class> findClasses(File directory, String packageName)
         throws ClassNotFoundException {
         List<Class> classList = new ArrayList<Class>();

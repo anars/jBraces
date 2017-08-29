@@ -51,9 +51,11 @@ public class AllFormatterSamples {
             exception.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new AllFormatterSamples();
     }
+
     private List<Class> findClasses(File directory, String packageName)
         throws ClassNotFoundException {
         List<Class> classList = new ArrayList<Class>();

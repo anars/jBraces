@@ -40,6 +40,7 @@ public class FakeNameGenerator {
             exception.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new FakeNameGenerator();
     }

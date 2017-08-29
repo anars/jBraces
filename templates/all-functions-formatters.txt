@@ -10,6 +10,9 @@ Is it a {draw:true:false} information that your are awesome?
 com.anars.jbraces.samples.functions.DrawSample2
 Sheldon Cooper says: {draw:Rock:Paper:Scissors:Lizard:Spock}
 
+com.anars.jbraces.samples.functions.DrawSample3
+{draw:This is sentence 1!:This is sentence 2.:This is sentence 3...}
+
 com.anars.jbraces.samples.functions.FormatSample1
 Price of an average house in London is {format:FormatCurrency:en:gb}398476{/format:FormatCurrency}
 
@@ -129,6 +132,9 @@ com.anars.jbraces.samples.formatters.CamelCaseSpanFormatterSample1
 com.anars.jbraces.samples.formatters.DeCamelCaseSpanFormatterSample1
 {format:DeCamelCase}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:DeCamelCase}
 
+com.anars.jbraces.samples.formatters.EnglishOrdinalIndicatorSpanFormatterSample1
+{repeat:numbers:99}{format:EnglishOrdinalIndicator}{get:numbers.-offset}{/format:EnglishOrdinalIndicator} {/repeat:numbers}
+
 com.anars.jbraces.samples.formatters.FileSizeSpanFormatterSample1
 1000 Bytes = {format:FileSize}1000{/format:FileSize} / 10000000 Bytes = {format:FileSize}10000000{/format:FileSize}
 
@@ -147,6 +153,10 @@ com.anars.jbraces.samples.formatters.FormatLongNumberSpanFormatterSample1
 com.anars.jbraces.samples.formatters.HyphenSpanFormatterSample1
 Anar Software LLC
 {format:Hyphen}Anar Software LLC{/format:Hyphen}
+
+com.anars.jbraces.samples.formatters.JSONStringEncodeSpanFormatterSample1
+{format:JSONStringEncode}example
+"text"{/format:JSONStringEncode}
 
 com.anars.jbraces.samples.formatters.LeadingTrimSpanFormatterSample1
 {format:LeadingTrim}Copyright (c) 2012-2017 Anar Software LLC <http://anars.com>{/format:LeadingTrim}

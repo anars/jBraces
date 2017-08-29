@@ -38,6 +38,7 @@ public class IdeaGenerator {
             exception.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new IdeaGenerator();
     }

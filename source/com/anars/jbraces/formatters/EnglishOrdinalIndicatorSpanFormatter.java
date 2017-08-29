@@ -18,26 +18,43 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.anars.jbraces.samples;
+package com.anars.jbraces.formatters;
 
-import com.anars.jbraces.TemplateProcessor;
+import com.anars.jbraces.SpanFormatter;
 
-import java.io.File;
+import java.util.Locale;
+import java.util.logging.Level;
 
-public class ClassSystemProperties {
+public class EnglishOrdinalIndicatorSpanFormatter
+    extends SpanFormatter {
 
-    public ClassSystemProperties() {
-        TemplateProcessor templateProcessor = new TemplateProcessor();
+    /**
+     * @param string
+     * @param locale
+     * @return
+     */
+    public String format(String string, Locale locale) {
+        string = string.replaceAll("[^0-9\\-\\.]", "");
+        int value = 0;
         try {
-            String output = templateProcessor.apply(new File("templates/class-system-properties.txt"));
-            System.out.println(output);
+            value = Integer.parseInt(string);
         }
         catch(Exception exception) {
-            exception.printStackTrace();
+            _logger.log(Level.SEVERE, "Unable to parse value", exception);
         }
-    }
-
-    public static void main(String[] args) {
-        new ClassSystemProperties();
+        String indicator = "th";
+        if(value < 11 || value > 13)
+            switch(value % 10) {
+                case 1:
+                    indicator = "st";
+                    break;
+                case 2:
+                    indicator = "nd";
+                    break;
+                case 3:
+                    indicator = "rd";
+                    break;
+            }
+        return (value + indicator);
     }
 }

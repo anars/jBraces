@@ -28,10 +28,13 @@ public class WordCharactersSpanFormatter
     extends SpanFormatter {
 
     private String _spaceReplacement = null;
+
     public WordCharactersSpanFormatter() {}
+
     public WordCharactersSpanFormatter(String spaceReplacement) {
         _spaceReplacement = spaceReplacement;
     }
+
     public String format(String string, Locale locate) {
         string = string.replaceAll("^\\s+|[^\\w\\s]|\\s+$", "");
         return (_spaceReplacement != null ? string.replaceAll("\\s+", _spaceReplacement) : string);

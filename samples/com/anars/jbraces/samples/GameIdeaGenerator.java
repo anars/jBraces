@@ -38,6 +38,7 @@ public class GameIdeaGenerator {
             exception.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         new GameIdeaGenerator();
     }
