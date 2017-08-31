@@ -491,7 +491,7 @@ public class TemplateProcessor {
         "\\{" + OPERATOR_SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + OPERATOR_SET + ":\\1\\}|" + //
         "\\{" + OPERATOR_GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
         "\\{" + OPERATOR_PROPERTY + ":[^}]*\\}|" + //
-        "\\{" + OPERATOR_DRAW + ":(^[}:])*:(^[}:])*(:(^[}:])*)*\\}|" + //
+        "\\{" + OPERATOR_DRAW + ":[\\w\\s.,!?]+:[\\w\\s]+([\\w\\s]+)*\\}|" + //
         "\\{" + OPERATOR_RANDOMLY + ":(\\w+)\\}.*?\\{/" + OPERATOR_RANDOMLY + ":\\8\\}|" + //
         "\\{" + OPERATOR_NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
         "\\{" + OPERATOR_DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
@@ -1298,7 +1298,6 @@ public class TemplateProcessor {
     public Locale getLocale() {
         return (_locale == null ? Locale.getDefault() : _locale);
     }
-
     private Object getObjectValue(String name)
         throws ArrayNotFoundException, NotArrayException, ArrayIndexOutOfBoundsException, ObjectNotFoundException, AttributeNotFoundException {
         String[] pieces = name.split("[.]");
