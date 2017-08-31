@@ -62,7 +62,7 @@ public class TemplateProcessor {
     /**
      *
      */
-    public static final long APPLICATION_BUILD = 20170829;
+    public static final long APPLICATION_BUILD = 20170831;
 
     /**
      *
@@ -491,7 +491,7 @@ public class TemplateProcessor {
         "\\{" + OPERATOR_SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + OPERATOR_SET + ":\\1\\}|" + //
         "\\{" + OPERATOR_GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
         "\\{" + OPERATOR_PROPERTY + ":[^}]*\\}|" + //
-        "\\{" + OPERATOR_DRAW + ":.*:.*(:.*)*\\}|" + //
+        "\\{" + OPERATOR_DRAW + ":(^[}:])*:(^[}:])*(:(^[}:])*)*\\}|" + //
         "\\{" + OPERATOR_RANDOMLY + ":(\\w+)\\}.*?\\{/" + OPERATOR_RANDOMLY + ":\\8\\}|" + //
         "\\{" + OPERATOR_NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
         "\\{" + OPERATOR_DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
