@@ -62,7 +62,7 @@ public class TemplateProcessor {
     /**
      *
      */
-    public static final long APPLICATION_BUILD = 20170831;
+    public static final long APPLICATION_BUILD = 20170902;
 
     /**
      *
@@ -471,27 +471,12 @@ public class TemplateProcessor {
     /**
      *
      */
-    private Date _date = null;
-
-    /**
-     *
-     */
-    private Locale _locale = null;
-
-    /**
-     *
-     */
-    private Logger _logger = Logger.getLogger(getClass().getCanonicalName());
-
-    /**
-     *
-     */
-    private Pattern _pattern = Pattern.compile(
+    private static final Pattern PATTERN = Pattern.compile(
         //
         "\\{" + OPERATOR_SET + ":(\\w+(\\[\\d+\\])?)\\}.*?\\{/" + OPERATOR_SET + ":\\1\\}|" + //
         "\\{" + OPERATOR_GET + ":\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?\\}|" + //
         "\\{" + OPERATOR_PROPERTY + ":[^}]*\\}|" + //
-        "\\{" + OPERATOR_DRAW + ":[\\w\\s.,!?]+:[\\w\\s]+([\\w\\s]+)*\\}|" + //
+        "\\{" + OPERATOR_DRAW + ":(\\w+):[^}]*\\}.*?\\{/" + OPERATOR_DRAW + ":\\7\\}|" + //
         "\\{" + OPERATOR_RANDOMLY + ":(\\w+)\\}.*?\\{/" + OPERATOR_RANDOMLY + ":\\8\\}|" + //
         "\\{" + OPERATOR_NUMBER + ":((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)):((\\-?\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))\\}|" + //
         "\\{" + OPERATOR_DATE + ":[GyMwWDdFE]+(:\\w{2}){0,2}\\}|" + //
@@ -505,6 +490,21 @@ public class TemplateProcessor {
         "\\{" + OPERATOR_REPEAT + ":(\\w+):((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?))(:((\\d+)|(\\w+((\\[\\d+\\])?(\\.\\w+)?|(\\.\\-value|\\.\\-offset|\\.\\-length|\\.\\-first|\\.\\-second|\\.\\-penultimate|\\.\\-last))?)))?\\}.*?\\{/" + OPERATOR_REPEAT + ":\\59\\}|" + //
         "\\{" + OPERATOR_FORMAT + ":(\\w+)(:\\w{2}){0,2}\\}.*?\\{/" + OPERATOR_FORMAT + ":\\75\\}", //
         Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+
+    /**
+     *
+     */
+    private Date _date = null;
+
+    /**
+     *
+     */
+    private Locale _locale = null;
+
+    /**
+     *
+     */
+    private Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
     /**
      *
@@ -584,7 +584,7 @@ public class TemplateProcessor {
      * @return
      */
     public String apply(String templateString) {
-        Matcher matcher = _pattern.matcher(templateString);
+        Matcher matcher = PATTERN.matcher(templateString);
         StringBuffer stringBuffer = new StringBuffer();
         while(matcher.find()) {
             String matchedString = substring(matcher.group(), "{", "}", false);
@@ -1016,7 +1016,8 @@ public class TemplateProcessor {
                 replacement = (int)(Math.random() * 2.0) == 1 ? apply(randomlyBlock) : "";
             }
             else if(pieces[0].equals(OPERATOR_DRAW)) {
-                replacement = pieces[1 + (int)(Math.random() * pieces.length - 1)];
+                String[] blocks = substring(matcher.group(), "}", "{/").split(pieces[2]);
+                replacement = blocks[(int)(Math.random() * blocks.length)];
             }
             else if(pieces[0].equals(OPERATOR_REPEAT)) {
                 int repeatTimes = 1;
@@ -1178,7 +1179,7 @@ public class TemplateProcessor {
         matcher.appendTail(stringBuffer);
         matcher = null;
         String output = stringBuffer.toString();
-        if(_pattern.matcher(output).find())
+        if(PATTERN.matcher(output).find())
             output = apply(output);
         return (output);
     }

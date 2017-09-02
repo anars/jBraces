@@ -26,7 +26,7 @@ public class RepeatSample5 {
 
     public RepeatSample5() {
         TemplateProcessor templateProcessor = new TemplateProcessor();
-        String template = "{set:mintimes}1{/set:mintimes}{set:maxtimes}5{/set:maxtimes}Threw bunch of random dice : {repeat:dice:mintimes:maxtimes}\n" + "Die {get:dice.-offset} of {get:dice.-length} " + "is {number:1:6}{/repeat:dice}";
+        String template = "{set:mintimes}1{/set:mintimes}{set:maxtimes}5{/set:maxtimes}Threw bunch of random dice : {repeat:dice:mintimes:maxtimes}\nDie {get:dice.-offset} of {get:dice.-length} is {number:1:6}{/repeat:dice}";
         System.out.println(template);
         template = templateProcessor.apply(template);
         System.out.println(template);

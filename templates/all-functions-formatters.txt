@@ -5,13 +5,13 @@ com.anars.jbraces.samples.functions.DateSample2
 The day is '{date:EEEE:TR}' in Turkish, '{date:EEEE:DE}' in German and '{date:EEEE:FR}' in French.
 
 com.anars.jbraces.samples.functions.DrawSample1
-Is it a {draw:true:false} information that your are awesome?
+Is it a {draw:decision:,}true,false{/draw:decision} information that your are awesome?
 
 com.anars.jbraces.samples.functions.DrawSample2
-Sheldon Cooper says: {draw:Rock:Paper:Scissors:Lizard:Spock}
+Sheldon Cooper says: {draw:game:\s}Rock Paper Scissors Lizard Spock{/draw:game}
 
 com.anars.jbraces.samples.functions.DrawSample3
-{draw:This is sentence 1!:This is sentence 2.:This is sentence 3...}
+{draw:sentence:[.]}This is sentence 1.This is sentence 2.This is sentence 3.{/draw:sentence}.
 
 com.anars.jbraces.samples.functions.FormatSample1
 Price of an average house in London is {format:FormatCurrency:en:gb}398476{/format:FormatCurrency}
@@ -38,7 +38,7 @@ com.anars.jbraces.samples.functions.GetSample6
 Random programming language I picked for you is {get:languages[0]}
 
 com.anars.jbraces.samples.functions.IfSample1
-{set:hero}{draw:Superman:Batman}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
+{set:hero}{draw:hero:,}Superman,Batman{/draw:hero}{/set:hero}My childhood hero is {get:hero}. {if:supermanpowers:hero:equals:'Superman'}Some of his superpowers are super strength, speed, stamina, endurance and durability{/if:supermanpowers}{if:batmanpowers:hero:equals:'Batman'}Unlike most superheroes, he does not possess any superpowers{/if:batmanpowers}.
 
 com.anars.jbraces.samples.functions.IfSample2
 {repeat:student:10:20}{set:mark}{number:50:100}{/set:mark}Math grade of the student {get:student.-value} is {get:mark} / {if:fgrade:mark:less-than-or-equals:'59'}F{/if:fgrade}{if:Dmin:mark:greater-than-or-equals:'60'}{if:Dmax:mark:less-than-or-equals:'69'}D{/if:Dmax}{/if:Dmin}{if:Cmin:mark:greater-than-or-equals:'70'}{if:Cmax:mark:less-than-or-equals:'76'}C{/if:Cmax}{/if:Cmin}{if:Bmin:mark:greater-than-or-equals:'77'}{if:Bmax:mark:less-than-or-equals:'83'}B{/if:Bmax}{/if:Bmin}{if:BPmin:mark:greater-than-or-equals:'84'}{if:BPmax:mark:less-than-or-equals:'91'}B+{/if:BPmax}{/if:BPmin}{if:Amin:mark:greater-than-or-equals:'92'}{if:Amax:mark:less-than-or-equals:'98'}A{/if:Amax}{/if:Amin}{if:APmin:mark:greater-than-or-equals:'99'}{if:APmax:mark:less-than-or-equals:'100'}A+{/if:APmax}{/if:APmin}
@@ -87,7 +87,7 @@ com.anars.jbraces.samples.functions.SetSample1
 {set:hero}Superman{/set:hero}My childhood hero is {get:hero}
 
 com.anars.jbraces.samples.functions.SetSample2
-{set:hero}{draw:Superman:Batman}{/set:hero}Hmm, {get:hero} is my childhood hero. {get:hero} always fight against bad people.
+{set:hero}{draw:hero:,}Superman,Batman{/draw:hero}{/set:hero}Hmm, {get:hero} is my childhood hero. {get:hero} always fight against bad people.
 
 com.anars.jbraces.samples.functions.SetSample3
 {set:jb_locale_code}tr_TR{/set:jb_locale_code}The day is '{date:EEEE}' in Turkish ({get:jb_language_name}), {set:jb_locale_code}de_DE{/set:jb_locale_code}'{date:EEEE}' in German ({get:jb_language_name}) and {set:jb_locale_code}{/set:jb_locale_code}'{date:EEEE}' in default language ({get:jb_language_name}).

@@ -3,7 +3,7 @@
 // Original idea and content by @orteil42
 // http://orteil.dashnet.org/gamegen
 //
-{set:type}{draw:fps:simulation:strategy:arcade:mmo:indie}{/set:type}
+{set:type}{draw:type:,}fps,simulation,strategy,arcade,mmo,indie{/draw:type}{/set:type}
 {if:condition:type:equals:'fps'}
 	{set:genre[0]}a shooting game{/set:genre[0]}
 	{set:genre[0]}an action game{/set:genre[0]}

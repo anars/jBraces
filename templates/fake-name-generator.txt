@@ -1,5 +1,5 @@
 {format:BlackHole}
-{set:gender}{draw:Girl:Boy}{/set:gender}
+{set:gender}{draw:gender:,}Girl,Boy{/draw:gender}{/set:gender}
 {if:condition:gender:equals:'Girl'}
 	{set:FirstName[0]}Mary{/set:FirstName[0]}
 	{set:FirstName[0]}Patricia{/set:FirstName[0]}

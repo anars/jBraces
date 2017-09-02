@@ -26,7 +26,7 @@ public class DrawSample1 {
 
     public DrawSample1() {
         TemplateProcessor templateProcessor = new TemplateProcessor();
-        String template = "Is it a {draw:true:false} information that your are awesome?";
+        String template = "Is it a {draw:decision:,}true,false{/draw:decision} information that your are awesome?";
         System.out.println(template);
         template = templateProcessor.apply(template);
         System.out.println(template);

@@ -26,7 +26,7 @@ public class DrawSample3 {
 
     public DrawSample3() {
         TemplateProcessor templateProcessor = new TemplateProcessor();
-        String template = "{draw:This is sentence 1!:This is sentence 2.:This is sentence 3...}";
+        String template = "{draw:sentence:[.]}This is sentence 1.This is sentence 2.This is sentence 3.{/draw:sentence}.";
         System.out.println(template);
         template = templateProcessor.apply(template);
         System.out.println(template);
